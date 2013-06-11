@@ -1,0 +1,29 @@
+﻿<Window x:Class="quick_view_newspaper.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Window1" Height="300" Width="300">
+    <Grid>
+        <Label FontSize="20" FontWeight="Bold" Margin="100, 10, 0, 0">CÀI ĐẶT:</Label>
+        <RadioButton Margin="30, 50, 0, 0" Name="rdoChooseCategory">Xem theo thể loại:</RadioButton>
+        <ComboBox Margin="30, 80, 50, 165" SelectedIndex="0" Name="cmbCategory">
+            <CheckBox Content="Công nghệ" Name ="chkCongNghe"/>
+            <CheckBox Content="Thể thao" Name="chkTheThao"/>
+            <CheckBox Content="Âm nhạc" Name="chkAmNhac"/>
+            <CheckBox Content="Gải trí" Name="chkGiaiTri"/>
+            <CheckBox Content="Phim ảnh" Name="chkPhimAnh"/>
+            <CheckBox Content="Kinh tế" Name="chkKinhTe"/>
+            <CheckBox Content="Thời sự" Name="chkThoiSu"/>
+            <CheckBox Content="Tổng hợp" Name="chkTongHop"/>
+        </ComboBox>
+        <RadioButton Name="rdoChooseTitle" Margin="30, 120, 0, 0">Xem theo đầu báo:</RadioButton>
+        <ComboBox Margin="30, 150, 50, 95" Name="cmbTitle" SelectedIndex="0">
+            <CheckBox Content="VnExpress"/>
+            <CheckBox Content="Thanh Niên"/>
+            <CheckBox Content="Tinh Tế"/>
+            <CheckBox Content="Zing"/>
+            <CheckBox Content="Việt Nam Net"/>
+            <CheckBox Content="24h"/>
+            <CheckBox/>
+        </ComboBox>
+    </Grid>
+</Window>
