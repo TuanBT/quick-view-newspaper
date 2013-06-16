@@ -24,5 +24,10 @@ namespace quick_view_newspaper
             InitializeComponent();
 
         }
+
+        private void btnSetting_Click(object sender, RoutedEventArgs e)
+        {
+            ShowDialog();
+        }
     }
 }
