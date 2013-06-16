@@ -4,7 +4,7 @@
         Title="Xem Báo Nhanh" Height="100" Width="1370" WindowStartupLocation="Manual" Top="0" Left="0">
     <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid ShowGridLines="True">
@@ -12,14 +12,45 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="70"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Grid.Row="0" FontSize="15" FontWeight="Bold">Tên Báo:</Label>
-            <Label Grid.Column="0" Grid.Row="1" FontSize="15" FontWeight="Bold">Thể Loại</Label>
-            <Label Grid.Column="1" Grid.Row="0" Name="lblName" FontSize="15" FontWeight="Bold" Margin="50, 0, 0, 0">Tuổi trẻ</Label>
-            <Label Grid.Column="1" Grid.Row="1" Name="lblCategory" FontSize="15" FontWeight="Bold" Margin="50, 0, 0, 0">Thế Giới</Label>
+            <Label Grid.Row="0" Name="lblNameTitle" Width="150" Margin="0,0,50,0"></Label>
+            <Label Grid.Row="1" Name="lblNameCategory" Width="150" Margin="0,0,50,0"></Label>
+            <ComboBox Grid.Row="0" Height="20" Width="30" Margin="165,5,5,5" Name="cmbTitle" RenderTransformOrigin="-0.867,0.5">
+                <CheckBox Name="chkVnExpress">VnExpress</CheckBox>
+                <CheckBox Name="chkZing">Zing</CheckBox>
+                <CheckBox Name="chkTuoiTre">Tuổi Trẻ</CheckBox>
+                <CheckBox Name="chkTinhTe">Tinh Tế</CheckBox>
+                <CheckBox Name="chkThanhNien">Thanh Niên</CheckBox>
+                <CheckBox Name="chkVietNamNet">Viet Nam Net</CheckBox>
+                <CheckBox Name="chk24h">24h</CheckBox>
+                <CheckBox Name="chkAllTitle">ALL</CheckBox>
+            </ComboBox>
+            <ComboBox Grid.Row="1" Height="20" Width="30" Margin="165,5,5,5" Name="cmbCategory">
+                <CheckBox Name="chkCongNghe">Công Nghệ</CheckBox>
+                <CheckBox Name="chkTheThao">Thể Thao</CheckBox>
+                <CheckBox Name="chkTheGioi">Thế Giới</CheckBox>
+                <CheckBox Name="chkAmNhac">Âm Nhạc</CheckBox>
+                <CheckBox Name="chkGiaiTri">Giải Trí</CheckBox>
+                <CheckBox Name="chkPhimAnh">Phim Ảnh</CheckBox>
+                <CheckBox Name="chkThoiSu">Thời Sự</CheckBox>
+                <CheckBox Name="chkAllCategory">All</CheckBox>
+            </ComboBox>
         </Grid>
+        <Expander Grid.Column="1" FlowDirection="RightToLeft" ExpandDirection="Right">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label FlowDirection="LeftToRight" Grid.Column="1" Grid.Row="0" Margin="0,0,200,0">Cỡ chữ:</Label>
+                <Label FlowDirection="LeftToRight" Grid.Column="0" Grid.Row="0" Margin="0,0,50,0">Độ trong suốt:</Label>
+                <Label FlowDirection="LeftToRight" Grid.Column="1" Grid.Row="1" Margin="0,0,200,0">Tốc độ chữ:</Label>
+                <Label FlowDirection="LeftToRight" Grid.Column="0" Grid.Row="1" Margin="0,0,50,0">Giao diện:</Label>
+            </Grid>
+        </Expander>
     </Grid>
 </Window>
+
