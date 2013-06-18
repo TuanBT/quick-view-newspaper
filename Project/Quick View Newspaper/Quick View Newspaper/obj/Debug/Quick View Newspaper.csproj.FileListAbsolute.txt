@@ -1,0 +1,8 @@
+D:\Project\CSharp\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\bin\Debug\Quick View Newspaper.exe
+D:\Project\CSharp\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\bin\Debug\Quick View Newspaper.pdb
+D:\Project\CSharp\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick View Newspaper.csprojResolveAssemblyReference.cache
+D:\Project\CSharp\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick_View_Newspaper.Form1.resources
+D:\Project\CSharp\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick_View_Newspaper.Properties.Resources.resources
+D:\Project\CSharp\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick View Newspaper.csproj.GenerateResource.Cache
+D:\Project\CSharp\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick View Newspaper.exe
+D:\Project\CSharp\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick View Newspaper.pdb
