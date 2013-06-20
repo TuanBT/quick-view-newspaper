@@ -33,10 +33,8 @@
             this.picTitleNext = new System.Windows.Forms.PictureBox();
             this.picTitleBack = new System.Windows.Forms.PictureBox();
             this.pnlGen = new System.Windows.Forms.Panel();
-            this.picGenNext = new System.Windows.Forms.PictureBox();
             this.picGen = new System.Windows.Forms.PictureBox();
             this.pnlName = new System.Windows.Forms.Panel();
-            this.picNameNext = new System.Windows.Forms.PictureBox();
             this.picName = new System.Windows.Forms.PictureBox();
             this.picBackground = new System.Windows.Forms.PictureBox();
             this.pnlOption = new System.Windows.Forms.Panel();
@@ -50,15 +48,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.picOptClose = new System.Windows.Forms.PictureBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label5 = new System.Windows.Forms.Label();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picOptOpen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTitleNext)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTitleBack)).BeginInit();
             this.pnlGen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picGenNext)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGen)).BeginInit();
             this.pnlName.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picNameNext)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBackground)).BeginInit();
             this.pnlOption.SuspendLayout();
@@ -72,23 +70,26 @@
             // 
             // pnlMain
             // 
+            this.pnlMain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlMain.Controls.Add(this.picOptOpen);
             this.pnlMain.Controls.Add(this.picTitleNext);
             this.pnlMain.Controls.Add(this.picTitleBack);
             this.pnlMain.Controls.Add(this.pnlGen);
             this.pnlMain.Controls.Add(this.pnlName);
-            this.pnlMain.Controls.Add(this.picBackground);
             this.pnlMain.Location = new System.Drawing.Point(12, 12);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(960, 108);
+            this.pnlMain.Size = new System.Drawing.Size(848, 50);
             this.pnlMain.TabIndex = 0;
             // 
             // picOptOpen
             // 
+            this.picOptOpen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.picOptOpen.Image = global::Quick_View_Newspaper.Properties.Resources.OptionOpen;
-            this.picOptOpen.Location = new System.Drawing.Point(906, 27);
+            this.picOptOpen.Location = new System.Drawing.Point(816, 0);
             this.picOptOpen.Name = "picOptOpen";
-            this.picOptOpen.Size = new System.Drawing.Size(54, 54);
+            this.picOptOpen.Size = new System.Drawing.Size(20, 50);
             this.picOptOpen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picOptOpen.TabIndex = 5;
             this.picOptOpen.TabStop = false;
@@ -96,10 +97,12 @@
             // 
             // picTitleNext
             // 
+            this.picTitleNext.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.picTitleNext.Image = global::Quick_View_Newspaper.Properties.Resources.ButtonNext;
-            this.picTitleNext.Location = new System.Drawing.Point(800, 4);
+            this.picTitleNext.Location = new System.Drawing.Point(780, 10);
             this.picTitleNext.Name = "picTitleNext";
-            this.picTitleNext.Size = new System.Drawing.Size(100, 100);
+            this.picTitleNext.Size = new System.Drawing.Size(30, 30);
             this.picTitleNext.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picTitleNext.TabIndex = 4;
             this.picTitleNext.TabStop = false;
@@ -107,10 +110,12 @@
             // 
             // picTitleBack
             // 
+            this.picTitleBack.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.picTitleBack.Image = global::Quick_View_Newspaper.Properties.Resources.ButtonBack;
-            this.picTitleBack.Location = new System.Drawing.Point(200, 4);
+            this.picTitleBack.Location = new System.Drawing.Point(266, 10);
             this.picTitleBack.Name = "picTitleBack";
-            this.picTitleBack.Size = new System.Drawing.Size(100, 100);
+            this.picTitleBack.Size = new System.Drawing.Size(30, 30);
             this.picTitleBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picTitleBack.TabIndex = 3;
             this.picTitleBack.TabStop = false;
@@ -118,71 +123,52 @@
             // 
             // pnlGen
             // 
-            this.pnlGen.Controls.Add(this.picGenNext);
+            this.pnlGen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.pnlGen.Controls.Add(this.picGen);
-            this.pnlGen.Location = new System.Drawing.Point(0, 54);
+            this.pnlGen.Location = new System.Drawing.Point(160, 0);
             this.pnlGen.Name = "pnlGen";
-            this.pnlGen.Size = new System.Drawing.Size(192, 54);
+            this.pnlGen.Size = new System.Drawing.Size(100, 50);
             this.pnlGen.TabIndex = 1;
-            // 
-            // picGenNext
-            // 
-            this.picGenNext.Image = global::Quick_View_Newspaper.Properties.Resources.ButtonNext;
-            this.picGenNext.Location = new System.Drawing.Point(161, 17);
-            this.picGenNext.Name = "picGenNext";
-            this.picGenNext.Size = new System.Drawing.Size(19, 19);
-            this.picGenNext.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picGenNext.TabIndex = 2;
-            this.picGenNext.TabStop = false;
-            this.picGenNext.Click += new System.EventHandler(this.picGenNext_Click);
             // 
             // picGen
             // 
+            this.picGen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.picGen.Image = global::Quick_View_Newspaper.Properties.Resources.BackgroundTypeNewspaper;
             this.picGen.Location = new System.Drawing.Point(0, 0);
             this.picGen.Name = "picGen";
-            this.picGen.Size = new System.Drawing.Size(155, 54);
+            this.picGen.Size = new System.Drawing.Size(97, 50);
             this.picGen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picGen.TabIndex = 1;
             this.picGen.TabStop = false;
             // 
             // pnlName
             // 
-            this.pnlName.Controls.Add(this.picNameNext);
+            this.pnlName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.pnlName.Controls.Add(this.picName);
             this.pnlName.Location = new System.Drawing.Point(0, 0);
             this.pnlName.Name = "pnlName";
-            this.pnlName.Size = new System.Drawing.Size(192, 54);
+            this.pnlName.Size = new System.Drawing.Size(160, 50);
             this.pnlName.TabIndex = 0;
-            // 
-            // picNameNext
-            // 
-            this.picNameNext.Image = global::Quick_View_Newspaper.Properties.Resources.ButtonNext;
-            this.picNameNext.Location = new System.Drawing.Point(161, 18);
-            this.picNameNext.Name = "picNameNext";
-            this.picNameNext.Size = new System.Drawing.Size(19, 19);
-            this.picNameNext.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picNameNext.TabIndex = 1;
-            this.picNameNext.TabStop = false;
-            this.picNameNext.Click += new System.EventHandler(this.picNameNext_Click);
             // 
             // picName
             // 
             this.picName.Image = global::Quick_View_Newspaper.Properties.Resources.BackgroundNameNewspaper;
             this.picName.Location = new System.Drawing.Point(0, 0);
             this.picName.Name = "picName";
-            this.picName.Size = new System.Drawing.Size(155, 54);
+            this.picName.Size = new System.Drawing.Size(149, 50);
             this.picName.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picName.TabIndex = 0;
             this.picName.TabStop = false;
             // 
             // picBackground
             // 
-            this.picBackground.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBackground.Image = global::Quick_View_Newspaper.Properties.Resources.BackgroundMain;
-            this.picBackground.Location = new System.Drawing.Point(0, 0);
+            this.picBackground.Location = new System.Drawing.Point(12, 173);
             this.picBackground.Name = "picBackground";
-            this.picBackground.Size = new System.Drawing.Size(960, 108);
+            this.picBackground.Size = new System.Drawing.Size(290, 50);
             this.picBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBackground.TabIndex = 2;
             this.picBackground.TabStop = false;
@@ -199,16 +185,16 @@
             this.pnlOption.Controls.Add(this.label2);
             this.pnlOption.Controls.Add(this.label1);
             this.pnlOption.Controls.Add(this.picOptClose);
-            this.pnlOption.Location = new System.Drawing.Point(12, 146);
+            this.pnlOption.Location = new System.Drawing.Point(12, 68);
             this.pnlOption.Name = "pnlOption";
-            this.pnlOption.Size = new System.Drawing.Size(960, 108);
+            this.pnlOption.Size = new System.Drawing.Size(848, 50);
             this.pnlOption.TabIndex = 1;
             this.pnlOption.Visible = false;
             // 
             // picIntNext
             // 
             this.picIntNext.Image = global::Quick_View_Newspaper.Properties.Resources.ButtonNext;
-            this.picIntNext.Location = new System.Drawing.Point(665, 59);
+            this.picIntNext.Location = new System.Drawing.Point(698, 19);
             this.picIntNext.Name = "picIntNext";
             this.picIntNext.Size = new System.Drawing.Size(21, 21);
             this.picIntNext.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -217,7 +203,7 @@
             // 
             // picInterface
             // 
-            this.picInterface.Location = new System.Drawing.Point(590, 59);
+            this.picInterface.Location = new System.Drawing.Point(623, 19);
             this.picInterface.Name = "picInterface";
             this.picInterface.Size = new System.Drawing.Size(69, 22);
             this.picInterface.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -226,14 +212,14 @@
             // 
             // nudOpacity
             // 
-            this.nudOpacity.Location = new System.Drawing.Point(590, 14);
+            this.nudOpacity.Location = new System.Drawing.Point(466, 17);
             this.nudOpacity.Name = "nudOpacity";
             this.nudOpacity.Size = new System.Drawing.Size(56, 22);
             this.nudOpacity.TabIndex = 13;
             // 
             // nudSpeed
             // 
-            this.nudSpeed.Location = new System.Drawing.Point(158, 59);
+            this.nudSpeed.Location = new System.Drawing.Point(293, 14);
             this.nudSpeed.Name = "nudSpeed";
             this.nudSpeed.Size = new System.Drawing.Size(51, 22);
             this.nudSpeed.TabIndex = 12;
@@ -247,8 +233,10 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(515, 59);
+            this.label4.Location = new System.Drawing.Point(548, 19);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 17);
             this.label4.TabIndex = 10;
@@ -257,7 +245,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(503, 16);
+            this.label3.Location = new System.Drawing.Point(379, 19);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 17);
             this.label3.TabIndex = 9;
@@ -266,7 +254,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(93, 64);
+            this.label2.Location = new System.Drawing.Point(228, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 17);
             this.label2.TabIndex = 8;
@@ -283,22 +271,47 @@
             // 
             // picOptClose
             // 
+            this.picOptClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.picOptClose.Image = global::Quick_View_Newspaper.Properties.Resources.OptionClose;
-            this.picOptClose.Location = new System.Drawing.Point(0, 27);
+            this.picOptClose.Location = new System.Drawing.Point(0, 0);
             this.picOptClose.Name = "picOptClose";
-            this.picOptClose.Size = new System.Drawing.Size(54, 54);
+            this.picOptClose.Size = new System.Drawing.Size(20, 50);
             this.picOptClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picOptClose.TabIndex = 6;
             this.picOptClose.TabStop = false;
             this.picOptClose.Click += new System.EventHandler(this.picOptClose_Click);
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(403, 200);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(72, 17);
+            this.linkLabel1.TabIndex = 3;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "linkLabel1";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(533, 184);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 17);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "label5";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1056, 274);
+            this.ClientSize = new System.Drawing.Size(899, 267);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.pnlOption);
             this.Controls.Add(this.pnlMain);
+            this.Controls.Add(this.picBackground);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Form1";
@@ -307,10 +320,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picTitleNext)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTitleBack)).EndInit();
             this.pnlGen.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picGenNext)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGen)).EndInit();
             this.pnlName.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picNameNext)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBackground)).EndInit();
             this.pnlOption.ResumeLayout(false);
@@ -322,6 +333,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOptClose)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -347,8 +359,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox picOptClose;
-        private System.Windows.Forms.PictureBox picGenNext;
-        private System.Windows.Forms.PictureBox picNameNext;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label label5;
     }
 }
 
