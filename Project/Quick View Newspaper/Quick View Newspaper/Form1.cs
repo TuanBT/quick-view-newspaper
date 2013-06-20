@@ -17,6 +17,7 @@ namespace Quick_View_Newspaper
         public Form1()
         {
             InitializeComponent();
+            t.print();
         }
 
         private void picOptOpen_Click(object sender, EventArgs e)
