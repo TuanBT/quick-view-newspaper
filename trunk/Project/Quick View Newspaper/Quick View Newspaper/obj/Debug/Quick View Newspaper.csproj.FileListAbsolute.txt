@@ -14,3 +14,11 @@ G:\Project\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick Vie
 G:\Project\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick_View_Newspaper.Form1.resources
 G:\Project\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick_View_Newspaper.Properties.Resources.resources
 G:\Project\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick View Newspaper.csproj.GenerateResource.Cache
+E:\Project\Quic View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick View Newspaper.exe
+E:\Project\Quic View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick View Newspaper.pdb
+E:\Project\Quic View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\bin\Debug\Quick View Newspaper.exe
+E:\Project\Quic View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\bin\Debug\Quick View Newspaper.pdb
+E:\Project\Quic View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick View Newspaper.csprojResolveAssemblyReference.cache
+E:\Project\Quic View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick_View_Newspaper.Form1.resources
+E:\Project\Quic View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick_View_Newspaper.Properties.Resources.resources
+E:\Project\Quic View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick View Newspaper.csproj.GenerateResource.Cache
