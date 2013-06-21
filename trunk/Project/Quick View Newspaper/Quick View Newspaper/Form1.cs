@@ -17,9 +17,7 @@ namespace Quick_View_Newspaper
         public Form1()
         {
             InitializeComponent();
-            this
-            s.SetLocationPanel(pnlOption,pnlMain);
-            t.print();
+            t.RunPanel(pnlMain);
         }
 
         private void picOptOpen_Click(object sender, EventArgs e)
