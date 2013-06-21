@@ -17,19 +17,19 @@ namespace Quick_View_Newspaper
         public Form1()
         {
             InitializeComponent();
+            this
+            s.SetLocationPanel(pnlOption,pnlMain);
             t.print();
         }
 
         private void picOptOpen_Click(object sender, EventArgs e)
         {
-            pnlMain.Visible = false;
-            pnlOption.Visible = true;
+            s.Open(pnlOption,pnlMain);
         }
 
         private void picOptClose_Click(object sender, EventArgs e)
         {
-            pnlMain.Visible = true;
-            pnlOption.Visible = false;
+            s.Close(pnlOption, pnlMain);
         }
 
         private void picNameNext_Click(object sender, EventArgs e)
