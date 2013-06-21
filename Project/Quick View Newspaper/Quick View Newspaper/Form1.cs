@@ -18,6 +18,7 @@ namespace Quick_View_Newspaper
         {
             InitializeComponent();
             t.RunPanel(pnlMain);
+            k.OpacityMouse(this);
         }
 
         private void picOptOpen_Click(object sender, EventArgs e)
@@ -48,6 +49,19 @@ namespace Quick_View_Newspaper
         private void picTitleNext_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void nudOpacity_ValueChanged(object sender, EventArgs e)
+        {
+            k.ReOpacity(this, Convert.ToInt32(nudOpacity.Value.ToString()));
+        }
+
+        private void Form1_MouseLeave(object sender, EventArgs e)
+        {
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
         }
     }
 }
