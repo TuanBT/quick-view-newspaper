@@ -17,8 +17,8 @@ namespace Quick_View_Newspaper
         public Form1()
         {
             InitializeComponent();
-            t.RunPanel(pnlMain);
-            k.OpacityMouse(this);
+            //t.GetRSSFormNews("1");
+            //k.OpacityMouse(this);
         }
 
         private void picOptOpen_Click(object sender, EventArgs e)
