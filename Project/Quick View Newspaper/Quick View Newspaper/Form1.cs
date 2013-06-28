@@ -17,8 +17,8 @@ namespace Quick_View_Newspaper
         public Form1()
         {
             InitializeComponent();
-            //t.GetRSSFormNews("1");
             //k.OpacityMouse(this);
+            t.RUN(pnlMain,label1,label2);
         }
 
         private void picOptOpen_Click(object sender, EventArgs e)
@@ -31,14 +31,14 @@ namespace Quick_View_Newspaper
             s.Close(pnlOption, pnlMain);
         }
 
-        private void picNameNext_Click(object sender, EventArgs e)
+        private void picName_MouseClick(object sender, MouseEventArgs e)
         {
-
+            t.NextNews_Click(label1, label2);
         }
 
-        private void picGenNext_Click(object sender, EventArgs e)
+        private void picGen_MouseClick(object sender, MouseEventArgs e)
         {
-
+            t.NextRSS_Click(label1, label2);
         }
 
         private void picTitleBack_Click(object sender, EventArgs e)
@@ -63,5 +63,9 @@ namespace Quick_View_Newspaper
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
         }
+
+
+
+
     }
 }
