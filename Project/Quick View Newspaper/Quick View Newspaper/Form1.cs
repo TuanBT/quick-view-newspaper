@@ -15,6 +15,7 @@ namespace Quick_View_Newspaper
         Kha k = new Kha();
 
         //t.FontSize là biến để điều khiển font chữ chạy tin. Ví dụ: t.FontSize=15;
+        //t.SpeedLabel là biến dùng để điều khiển tốc độ chạy tin. Mặc định: t.SpeedLabel=1
 
         public Form1()
         {

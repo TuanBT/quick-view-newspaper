@@ -10,6 +10,7 @@ namespace Quick_View_Newspaper
 {
     class Tuan
     {
+        #region Khai báo biến
         //List chứa các label
         public List<Label> lblList = new List<Label>();
 
@@ -19,6 +20,9 @@ namespace Quick_View_Newspaper
         //List chứa các thể loại và cũng là link
         public List<string> listLinkRSS = new List<string>();
 
+        //List chứa tên các thể loại tồn tại trong database
+        public List<string> listCat = new List<string>(); 
+
         //Các link lần lượt chứa các nội dung của các thể loại hoặc các link RSS
         public List<string> listTitle = new List<string>();
         public List<string> listDescription = new List<string>();
@@ -26,38 +30,58 @@ namespace Quick_View_Newspaper
         public List<string> listPubDate = new List<string>();
         public List<string> listImage = new List<string>();
 
+        //Timer dùng để xác định việc di chuyển của các label
         Timer tmrRunLabelOnPanel = new Timer();
+
+        //Tooltip dùng để hiện thị nội dung chi tiết của một tin tức
+        ToolTip toolTip = new ToolTip();
 
         SQLiteDatabase db = new SQLiteDatabase();
         RSSRead read = new RSSRead();
         List<RSSInfo> rss = new List<RSSInfo>();
 
+        //Biến xác định tọa độ X của hộp chứa các label
         private int EndLayoutX = 0;
+        //Biến xác định tọa độ X khi label chạy, và giá trị này thay đổi theo speedLabel
         int PointX = 0;
         //Quyết định tốc độ nhảy của label run, càng cao thì mỗi bước nhảy càng xa (px)
-        private int jumpLabel;
+        private int speedLabel;
         //Giá trị mặc định của nhảy label, càng cao càng xa
         private int defauljumpLabel = 1;
-
         //Tên báo
         public int newsIndex = 0;
         //Tên thể loại
         public int rSSIndex = -1;
-
         //Nơi các label được đặt vào
         private Panel pnl;
-
         //Biến font size
         private int fontSize = 10;
+        //Biến tên font
+        private string fontName = "Tahoma";
+        #endregion
+
+        #region setget
+        public int SpeedLabel
+        {
+            get { return speedLabel; }
+            set { speedLabel = value; }
+        }
+
+        public string FontName
+        {
+            get { return fontName; }
+            set { fontName = value; }
+        }
 
         public int FontSize
         {
             get { return fontSize; }
             set { fontSize = value; }
         }
+        #endregion
 
         //Biến dùng để xem quá trình chạy label trong timer đã xong chưa 
-        private bool runningFlag = false;
+        //private bool runningFlag = false;
 
         /// <summary>
         /// Hàm chạy chính dùng để gọi từ bên ngoài vào
@@ -67,7 +91,10 @@ namespace Quick_View_Newspaper
         /// <param name="catName"></param>
         public void RUN(Panel pnl, Label newName, Label catName)
         {
+            //Xác định panel
             this.pnl = pnl;
+            //Set các giá trị mặc định cho tootip
+            SetToolTip();
             //Thời gian di chuyển, số càng cao di chuyển càng chậm
             tmrRunLabelOnPanel.Interval = 10;
             tmrRunLabelOnPanel.Start();
@@ -75,6 +102,9 @@ namespace Quick_View_Newspaper
 
             //Lấy tên các báo từ database
             GetNewsFromDatabase();
+
+            //Lấy tên các thể loại từ database
+            GetCatFromDatabase();
 
             Run(newName, catName);
         }
@@ -99,7 +129,8 @@ namespace Quick_View_Newspaper
         /// <param name="catName"></param>
         public void NextRSS_Click(Label newName, Label catName)
         {
-            jumpLabel = 80;
+            //Tốc độ để chạy label. Đặt cao là để chuyển cho nhanh
+            speedLabel = 500;
         }
 
         /// <summary>
@@ -109,9 +140,10 @@ namespace Quick_View_Newspaper
         /// <param name="catName"></param>
         public void Run(Label newName, Label catName)
         {
+            //Đặt một lệnh thông báo là đang Load ở đây để báo hiệu là chương trình đang nạp dữ liệu
             try
             {
-                jumpLabel = defauljumpLabel;
+                speedLabel = defauljumpLabel;
                 //Gọi tờ báo tiếp theo
                 rSSIndex++;
                 //Chạy hết các báo
@@ -130,14 +162,14 @@ namespace Quick_View_Newspaper
                         EndLayoutX = pnl.Location.X + pnl.Width;
                         //Ghi lại điểm đầu của label là cuối panel để phục vụ chạy từ lề phải sang trái
                         PointX = EndLayoutX;
-                        //Nếu tới đây thì sẽ chạy ra ngoài làm một cái gì đó
-                        //xong việc rồi thì lại nhảy vào đây và chạy tiếp
+                        //Khởi động lại timer chạy label
                         tmrRunLabelOnPanel.Enabled = true;
-                        //runningFlag = true;
-
                         //Trả tên lên label để test
                         newName.Text = listNews[newsIndex];
-                        catName.Text = listLinkRSS[rSSIndex];
+                        //Trả tên thể loại bằng việc sử dụng hàm lấy index từ chuỗi link RSS, qua đó tìm ra chỉ số
+                        int indexCat = GetIndexOfCatId(listLinkRSS[rSSIndex]);
+                        //Vì list lưu từ 0 nên -1 để khớp index so với database
+                        catName.Text = listCat[indexCat - 1];
                     }
                     //Nếu duyệt RSS hết list thì set lại ban đầu, để tiếp tục chuyển RSS khác, hoặc chuyển báo khác thì nó set lại 0
                     else
@@ -146,7 +178,6 @@ namespace Quick_View_Newspaper
                         newsIndex++;
                         Run(newName, catName);
                     }
-
                 }
                 //Nếu việc đếm đã đếm hết tiêu đề thì đếm sẽ reset lại, vì đã hết kho tin
                 else
@@ -158,9 +189,9 @@ namespace Quick_View_Newspaper
             }
             catch (Exception e)
             {
-
                 MessageBox.Show(e.ToString());
             }
+            //Đặt một lệnh thông báo ở đây để biết quá trình nạp dữ liệu vào đã xong
         }
 
 
@@ -175,21 +206,69 @@ namespace Quick_View_Newspaper
             //Nếu label mà chưa chạm đường biên thì true, tức là chỉ khi nào chạy hết label thì If này chạy tiếp
             //Mỗi lần thời gian chạy thì hàm này lại được gọi và đếm lại
             //Thời gian càng lớn chạy càng nhanh
-            PointX -= jumpLabel;
+            PointX -= speedLabel;
             if (!GetLocationListLabel(PointX))
             {
                 //Đến đây thì tức là list label đã chạy hết qua màn hình
                 //Set lại label về điểm đầu
                 PointX = EndLayoutX;
-                //Nếu đã đạt được yêu cầu là chạy hết label thì finishFlag báo lại true để dừng đếm, và bắt đầu tiến trình tiếp theo
-                runningFlag = false;
-                //Tạm dừng đồng hồ lại để xử lý những lệnh tĩnh trước
+                //Tạm dừng đồng hồ
                 tmrRunLabelOnPanel.Enabled = false;
-                //MessageBox.Show("Tao chạy xong rồi");
                 //Gọi lại quá trình nạp dữ liệu
                 Run(newName, catName);
             }
             //Trong quá trình chạy thì do chưa đạt yêu cầu label chạy tới cuối Panel pnl nên finishFlag vẫn mang giá trị false
+        }
+
+        //Hàm trả về chỉ số của thể loại (CatId) thông qua việc biết chuỗi link RSS
+        public int GetIndexOfCatId(string RSSLink)
+        {
+            int IndexOfCatId = 0;
+            db = new SQLiteDatabase();
+            DataTable recipe;
+            //Chuỗi trả về một bảng có chứa dữ liệu tên các thể loại
+            String query = "SELECT CatId  FROM tblRSS WHERE (RSSLink=\"" + RSSLink + "\")";
+            try
+            {
+                recipe = db.GetDataTable(query);
+                foreach (DataRow r in recipe.Rows)
+                {
+                    IndexOfCatId = Convert.ToInt32(r["CatId"].ToString());
+                }
+                return IndexOfCatId;
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n\n";
+                MessageBox.Show(error);
+                return IndexOfCatId;
+            }
+        }
+
+        /// <summary>
+        /// Lấy list tên các thể loại từ data base đưa vào biến listCat
+        /// </summary>
+        public void GetCatFromDatabase()
+        {
+            try
+            {
+                db = new SQLiteDatabase();
+                DataTable recipe;
+                //Chuỗi trả về một bảng có chứa dữ liệu tên các thể loại
+                String query = "SELECT * FROM tblCategory";
+                recipe = db.GetDataTable(query);
+                foreach (DataRow r in recipe.Rows)
+                {
+                    listCat.Add(r["CatName"].ToString());
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n\n";
+                MessageBox.Show(error);
+            }
         }
 
 
@@ -198,7 +277,6 @@ namespace Quick_View_Newspaper
         /// </summary>
         public void GetNewsFromDatabase()
         {
-            listNews.Clear();
             try
             {
                 db = new SQLiteDatabase();
@@ -206,10 +284,6 @@ namespace Quick_View_Newspaper
                 //Chuỗi trả về một bảng có chứa dữ liệu tên các báo
                 String query = "SELECT * FROM tblNewspaper";
                 recipe = db.GetDataTable(query);
-                // The results can be directly applied to a DataGridView control
-                //dgv.DataSource = recipe;
-
-                // Or looped through for some other reason
                 foreach (DataRow r in recipe.Rows)
                 {
                     listNews.Add(r["NewName"].ToString());
@@ -252,7 +326,6 @@ namespace Quick_View_Newspaper
                 error += fail.Message.ToString() + "\n\n";
                 MessageBox.Show(error);
             }
-
         }
 
 
@@ -291,12 +364,27 @@ namespace Quick_View_Newspaper
             }
         }
 
+        public string ContentOfOneTitle(int index)
+        {
+            string content = "";
+            string title = listTitle[index];
+
+            string descrition = HtmlRemoval.StripTagsCharArray(listDescription[index]);
+            string pubDate = listPubDate[index];
+            string link= listLink[index];
+            string image=listImage[index];
+            content = "\n"+title + "\n\n" + descrition + "\n\n" + pubDate + "\n\n" + link + "\n\n" + image;
+            return content;
+        }
+
         /// <summary>
         /// Thêm dữ liệu từ listString vào các label để hiển thị
         /// </summary>
         /// <param name="listString">List string chứa nội dung về tile....</param>
         public void GetListToLabel(List<string> listString)
         {
+            //i dùng đề xác định chỉ số
+            int i = -1;
             Label lbl = new Label();
             lblList.Clear();
             if (listString.Count <= 0) return;
@@ -304,11 +392,38 @@ namespace Quick_View_Newspaper
             {
                 foreach (string str in listString)
                 {
+                    i++;
                     lbl = new Label();
-                    lbl.Text = str;
+                    //Set text cho các label
+                    lbl.Text = str+"  ---";
+                    //Add tooltip vào một label
+                    toolTip.SetToolTip(lbl, ContentOfOneTitle(i));
+                    //Add label vừa tạo vào list  label
                     lblList.Add(lbl);
                 }
             }
+        }
+
+        /// <summary>
+        /// Hiển thị nội dung thông qua Tooltip khi mà rê chuột vào label
+        /// </summary>
+        public void SetToolTip()
+        {
+            //Xuất hiện mượt mà
+            toolTip.UseFading = true;
+            //Sử dụng hiệu ứng động
+            toolTip.UseAnimation = true;
+            //Lựa chọn tip kiểu bo tròn hoặc vuông
+            toolTip.IsBalloon = true;
+            toolTip.ShowAlways = true;
+            //Thời gian hiển thị sau khi xuất hiện. 
+            toolTip.AutoPopDelay = 30*60*1000;
+            //Thời gian chờ xuất hiện lúc rê chuột vào
+            toolTip.InitialDelay = 0;
+            //Thời gian để hiển thị khi chuyển tới đối tượng mới
+            toolTip.ReshowDelay = 0;
+            //Tiêu đề của tooltip
+            toolTip.ToolTipTitle = "Nội dung:";
         }
 
         /// <summary>
@@ -325,7 +440,7 @@ namespace Quick_View_Newspaper
             int y =(pnl.Height - lbl.Height)/2;
             lbl.AutoSize = true;
             lbl.Location = new Point(x, y);
-            lbl.BorderStyle = BorderStyle.FixedSingle;
+            lbl.BorderStyle = BorderStyle.None;
         }
 
         /// <summary>
