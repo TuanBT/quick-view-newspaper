@@ -47,6 +47,15 @@ namespace Quick_View_Newspaper
         //Nơi các label được đặt vào
         private Panel pnl;
 
+        //Biến font size
+        private int fontSize = 10;
+
+        public int FontSize
+        {
+            get { return fontSize; }
+            set { fontSize = value; }
+        }
+
         //Biến dùng để xem quá trình chạy label trong timer đã xong chưa 
         private bool runningFlag = false;
 
@@ -167,7 +176,7 @@ namespace Quick_View_Newspaper
             //Mỗi lần thời gian chạy thì hàm này lại được gọi và đếm lại
             //Thời gian càng lớn chạy càng nhanh
             PointX -= jumpLabel;
-            if (!GetLocationListLabel(PointX, 0))
+            if (!GetLocationListLabel(PointX))
             {
                 //Đến đây thì tức là list label đã chạy hết qua màn hình
                 //Set lại label về điểm đầu
@@ -308,11 +317,15 @@ namespace Quick_View_Newspaper
         /// <param name="lbl"></param>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        void MakeLabel(Label lbl, int x, int y)
+        void MakeLabel(Label lbl, int x)
         {
             pnl.Controls.Add(lbl);
+            lbl.Font = new Font("Tahoma",fontSize);
+            //Tọa độ Y để nằm được chính giữa panel
+            int y =(pnl.Height - lbl.Height)/2;
             lbl.AutoSize = true;
             lbl.Location = new Point(x, y);
+            lbl.BorderStyle = BorderStyle.FixedSingle;
         }
 
         /// <summary>
@@ -320,7 +333,6 @@ namespace Quick_View_Newspaper
         /// </summary>
         void RemoveLabel()
         {
-
             for (i = 0; i < lblList.Count; i++)
             {
                 pnl.Controls.Remove(lblList[i]);
@@ -332,19 +344,22 @@ namespace Quick_View_Newspaper
         /// </summary>
         /// <param name="startX"></param>
         /// <param name="startY"></param>
-        public bool GetLocationListLabel(int startX, int startY)
+        public bool GetLocationListLabel(int startX)
         {
             bool result = true;
+            //Xác định vị trí startY sao cho label nằm giữa được panel
+
+
             if (lblList.Count > 0)
             {
-                MakeLabel(lblList[0], startX, startY);
+                MakeLabel(lblList[0], startX);
                 int EndX = 0;
                 int i = 1;
                 for (i = 1; i < lblList.Count; i++)
                 {
                     //Lấy toa độ X của đối tượng trước
                     EndX = lblList[i - 1].Location.X + lblList[i - 1].Width;
-                    MakeLabel(lblList[i], EndX, startY);
+                    MakeLabel(lblList[i], EndX);
                 }
                 //Nếu label cuối cùng chạm mốc
                 if (EndX + lblList[i - 1].Width <= 0)

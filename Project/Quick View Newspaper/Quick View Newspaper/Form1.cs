@@ -14,11 +14,13 @@ namespace Quick_View_Newspaper
         Tuan t = new Tuan();
         Kha k = new Kha();
 
+        //t.FontSize là biến để điều khiển font chữ chạy tin. Ví dụ: t.FontSize=15;
+
         public Form1()
         {
             InitializeComponent();
             //k.OpacityMouse(this);
-            t.RUN(pnlMain,label1,label2);
+            t.RUN(pnlMain,lblTitle,lblCat);
         }
 
         private void picOptOpen_Click(object sender, EventArgs e)
@@ -33,22 +35,12 @@ namespace Quick_View_Newspaper
 
         private void picName_MouseClick(object sender, MouseEventArgs e)
         {
-            t.NextNews_Click(label1, label2);
+            t.NextNews_Click(lblTitle, lblCat);
         }
 
         private void picGen_MouseClick(object sender, MouseEventArgs e)
         {
-            t.NextRSS_Click(label1, label2);
-        }
-
-        private void picTitleBack_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void picTitleNext_Click(object sender, EventArgs e)
-        {
-
+            t.NextRSS_Click(lblTitle, lblCat);
         }
 
         private void nudOpacity_ValueChanged(object sender, EventArgs e)
