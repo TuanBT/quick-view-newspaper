@@ -7,7 +7,13 @@ namespace Quick_View_Newspaper
 {
     class Kha
     {
+        int flag = 0;
         Timer Clock;
+        /// <summary>
+        /// Thay đổi độ mờ của FORM theo 3 cấp
+        /// </summary>
+        /// <param name="fm"></param>
+        /// <param name="intOpacity"></param>
         public void ReOpacity(Form fm, int intOpacity)
         {
             switch (intOpacity)
@@ -24,34 +30,100 @@ namespace Quick_View_Newspaper
                     break;
             }
         }
+        /// <summary>
+        /// Khai báo và sử dụng timer
+        /// </summary>
+        /// <param name="fm"></param>
         public void OpacityMouse(Form fm)
         {
             Clock = new Timer();
             Clock.Interval = 1;
             Clock.Start();
+            fm.KeyDown += fm_KeyDown;
             Clock.Tick += new EventHandler((sender, e) => timer1_Tick(sender, e, fm));
+            fm.KeyUp += fm_KeyUp;
         }
+
+        //Bắt sự kiện thả phím
+        void fm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.ControlKey)
+            {
+                flag = 0;
+            }
+        }
+
+        //Bắt sự kiện ấn phím
+        void fm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.ControlKey)
+            {
+                flag = 1;
+            }
+        }
+        /// <summary>
+        /// Lấy khoảng cách giữa chuột và form /200 = độ mờ của form
+        /// </summary>
+        /// <param name="MouseX"></param>
+        /// <param name="pnlMainY"></param>
+        /// <returns></returns>
         public double Distance(int MouseX, int pnlMainY)
         {
             int intDistance = Math.Abs(MouseX - pnlMainY);
             Double dbDistance = Convert.ToDouble(intDistance);
-            return dbDistance / 200;
+            double temp = dbDistance / 200;
+            if (temp < 0.2)
+            {
+                return 0.2;
+            }
+            else if (temp > 0.6)
+            {
+                return 0.6;
+            }
+            else
+            {
+                return temp;
+            }
 
         }
-
+        /// <summary>
+        /// Xử lý sự kiện của timmer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="fm"></param>
         private void timer1_Tick(object sender, EventArgs e, Form fm)
         {
-            int MouseY = Cursor.Position.Y;
-            int FormY = fm.Location.Y;
-            fm.Opacity = Distance(MouseY, FormY);
-            if (MouseY <= (fm.Location.Y + fm.Height) && (MouseY >= fm.Location.Y))
-            {
-                fm.Opacity = 0;
-            }
-            else if (MouseY > (fm.Location.Y + fm.Height))
+            int intMouseY = Cursor.Position.Y;
+            int intFormY = fm.Location.Y;
+            if (intMouseY < (intFormY - fm.Height))
             {
                 fm.Opacity = 0.6;
             }
+            //Nếu chuột phía trên form + chiều rộng của form thì cho làm mờ
+            if (intMouseY >= (intFormY - fm.Height) && intMouseY < fm.Location.Y)
+            {
+                fm.Opacity = Distance(intMouseY, intFormY);
+            }
+            //Nếu chuột nằm trong form thì ẩn đi
+            else if ((intMouseY <= (fm.Location.Y + fm.Height) && (intMouseY >= fm.Location.Y)))
+            {
+                if (flag == 0)
+                {
+                    fm.Opacity = 0;
+                }
+                else
+                {
+                    fm.Opacity = 0.6;
+                }
+            }
+            //Nếu chuột dưới form thì độ mờ mặc định
+            else if (intMouseY > (fm.Location.Y + fm.Height))
+            {
+                fm.Opacity = 0.6;
+
+            }
         }
+
     }
 }
