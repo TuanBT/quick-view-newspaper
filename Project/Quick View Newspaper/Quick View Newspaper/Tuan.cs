@@ -40,6 +40,12 @@ namespace Quick_View_Newspaper
         RSSRead read = new RSSRead();
         List<RSSInfo> rss = new List<RSSInfo>();
 
+        //Combobox chứa tên các báo có trong database
+        private ComboBox cbbNewsName = new ComboBox();
+
+        //Combobox chứa tên các thể loại mà mỗi tên báo có được
+        private ComboBox cbbCatName = new ComboBox();
+
         //Biến xác định tọa độ X của hộp chứa các label
         private int EndLayoutX = 0;
         //Biến xác định tọa độ X khi label chạy, và giá trị này thay đổi theo speedLabel
@@ -60,6 +66,10 @@ namespace Quick_View_Newspaper
         private string fontName = "Tahoma";
         //Biến dùng để xác định tên thể loại ứng với mỗi link RSS đang hiện hành. Thường phải dùng với listCat[indexCat - 1];
         private int indexCat;
+        //Label newName của form
+        private Label newName;
+        //Label catName của form
+        private Label catName;
         #endregion
 
         #region setget
@@ -91,43 +101,49 @@ namespace Quick_View_Newspaper
         /// <param name="pnl"></param>
         /// <param name="newName"></param>
         /// <param name="catName"></param>
-        public void RUN(Panel pnl, Label newName, Label catName)
+        public void RUN(Panel pnl, Label newName, Label catName, ComboBox cbbNewsName, ComboBox cbbCatName)
         {
-            //Xác định panel
+            //Xác định các biến
             this.pnl = pnl;
+            this.catName = catName;
+            this.newName = newName;
+            this.cbbNewsName = cbbNewsName;
+            this.cbbCatName = cbbCatName;
             //Set các giá trị mặc định cho tootip
             SetToolTip();
             //Thời gian di chuyển, số càng cao di chuyển càng chậm
             tmrRunLabelOnPanel.Interval = 10;
             tmrRunLabelOnPanel.Start();
-            tmrRunLabelOnPanel.Tick += new EventHandler((sender, e) => RunLabelOnPanel_Tick(sender, e, newName, catName));
+            tmrRunLabelOnPanel.Tick += new EventHandler(RunLabelOnPanel_Tick);
             //Lấy tên các báo từ database
             GetNewsFromDatabase();
             //Lấy tên các thể loại từ database
             GetCatFromDatabase();
-
-            Run(newName, catName);
+            //Nạp tên các thể loại mà tiêu đề báo này có được vào combobox cbbCatName
+            GetCatOfNewsFormDatabase();
+            //Khai báo sự kiện khi thay đổi combobox
+            cbbNewsName.SelectedIndexChanged += new EventHandler(cbbNewsName_SelectedIndexChanged);
+            cbbCatName.SelectedIndexChanged += new EventHandler(cbbCatName_SelectedIndexChanged);
+            Run();
         }
 
         /// <summary>
         /// Click chuyển báo tới. Xóa label cũ và chuyển báo
         /// </summary>
-        /// <param name="newName"></param>
-        /// <param name="catName"></param>
-        public void NextNews_Click(Label newName, Label catName)
+        public void NextNews_Click()
         {
             RemoveLabel();
             newsIndex++;
-            Run(newName, catName);
+            //Nạp tên các thể loại mà tiêu đề báo này có được vào combobox cbbCatName
+            GetCatOfNewsFormDatabase();
+            Run();
         }
 
 
         /// <summary>
         /// Click chuyển thể loại mới (Tức RSS mới). Chuyển theo kiểu tăng tốc
         /// </summary>
-        /// <param name="newName"></param>
-        /// <param name="catName"></param>
-        public void NextRSS_Click(Label newName, Label catName)
+        public void NextRSS_Click()
         {
             //Tốc độ để chạy label. Đặt cao là để chuyển cho nhanh
             speedLabel = 500;
@@ -136,9 +152,7 @@ namespace Quick_View_Newspaper
         /// <summary>
         /// Hàm chạy lần lượt các tiêu đề vô tận, mỗi lần chuyển một RSS thì phần mềm sẽ kết nối mạng và trả lại kết quả cho biến.
         /// </summary>
-        /// <param name="newName"></param>
-        /// <param name="catName"></param>
-        public void Run(Label newName, Label catName)
+        public void Run()
         {
             //Đặt một lệnh thông báo là đang Load ở đây để báo hiệu là chương trình đang nạp dữ liệu
             try
@@ -170,21 +184,28 @@ namespace Quick_View_Newspaper
                         indexCat = GetIndexOfCatId(listLinkRSS[rSSIndex]);
                         //Vì list lưu từ 0 nên -1 để khớp index so với database
                         catName.Text = listCat[indexCat - 1];
+                        //Nạp dữ liệu hiện thời từ các label vào combobox
+                        cbbNewsName.Text = newName.Text;
+                        cbbCatName.Text = catName.Text;
                     }
                     //Nếu duyệt RSS hết list thì set lại ban đầu, để tiếp tục chuyển RSS khác, hoặc chuyển báo khác thì nó set lại 0
                     else
                     {
                         rSSIndex = -1;
                         newsIndex++;
-                        Run(newName, catName);
+                        //Nạp tên các thể loại mà tiêu đề báo này có được vào combobox cbbCatName
+                        GetCatOfNewsFormDatabase();
+                        Run();
                     }
                 }
-                //Nếu việc đếm đã đếm hết tiêu đề thì đếm sẽ reset lại, vì đã hết kho tin
+                //Nếu việc đếm đã đếm hết tiêu đề thì đếm sẽ reset lại, vì đã hết kho báo có được trong database
                 else
                 {
                     newsIndex = 0;
+                    //Nạp tên các thể loại mà tiêu đề báo này có được vào combobox cbbCatName
+                    GetCatOfNewsFormDatabase();
                     rSSIndex = -1;
-                    Run(newName, catName);
+                    Run();
                 }
             }
             catch (Exception e)
@@ -194,6 +215,39 @@ namespace Quick_View_Newspaper
             //Đặt một lệnh thông báo ở đây để biết quá trình nạp dữ liệu vào đã xong
         }
 
+        //Hàm sử lý sự kiện khi thay đổi cbbNewsName. Mỗi lần chọn thì ta có được NewsName
+        public void cbbNewsName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Làm sao đó từ NewsName này mà tìm ra được cái newsIndex. Sau đó thay đổi lại cái newsIdex và chạy lại run
+            for (int i = 0; i < listNews.Count; i++)
+            {
+                 if(listNews[i]==cbbNewsName.Text)
+                 {
+                     newsIndex = i;
+                     break;
+                 }
+            }
+            RemoveLabel();
+            //Nạp tên các thể loại mà tiêu đề báo này có được vào combobox cbbCatName
+            GetCatOfNewsFormDatabase();
+            Run();
+        }
+
+        //Hàm sử lý sự kiện khi thay đổi cbbCatName. Mỗi lần chọn thì ta có được catName
+        public void cbbCatName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //làm sao đó từ catName tìm ra được rSSIndex. Sau đó thay đổi lại cái rSSIndex và chạy lại run
+            for (int i = 0; i < listCat.Count; i++)
+            {
+                if (listNews[i] == cbbNewsName.Text)
+                {
+                    rSSIndex = i;
+                    break;
+                }
+            }
+            RemoveLabel();
+            Run();
+        }
 
         private int i = 0;
         /// <summary>
@@ -201,7 +255,7 @@ namespace Quick_View_Newspaper
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="eArgs"></param>
-        public void RunLabelOnPanel_Tick(object sender, EventArgs eArgs, Label newName, Label catName)
+        public void RunLabelOnPanel_Tick(object sender, EventArgs eArgs)
         {
             //Nếu label mà chưa chạm đường biên thì true, tức là chỉ khi nào chạy hết label thì If này chạy tiếp
             //Mỗi lần thời gian chạy thì hàm này lại được gọi và đếm lại
@@ -215,12 +269,16 @@ namespace Quick_View_Newspaper
                 //Tạm dừng đồng hồ
                 tmrRunLabelOnPanel.Enabled = false;
                 //Gọi lại quá trình nạp dữ liệu
-                Run(newName, catName);
+                Run();
             }
             //Trong quá trình chạy thì do chưa đạt yêu cầu label chạy tới cuối Panel pnl nên finishFlag vẫn mang giá trị false
         }
 
-        //Hàm trả về chỉ số của thể loại (CatId) thông qua việc biết chuỗi link RSS
+        /// <summary>
+        /// Hàm trả về chỉ số của thể loại (CatId) thông qua việc biết chuỗi link RSS
+        /// </summary>
+        /// <param name="RSSLink"></param>
+        /// <returns></returns>
         public int GetIndexOfCatId(string RSSLink)
         {
             int IndexOfCatId = 0;
@@ -247,6 +305,34 @@ namespace Quick_View_Newspaper
         }
 
         /// <summary>
+        /// Lấy danh sách các thể loại có ở data base của Báo hiện thời đưa vào combobox
+        /// </summary>
+        public void GetCatOfNewsFormDatabase()
+        {
+            try
+            {
+                db = new SQLiteDatabase();
+                DataTable recipe;
+                //Chuỗi trả về một bảng chứa các thể loại mà loại báo (newsIndex+1) hiện hành đang có
+                string NewID = (newsIndex + 1).ToString();
+                String query = "SELECT c.CatName " +
+                               "FROM tblCategory c, tblNewspaper n,tblRSS r " +
+                               "WHERE (n.NewId=\"" + NewID + "\")" +
+                               "AND(n.NewId=r.NewId)" +
+                               "AND(r.CatId=c.CatId)";
+                recipe = db.GetDataTable(query);
+                cbbCatName.DataSource = recipe;
+                cbbCatName.DisplayMember = "CatName";
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n\n";
+                MessageBox.Show(error);
+            }
+        }
+
+        /// <summary>
         /// Lấy list tên các thể loại từ data base đưa vào biến listCat
         /// </summary>
         public void GetCatFromDatabase()
@@ -256,8 +342,10 @@ namespace Quick_View_Newspaper
                 db = new SQLiteDatabase();
                 DataTable recipe;
                 //Chuỗi trả về một bảng có chứa dữ liệu tên các thể loại
-                String query = "SELECT * FROM tblCategory";
+                String query = "SELECT CatName FROM tblCategory";
                 recipe = db.GetDataTable(query);
+                cbbCatName.DataSource = recipe;
+                cbbCatName.DisplayMember = "CatName";
                 foreach (DataRow r in recipe.Rows)
                 {
                     listCat.Add(r["CatName"].ToString());
@@ -282,8 +370,10 @@ namespace Quick_View_Newspaper
                 db = new SQLiteDatabase();
                 DataTable recipe;
                 //Chuỗi trả về một bảng có chứa dữ liệu tên các báo
-                String query = "SELECT * FROM tblNewspaper";
+                String query = "SELECT NewName FROM tblNewspaper";
                 recipe = db.GetDataTable(query);
+                cbbNewsName.DataSource = recipe;
+                cbbNewsName.DisplayMember = "NewName";
                 foreach (DataRow r in recipe.Rows)
                 {
                     listNews.Add(r["NewName"].ToString());
@@ -310,10 +400,9 @@ namespace Quick_View_Newspaper
                 db = new SQLiteDatabase();
                 DataTable recipe;
                 //Chuỗi này phải trả về được một bảng link các RSS của bảng tblRSS. Phải làm sao nhận giá trị là tên báo
-                String s = "SELECT r.RSSLink FROM tblNewspaper n JOIN tblRSS r " +
+                String query = "SELECT r.RSSLink FROM tblNewspaper n JOIN tblRSS r " +
                            "ON n.NewId = r.NewId WHERE n.NewId " +
                            "IN (SELECT NewId FROM tblNewspaper WHERE NewName =\"" + strNews + "\")";
-                String query = s;
                 recipe = db.GetDataTable(query);
                 foreach (DataRow r in recipe.Rows)
                 {
@@ -550,3 +639,36 @@ namespace Quick_View_Newspaper
         }
     }
 }
+
+/*
+private void lblNewsName_MouseClick(object sender, MouseEventArgs e)
+        {
+            t.NextNews_Click();
+        }
+
+        private void lblCatName_MouseClick(object sender, MouseEventArgs e)
+        {
+            t.NextRSS_Click();
+        }
+
+        private void cbbNewsName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbbNewsName.Visible = false;
+        }
+
+
+        private void cbbCatName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbbCatName.Visible = false;
+        }
+
+        private void lblNewsName_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            cbbNewsName.Visible = true;
+        }
+
+        private void lblCatName_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            cbbCatName.Visible = true;
+        }
+*/
