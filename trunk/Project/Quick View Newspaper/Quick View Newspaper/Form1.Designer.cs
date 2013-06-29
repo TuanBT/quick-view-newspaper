@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pnlMain = new System.Windows.Forms.Panel();
             this.lblCat = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -48,6 +49,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.cbbTitle = new System.Windows.Forms.ComboBox();
             this.cbbCat = new System.Windows.Forms.ComboBox();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picOptOpen)).BeginInit();
             this.pnlOption.SuspendLayout();
@@ -281,6 +284,17 @@
             this.cbbCat.Size = new System.Drawing.Size(94, 21);
             this.cbbCat.TabIndex = 3;
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -330,6 +344,8 @@
         private System.Windows.Forms.Panel pnlRun;
         private System.Windows.Forms.ComboBox cbbTitle;
         private System.Windows.Forms.ComboBox cbbCat;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 

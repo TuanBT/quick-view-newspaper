@@ -10,6 +10,7 @@ namespace Quick_View_Newspaper
 {
     public partial class Form1 : Form
     {
+
         Sinh s=new Sinh();
         Tuan t = new Tuan();
         Kha k = new Kha();
@@ -21,7 +22,8 @@ namespace Quick_View_Newspaper
         {
             InitializeComponent();
             k.OpacityMouse(this);
-            t.RUN(pnlRun,lblTitle,lblCat);
+            s.CALL(notifyIcon1,contextMenuStrip1  ,this);
+            //t.RUN(pnlRun,lblTitle,lblCat);
             this.KeyPreview = true;
             s.LocationForm(this);
             s.SetLocationPanel(pnlOption, pnlMain);
@@ -36,12 +38,12 @@ namespace Quick_View_Newspaper
 
         private void lblTitle_MouseClick(object sender, MouseEventArgs e)
         {
-            t.NextNews_Click(lblTitle, lblCat);
+            //t.NextNews_Click(lblTitle, lblCat);
         }
 
         private void lblCat_MouseClick(object sender, MouseEventArgs e)
         {
-            t.NextRSS_Click(lblTitle, lblCat);
+            //t.NextRSS_Click(lblTitle, lblCat);
         }
 
         private void lblTitle_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -63,5 +65,6 @@ namespace Quick_View_Newspaper
         {
             s.Close(pnlOption, pnlMain);
         }
+
     }
 }

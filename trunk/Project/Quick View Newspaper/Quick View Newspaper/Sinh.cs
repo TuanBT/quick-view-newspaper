@@ -12,6 +12,19 @@ namespace Quick_View_Newspaper
     {
         int padding = 1;
         Timer Clock;
+        public NotifyIcon notifyIcon;
+        public ContextMenuStrip contextMenu;
+        public Form frm;
+
+        public void CALL(NotifyIcon notifyIcon, ContextMenuStrip contextMenu, Form frm)
+        {
+            this.frm = frm;
+            this.notifyIcon = notifyIcon;
+            this.contextMenu = contextMenu;
+            InitializeContextMenu();
+            Notify();
+        }
+
 
         /// <summary>
         /// Set location form
@@ -20,12 +33,12 @@ namespace Quick_View_Newspaper
         public void LocationForm(Form frm)
         {
 
-           int nTaskBarHeight = Screen.PrimaryScreen.Bounds.Bottom -
-                                            Screen.PrimaryScreen.WorkingArea.Bottom;
+            int nTaskBarHeight = Screen.PrimaryScreen.Bounds.Bottom -
+                                             Screen.PrimaryScreen.WorkingArea.Bottom;
 
             Rectangle workingArea = Screen.GetWorkingArea(frm);
-           frm.Location = new Point(0, workingArea.Bottom - frm.Size.Height + nTaskBarHeight);
-           frm.TopMost = true;
+            frm.Location = new Point(0, workingArea.Bottom - frm.Size.Height + nTaskBarHeight);
+            frm.TopMost = true;
 
 
             frm.FormBorderStyle = FormBorderStyle.None;
@@ -66,7 +79,7 @@ namespace Quick_View_Newspaper
             {
                 int pad = 3;
                 pnlOption.Location = new Point(pnlOption.Location.X - pad, pnlOption.Location.Y);
-               
+
             }
 
         }
@@ -109,6 +122,7 @@ namespace Quick_View_Newspaper
             if (pnlOption.Location.X == pnlMain.Location.X)
             {
                 Clock.Stop();
+                padding = 1;
             }
             OpenTick(pnlOption, pnlMain);
         }
@@ -125,7 +139,7 @@ namespace Quick_View_Newspaper
             Clock.Interval = 10;
             Clock.Start();
             Clock.Tick += new EventHandler((sender, e) => Close_Tick(sender, e, pnlOption, pnlMain));
-         
+
         }
 
         /// <summary>
@@ -140,10 +154,58 @@ namespace Quick_View_Newspaper
             if (pnlOption.Location.X > pnlMain.Location.X + pnlMain.Width)
             {
                 Clock.Stop();
+                padding = 1;
                 SetLocationPanel(pnlOption, pnlMain);
             }
             CloseTick(pnlOption, pnlMain);
         }
+
+        public void Notify()
+        {
+            notifyIcon.Visible = true;
+        }
+
+        private void InitializeContextMenu()
+        {
+            //MenuItem[] menuList = new MenuItem[]{
+            //    new MenuItem("Sign In"),
+            //    new MenuItem("Get Help"), 
+            //    new MenuItem("Open")};
+            ToolStripItem item = contextMenu.Items.Add("Exit ");
+            notifyIcon.ContextMenuStrip = contextMenu;
+            //ContextMenu clickMenu = new ContextMenu(menuList);
+            //notifyIcon.ContextMenu = clickMenu;
+            item.Click += new EventHandler(item_Click);
+
+            // Associate the event-handling method with  
+            // the NotifyIcon object's click event.
+            notifyIcon.Click += new System.EventHandler(NotifyIcon1_Click);
+        }
+
+
+
+
+        // When user clicks the left mouse button display the shortcut menu.   
+        // Use the SystemInformation.PrimaryMonitorMaximizedWindowSize property 
+        // to place the menu at the lower corner of the screen. 
+        private void NotifyIcon1_Click(object sender, System.EventArgs e)
+        {
+            System.Drawing.Size windowSize =
+                SystemInformation.PrimaryMonitorMaximizedWindowSize;
+            System.Drawing.Point menuPoint =
+                new System.Drawing.Point(windowSize.Width - 180,
+                windowSize.Height - 5);
+            menuPoint = frm.PointToClient(menuPoint);
+
+            notifyIcon.ContextMenuStrip.Show(frm, menuPoint);
+
+        }
+
+        private void item_Click(object sender, System.EventArgs e)
+        {
+            frm.Close();
+        }
+
 
     }
 }
