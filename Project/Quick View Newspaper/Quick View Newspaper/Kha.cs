@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Quick_View_Newspaper
 {
@@ -9,7 +10,7 @@ namespace Quick_View_Newspaper
         double opacity = 0.6;
         Timer Clock;
         /// <summary>
-        /// Thay đổi độ mờ của FORM theo 3 cấp
+        /// Thay đổi độ mờ của FORM theo 5 cấp
         /// </summary>
         /// <param name="fm"></param>
         /// <param name="intOpacity"></param>
@@ -48,7 +49,11 @@ namespace Quick_View_Newspaper
             fm.KeyUp += fm_KeyUp;
         }
 
-        //Bắt sự kiện thả phím
+        /// <summary>
+        /// Bắt sự kiện thả phím Ctrl
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void fm_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.ControlKey)
@@ -57,7 +62,11 @@ namespace Quick_View_Newspaper
             }
         }
 
-        //Bắt sự kiện ấn phím
+        /// <summary>
+        /// Bắt sự kiện ấn phím Ctrl
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void fm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.ControlKey)
@@ -76,14 +85,17 @@ namespace Quick_View_Newspaper
             int intDistance = Math.Abs(MouseX - pnlMainY);
             Double dbDistance = Convert.ToDouble(intDistance);
             double temp = dbDistance / 200;
+            //Nếu độ mờ < 0.2 thì lấy 0.2
             if (temp < 0.2)
             {
                 return 0.2;
             }
+            //Nếu độ mờ lớn hơn giá trị opacity thì lấy opacity
             else if (temp > opacity)
             {
                 return opacity;
             }
+            //Các trường hợp còn lại thì lấy bằng đúng độ mờ tính ra
             else
             {
                 return temp;
@@ -100,12 +112,13 @@ namespace Quick_View_Newspaper
         {
             int intMouseY = Cursor.Position.Y;
             int intFormY = fm.Location.Y;
+            //Nếu chuột phía trên form + nữa chiều rộng của form thì độ mờ bằng opacity
             if (intMouseY < (intFormY - fm.Height/2))
             {
                 fm.Opacity = opacity;
             }
-            //Nếu chuột phía trên form + chiều rộng của form thì cho làm mờ
-            if (intMouseY >= (intFormY - fm.Height) && intMouseY < fm.Location.Y)
+            //Nếu chuột phía trên form + nữa chiều rộng của form  thì độ mờ bằng công thức tính
+            if (intMouseY >= (intFormY - fm.Height/2) && intMouseY < fm.Location.Y)
             {
                 fm.Opacity = Distance(intMouseY, intFormY);
             }
@@ -121,13 +134,46 @@ namespace Quick_View_Newspaper
                     fm.Opacity = opacity;
                 }
             }
-            //Nếu chuột dưới form thì độ mờ mặc định
+            //Nếu chuột dưới form thì độ mờ bằng opacity
             else if (intMouseY > (fm.Location.Y + fm.Height))
             {
                 fm.Opacity = opacity;
 
             }
         }
-
+        /// <summary>
+        /// Thay đổi kích thước chữ
+        /// </summary>
+        /// <param name="pnlMain"></param>
+        /// <param name="Size"></param>
+        /// <param name="fm"></param>
+        /// <returns></returns>
+        public int ReSize(Panel pnlMain, int Size, Form fm)
+        {
+            //Kiểm tra giá trị của NumeircUpDown 
+            switch (Size)
+            {
+                case 5:
+                    pnlMain.Size = new Size((fm.Width - 54), 32);
+                    Size = 7;
+                    break;
+                case 10:
+                    pnlMain.Size = new Size((fm.Width - 54), 35);
+                    break;
+                case 15:
+                    pnlMain.Size = new Size((fm.Width - 54), 40);
+                    break;
+                case 20:
+                    pnlMain.Size = new Size((fm.Width - 54), 45);
+                    break;
+                case 25:
+                    pnlMain.Size = new Size((fm.Width - 54), 50);
+                    break;
+                case 30:
+                    pnlMain.Size = new Size((fm.Width - 54), 55);
+                    break;
+            }
+            return Size;
+        }
     }
 }
