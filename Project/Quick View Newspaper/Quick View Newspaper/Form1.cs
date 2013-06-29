@@ -21,7 +21,7 @@ namespace Quick_View_Newspaper
         {
             InitializeComponent();
             k.OpacityMouse(this);
-            t.RUN(pnlMain,lblTitle,lblCat);
+            t.RUN(pnlRun,lblTitle,lblCat);
             this.KeyPreview = true;
         }
 
@@ -35,28 +35,19 @@ namespace Quick_View_Newspaper
             s.Close(pnlOption, pnlMain);
         }
 
-        private void picName_MouseClick(object sender, MouseEventArgs e)
-        {
-            t.NextNews_Click(lblTitle, lblCat);
-        }
-
-        private void picGen_MouseClick(object sender, MouseEventArgs e)
-        {
-            t.NextRSS_Click(lblTitle, lblCat);
-        }
-
         private void nudOpacity_ValueChanged(object sender, EventArgs e)
         {
             k.ReOpacity(this, Convert.ToInt32(nudOpacity.Value.ToString()));
         }
 
-        private void Form1_MouseLeave(object sender, EventArgs e)
+        private void lblTitle_MouseClick(object sender, MouseEventArgs e)
         {
+            t.NextNews_Click(lblTitle, lblCat);
         }
 
-        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        private void lblCat_MouseClick(object sender, MouseEventArgs e)
         {
+            t.NextRSS_Click(lblTitle, lblCat);
         }
-
     }
 }
