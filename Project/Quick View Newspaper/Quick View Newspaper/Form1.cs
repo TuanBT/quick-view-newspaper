@@ -23,33 +23,12 @@ namespace Quick_View_Newspaper
             k.OpacityMouse(this);
             t.RUN(pnlRun,lblTitle,lblCat);
             this.KeyPreview = true;
-            //t.SpeedLabel = 0;
+            s.LocationForm(this);
+            s.SetLocationPanel(pnlOption, pnlMain);
+            
         }
 
-        private void picOptOpen_Click(object sender, EventArgs e)
-        {
-            s.Open(pnlOption,pnlMain);
-        }
 
-        private void picOptClose_Click(object sender, EventArgs e)
-        {
-            s.Close(pnlOption, pnlMain);
-        }
-
-<<<<<<< .mine
-        private void picName_MouseClick(object sender, MouseEventArgs e)
-        {
-            t.NextNews_Click(lblTitle, lblCat);
-        }
-
-        private void picGen_MouseClick(object sender, MouseEventArgs e)
-        {
-            nudSpeed.Value = 1;
-            t.NextRSS_Click(lblTitle, lblCat);
-        }
-
-=======
->>>>>>> .r31
         private void nudOpacity_ValueChanged(object sender, EventArgs e)
         {
             k.ReOpacity(this, Convert.ToInt32(nudOpacity.Value.ToString()));
@@ -64,18 +43,6 @@ namespace Quick_View_Newspaper
         {
             t.NextRSS_Click(lblTitle, lblCat);
         }
-<<<<<<< .mine
-        private void nudSize_ValueChanged(object sender, EventArgs e)
-        {
-            t.FontSize = k.ReSize(pnlMain, Convert.ToInt32(nudSize.Value.ToString()), this);
-        }
-
-        private void nudSpeed_ValueChanged(object sender, EventArgs e)
-        {
-            t.SpeedLabel = Convert.ToInt32(nudSpeed.Value.ToString());
-        }
-
-=======
 
         private void lblTitle_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -86,6 +53,15 @@ namespace Quick_View_Newspaper
         {
 
         }
->>>>>>> .r33
+
+        private void picOptOpen_MouseClick(object sender, MouseEventArgs e)
+        {
+            s.Open(pnlOption, pnlMain);
+        }
+
+        private void picOptClose_MouseClick(object sender, MouseEventArgs e)
+        {
+            s.Close(pnlOption, pnlMain);
+        }
     }
 }
