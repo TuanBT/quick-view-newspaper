@@ -21,7 +21,7 @@ namespace Quick_View_Newspaper
         public List<string> listLinkRSS = new List<string>();
 
         //List chứa tên các thể loại tồn tại trong database
-        public List<string> listCat = new List<string>(); 
+        public List<string> listCat = new List<string>();
 
         //Các link lần lượt chứa các nội dung của các thể loại hoặc các link RSS
         public List<string> listTitle = new List<string>();
@@ -376,9 +376,9 @@ namespace Quick_View_Newspaper
 
             string descrition = HtmlRemoval.StripTagsCharArray(listDescription[index]);
             string pubDate = listPubDate[index];
-            string link= listLink[index];
-            string image=listImage[index];
-            content = "\n"+title + "\n\n" + descrition + "\n\n" + pubDate + "\n\n" + link + "\n\n" + image;
+            string link = listLink[index];
+            string image = listImage[index];
+            content = "\n" + title + "\n\n" + descrition + "\n\n" + pubDate;
             return content;
         }
 
@@ -400,17 +400,49 @@ namespace Quick_View_Newspaper
                     i++;
                     lbl = new Label();
                     //Set text cho các label
-                    lbl.Text = str+"  ---";
+                    lbl.Text = str + "  ---";
                     //Add tooltip vào một label
                     toolTip.SetToolTip(lbl, ContentOfOneTitle(i));
                     //Gán id cho label để đánh dấu sự kiện
                     lbl.Tag = i;
                     //Gọi sự kiện click label
                     lbl.Click += new EventHandler(Label_Click);
+                    //Gọi sự kiện để chuột vào label
+                    lbl.MouseHover += new EventHandler(Label_MouseHover);
+                    //Gọi sự kiện chuột ra khỏi label
+                    lbl.MouseLeave += new EventHandler(Label_MouseLeave);
                     //Add label vừa tạo vào list  label
                     lblList.Add(lbl);
                 }
             }
+        }
+
+        /// <summary>
+        /// Nơi sử lý sự kiện rê chuột vào các label
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Label_MouseHover(object sender, EventArgs e)
+        {
+            //Với mỗi label được gọi, ta có thể làm gì tùy thích
+            int id = (int)((Label)sender).Tag;
+            lblList[id].BackColor = Color.Red;
+            lblList[id].ForeColor = Color.Yellow;
+            tmrRunLabelOnPanel.Enabled = false;
+        }
+
+        /// <summary>
+        /// Nơi sự lý sự kiện chuột rời khỏi label
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Label_MouseLeave(object sender, EventArgs e)
+        {
+            //Với mỗi label được gọi, ta có thể làm gì tùy thích
+            int id = (int)((Label)sender).Tag;
+            lblList[id].BackColor = SystemColors.Control;
+            lblList[id].ForeColor = Color.Gray;
+            tmrRunLabelOnPanel.Enabled = true;
         }
 
         /// <summary>
@@ -422,7 +454,7 @@ namespace Quick_View_Newspaper
         {
             // Lấy id của label
             int id = (int)((Label)sender).Tag;
-            WebBrowserForm wbf = new WebBrowserForm(listLink[id],listNews[newsIndex],listCat[indexCat - 1]);
+            WebBrowserForm wbf = new WebBrowserForm(listLink[id], listNews[newsIndex], listCat[indexCat - 1]);
             //Kiểm tra xem form web đã được mở hay chưa
             if ((Application.OpenForms["WebBrowserForm"] as WebBrowserForm) != null)
             {
@@ -446,7 +478,7 @@ namespace Quick_View_Newspaper
             toolTip.IsBalloon = true;
             toolTip.ShowAlways = true;
             //Thời gian hiển thị sau khi xuất hiện. 
-            toolTip.AutoPopDelay = 30*60*1000;
+            toolTip.AutoPopDelay = 30 * 60 * 1000;
             //Thời gian chờ xuất hiện lúc rê chuột vào
             toolTip.InitialDelay = 0;
             //Thời gian để hiển thị khi chuyển tới đối tượng mới
@@ -464,9 +496,9 @@ namespace Quick_View_Newspaper
         void MakeLabel(Label lbl, int x)
         {
             pnl.Controls.Add(lbl);
-            lbl.Font = new Font("Tahoma",fontSize);
+            lbl.Font = new Font("Tahoma", fontSize);
             //Tọa độ Y để nằm được chính giữa panel
-            int y =(pnl.Height - lbl.Height)/2;
+            int y = (pnl.Height - lbl.Height) / 2;
             lbl.AutoSize = true;
             lbl.Location = new Point(x, y);
             lbl.BorderStyle = BorderStyle.None;
