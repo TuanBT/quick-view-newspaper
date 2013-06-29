@@ -1,0 +1,6 @@
+C:\Users\Tuân\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\bin\Debug\RunQickViewNewspaper.exe
+C:\Users\Tuân\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\bin\Debug\RunQickViewNewspaper.pdb
+C:\Users\Tuân\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.Properties.Resources.resources
+C:\Users\Tuân\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.csproj.GenerateResource.Cache
+C:\Users\Tuân\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.exe
+C:\Users\Tuân\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.pdb
