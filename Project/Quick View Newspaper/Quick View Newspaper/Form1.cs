@@ -49,5 +49,15 @@ namespace Quick_View_Newspaper
         {
             t.NextRSS_Click(lblTitle, lblCat);
         }
+
+        private void lblTitle_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void lblCat_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

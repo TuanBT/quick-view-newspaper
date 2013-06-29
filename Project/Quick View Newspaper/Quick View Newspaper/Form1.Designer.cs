@@ -46,6 +46,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.picOptClose = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.cbbTitle = new System.Windows.Forms.ComboBox();
+            this.cbbCat = new System.Windows.Forms.ComboBox();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picOptOpen)).BeginInit();
             this.pnlOption.SuspendLayout();
@@ -85,6 +87,7 @@
             this.lblCat.Text = "Tình yêu -giới tính";
             this.lblCat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblCat.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lblCat_MouseClick);
+            this.lblCat.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lblCat_MouseDoubleClick);
             // 
             // lblTitle
             // 
@@ -100,6 +103,7 @@
             this.lblTitle.Text = "Nông nghiệp Việt Nam";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTitle.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lblTitle_MouseClick);
+            this.lblTitle.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lblTitle_MouseDoubleClick);
             // 
             // picOptOpen
             // 
@@ -252,11 +256,29 @@
             this.picOptClose.TabStop = false;
             this.picOptClose.Click += new System.EventHandler(this.picOptClose_Click);
             // 
+            // cbbTitle
+            // 
+            this.cbbTitle.FormattingEnabled = true;
+            this.cbbTitle.Location = new System.Drawing.Point(12, 114);
+            this.cbbTitle.Name = "cbbTitle";
+            this.cbbTitle.Size = new System.Drawing.Size(178, 24);
+            this.cbbTitle.TabIndex = 2;
+            // 
+            // cbbCat
+            // 
+            this.cbbCat.FormattingEnabled = true;
+            this.cbbCat.Location = new System.Drawing.Point(191, 114);
+            this.cbbCat.Name = "cbbCat";
+            this.cbbCat.Size = new System.Drawing.Size(124, 24);
+            this.cbbCat.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(816, 111);
+            this.ClientSize = new System.Drawing.Size(816, 196);
+            this.Controls.Add(this.cbbCat);
+            this.Controls.Add(this.cbbTitle);
             this.Controls.Add(this.pnlOption);
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -297,6 +319,8 @@
         private System.Windows.Forms.Label lblCat;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel pnlRun;
+        private System.Windows.Forms.ComboBox cbbTitle;
+        private System.Windows.Forms.ComboBox cbbCat;
     }
 }
 
