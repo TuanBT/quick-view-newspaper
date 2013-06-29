@@ -40,6 +40,8 @@ namespace Quick_View_Newspaper
             dbConnection = str;
         }
 
+        #region Command SQL
+
         /// <summary>
         ///     Allows the programmer to run a query against the Database.
         /// </summary>
@@ -223,5 +225,6 @@ namespace Quick_View_Newspaper
                 return false;
             }
         }
+        #endregion
     }
 }

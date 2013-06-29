@@ -58,6 +58,8 @@ namespace Quick_View_Newspaper
         private int fontSize = 10;
         //Biến tên font
         private string fontName = "Tahoma";
+        //Biến dùng để xác định tên thể loại ứng với mỗi link RSS đang hiện hành. Thường phải dùng với listCat[indexCat - 1];
+        private int indexCat;
         #endregion
 
         #region setget
@@ -99,10 +101,8 @@ namespace Quick_View_Newspaper
             tmrRunLabelOnPanel.Interval = 10;
             tmrRunLabelOnPanel.Start();
             tmrRunLabelOnPanel.Tick += new EventHandler((sender, e) => RunLabelOnPanel_Tick(sender, e, newName, catName));
-
             //Lấy tên các báo từ database
             GetNewsFromDatabase();
-
             //Lấy tên các thể loại từ database
             GetCatFromDatabase();
 
@@ -167,7 +167,7 @@ namespace Quick_View_Newspaper
                         //Trả tên lên label để test
                         newName.Text = listNews[newsIndex];
                         //Trả tên thể loại bằng việc sử dụng hàm lấy index từ chuỗi link RSS, qua đó tìm ra chỉ số
-                        int indexCat = GetIndexOfCatId(listLinkRSS[rSSIndex]);
+                        indexCat = GetIndexOfCatId(listLinkRSS[rSSIndex]);
                         //Vì list lưu từ 0 nên -1 để khớp index so với database
                         catName.Text = listCat[indexCat - 1];
                     }
@@ -364,6 +364,11 @@ namespace Quick_View_Newspaper
             }
         }
 
+        /// <summary>
+        /// Tạo nội dung cho một tooltip dựa vào tiêu để để gắn vào trong tooltip
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public string ContentOfOneTitle(int index)
         {
             string content = "";
@@ -398,10 +403,34 @@ namespace Quick_View_Newspaper
                     lbl.Text = str+"  ---";
                     //Add tooltip vào một label
                     toolTip.SetToolTip(lbl, ContentOfOneTitle(i));
+                    //Gán id cho label để đánh dấu sự kiện
+                    lbl.Tag = i;
+                    //Gọi sự kiện click label
+                    lbl.Click += new EventHandler(Label_Click);
                     //Add label vừa tạo vào list  label
                     lblList.Add(lbl);
                 }
             }
+        }
+
+        /// <summary>
+        /// Nơi sử lý sự kiện Clik các label
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Label_Click(object sender, EventArgs e)
+        {
+            // Lấy id của label
+            int id = (int)((Label)sender).Tag;
+            WebBrowserForm wbf = new WebBrowserForm(listLink[id],listNews[newsIndex],listCat[indexCat - 1]);
+            //Kiểm tra xem form web đã được mở hay chưa
+            if ((Application.OpenForms["WebBrowserForm"] as WebBrowserForm) != null)
+            {
+                //Vào được đây tức là có một form đang mở. Cần đóng nó lại để mở ra
+                //Close form web hiện thời lại
+                (Application.OpenForms["WebBrowserForm"] as WebBrowserForm).Close();
+            }
+            wbf.Show();
         }
 
         /// <summary>
