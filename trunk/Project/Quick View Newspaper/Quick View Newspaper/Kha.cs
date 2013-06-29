@@ -8,6 +8,7 @@ namespace Quick_View_Newspaper
     class Kha
     {
         int flag = 0;
+        double opacity = 0.6;
         Timer Clock;
         /// <summary>
         /// Thay đổi độ mờ của FORM theo 3 cấp
@@ -19,14 +20,19 @@ namespace Quick_View_Newspaper
             switch (intOpacity)
             {
                 case -2: fm.Opacity = 0.2;
+                    opacity = 0.2;
                     break;
                 case -1: fm.Opacity = 0.4;
+                    opacity = 0.4;
                     break;
                 case 0: fm.Opacity = 0.6;
+                    opacity = 0.6;
                     break;
                 case 1: fm.Opacity = 0.8;
+                    opacity = 0.8;
                     break;
                 case 2: fm.Opacity = 1;
+                    opacity = 1;
                     break;
             }
         }
@@ -76,9 +82,9 @@ namespace Quick_View_Newspaper
             {
                 return 0.2;
             }
-            else if (temp > 0.6)
+            else if (temp > opacity)
             {
-                return 0.6;
+                return opacity;
             }
             else
             {
@@ -96,9 +102,9 @@ namespace Quick_View_Newspaper
         {
             int intMouseY = Cursor.Position.Y;
             int intFormY = fm.Location.Y;
-            if (intMouseY < (intFormY - fm.Height))
+            if (intMouseY < (intFormY - fm.Height/2))
             {
-                fm.Opacity = 0.6;
+                fm.Opacity = opacity;
             }
             //Nếu chuột phía trên form + chiều rộng của form thì cho làm mờ
             if (intMouseY >= (intFormY - fm.Height) && intMouseY < fm.Location.Y)
@@ -114,13 +120,13 @@ namespace Quick_View_Newspaper
                 }
                 else
                 {
-                    fm.Opacity = 0.6;
+                    fm.Opacity = opacity;
                 }
             }
             //Nếu chuột dưới form thì độ mờ mặc định
             else if (intMouseY > (fm.Location.Y + fm.Height))
             {
-                fm.Opacity = 0.6;
+                fm.Opacity = opacity;
 
             }
         }
