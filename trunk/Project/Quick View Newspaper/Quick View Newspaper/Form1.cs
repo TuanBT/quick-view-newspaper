@@ -20,8 +20,9 @@ namespace Quick_View_Newspaper
         public Form1()
         {
             InitializeComponent();
-            //k.OpacityMouse(this);
+            k.OpacityMouse(this);
             t.RUN(pnlMain,lblTitle,lblCat);
+            this.KeyPreview = true;
         }
 
         private void picOptOpen_Click(object sender, EventArgs e)
@@ -56,9 +57,6 @@ namespace Quick_View_Newspaper
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
         }
-
-
-
 
     }
 }
