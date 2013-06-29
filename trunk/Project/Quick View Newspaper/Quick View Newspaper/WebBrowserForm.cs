@@ -12,8 +12,6 @@ namespace Quick_View_Newspaper
 {
     public partial class WebBrowserForm : Form
     {
-        String homePage;
-
         public WebBrowserForm(string Url, string newsName, string CatName)
         {
             InitializeComponent();
