@@ -122,8 +122,8 @@ namespace Quick_View_Newspaper
             //Nạp tên các thể loại mà tiêu đề báo này có được vào combobox cbbCatName
             GetCatOfNewsFormDatabase();
             //Khai báo sự kiện khi thay đổi combobox
-            cbbNewsName.SelectedIndexChanged += new EventHandler(cbbNewsName_SelectedIndexChanged);
-            cbbCatName.SelectedIndexChanged += new EventHandler(cbbCatName_SelectedIndexChanged);
+            cbbNewsName.SelectionChangeCommitted += new EventHandler(cbbNewsName_SelectedIndexChanged);
+            cbbCatName.SelectionChangeCommitted += new EventHandler(cbbCatName_SelectedIndexChanged);
             Run();
         }
 
@@ -639,36 +639,3 @@ namespace Quick_View_Newspaper
         }
     }
 }
-
-/*
-private void lblNewsName_MouseClick(object sender, MouseEventArgs e)
-        {
-            t.NextNews_Click();
-        }
-
-        private void lblCatName_MouseClick(object sender, MouseEventArgs e)
-        {
-            t.NextRSS_Click();
-        }
-
-        private void cbbNewsName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbbNewsName.Visible = false;
-        }
-
-
-        private void cbbCatName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbbCatName.Visible = false;
-        }
-
-        private void lblNewsName_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            cbbNewsName.Visible = true;
-        }
-
-        private void lblCatName_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            cbbCatName.Visible = true;
-        }
-*/
