@@ -119,7 +119,7 @@ namespace Quick_View_Newspaper
         /// <param name="pnlMain"></param>
         public void Open_Tick(object sender, EventArgs eArgs, Panel pnlOption, Panel pnlMain)
         {
-            if (pnlOption.Location.X == pnlMain.Location.X)
+            if (pnlOption.Location.X <= pnlMain.Location.X)
             {
                 Clock.Stop();
                 padding = 1;
@@ -196,7 +196,6 @@ namespace Quick_View_Newspaper
                 new System.Drawing.Point(windowSize.Width - 180,
                 windowSize.Height - 5);
             menuPoint = frm.PointToClient(menuPoint);
-
             notifyIcon.ContextMenuStrip.Show(frm, menuPoint);
 
         }

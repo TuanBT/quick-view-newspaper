@@ -22,11 +22,12 @@ namespace Quick_View_Newspaper
         {
             InitializeComponent();
             k.OpacityMouse(this);
+            s.LocationForm(this);
+            s.SetLocationPanel(pnlOption, pnlMain);
             s.CALL(notifyIcon1,contextMenuStrip1  ,this);
             t.RUN(pnlRun,lblTitle,lblCat,cbbNewsName,cbbCatName);
             this.KeyPreview = true;
-            s.LocationForm(this);
-            s.SetLocationPanel(pnlOption, pnlMain);
+           
             
         }
 
