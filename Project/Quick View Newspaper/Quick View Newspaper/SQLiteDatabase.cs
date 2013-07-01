@@ -62,11 +62,12 @@ namespace Quick_View_Newspaper
             }
             catch (Exception e)
             {
+                Log.WriteLog(sql + ", kết nối này có vấn đề");
                 throw new Exception(e.Message);
             }
             return dt;
         }
-        
+
         #endregion
     }
 }

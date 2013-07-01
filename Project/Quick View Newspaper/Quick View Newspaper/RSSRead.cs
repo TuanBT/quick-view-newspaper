@@ -22,7 +22,7 @@ namespace Quick_View_Newspaper
             }
             catch
             {
-                //RSS không tồn tại
+                Log.WriteLog(feed + " có vấn đề!");
                 return null;
             }
 
