@@ -8,7 +8,7 @@ namespace Quick_View_Newspaper
     {
         int flag = 0;
         double opacity = 0.6;
-        Timer Clock;
+        Timer tmr;
         /// <summary>
         /// Thay đổi độ mờ của FORM theo 5 cấp
         /// </summary>
@@ -41,11 +41,11 @@ namespace Quick_View_Newspaper
         /// <param name="fm"></param>
         public void OpacityMouse(Form fm)
         {
-            Clock = new Timer();
-            Clock.Interval = 1;
-            Clock.Start();
+            tmr = new Timer();
+            tmr.Interval = 1;
+            tmr.Start();
             fm.KeyDown += fm_KeyDown;
-            Clock.Tick += new EventHandler((sender, e) => timer1_Tick(sender, e, fm));
+            tmr.Tick += new EventHandler((sender, e) => timer1_Tick(sender, e, fm));
             fm.KeyUp += fm_KeyUp;
         }
 
@@ -116,6 +116,7 @@ namespace Quick_View_Newspaper
             if (intMouseY < (intFormY - fm.Height/2))
             {
                 fm.Opacity = opacity;
+                fm.Activate();
             }
             //Nếu chuột phía trên form + nữa chiều rộng của form  thì độ mờ bằng công thức tính
             if (intMouseY >= (intFormY - fm.Height/2) && intMouseY < fm.Location.Y)
