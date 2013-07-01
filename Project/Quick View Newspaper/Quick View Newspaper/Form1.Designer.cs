@@ -33,35 +33,31 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.cbbNewsName = new System.Windows.Forms.ComboBox();
             this.cbbCatName = new System.Windows.Forms.ComboBox();
+            this.picOptOpen = new System.Windows.Forms.PictureBox();
             this.pnlRun = new System.Windows.Forms.Panel();
+            this.lblNoti = new System.Windows.Forms.Label();
             this.lblCat = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlOption = new System.Windows.Forms.Panel();
             this.nudOpacity = new System.Windows.Forms.NumericUpDown();
             this.nudSpeed = new System.Windows.Forms.NumericUpDown();
             this.nudSize = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.picOptClose = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.lblNoti = new System.Windows.Forms.Label();
-            this.picInterface = new System.Windows.Forms.PictureBox();
-            this.picOptClose = new System.Windows.Forms.PictureBox();
-            this.picOptOpen = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             this.pnlMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picOptOpen)).BeginInit();
             this.pnlRun.SuspendLayout();
             this.pnlOption.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudOpacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picInterface)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOptClose)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picOptOpen)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -107,6 +103,19 @@
             this.cbbCatName.Visible = false;
             this.cbbCatName.SelectionChangeCommitted += new System.EventHandler(this.cbbCatName_SelectionChangeCommitted);
             // 
+            // picOptOpen
+            // 
+            this.picOptOpen.Dock = System.Windows.Forms.DockStyle.Right;
+            this.picOptOpen.Image = global::Quick_View_Newspaper.Properties.Resources.OptionOpen;
+            this.picOptOpen.Location = new System.Drawing.Point(1080, 0);
+            this.picOptOpen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picOptOpen.Name = "picOptOpen";
+            this.picOptOpen.Size = new System.Drawing.Size(58, 28);
+            this.picOptOpen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picOptOpen.TabIndex = 5;
+            this.picOptOpen.TabStop = false;
+            this.picOptOpen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picOptOpen_MouseClick);
+            // 
             // pnlRun
             // 
             this.pnlRun.Controls.Add(this.lblNoti);
@@ -116,6 +125,20 @@
             this.pnlRun.Name = "pnlRun";
             this.pnlRun.Size = new System.Drawing.Size(835, 28);
             this.pnlRun.TabIndex = 3;
+            // 
+            // lblNoti
+            // 
+            this.lblNoti.BackColor = System.Drawing.Color.Blue;
+            this.lblNoti.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblNoti.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNoti.ForeColor = System.Drawing.Color.Yellow;
+            this.lblNoti.Location = new System.Drawing.Point(0, 0);
+            this.lblNoti.Name = "lblNoti";
+            this.lblNoti.Size = new System.Drawing.Size(195, 28);
+            this.lblNoti.TabIndex = 0;
+            this.lblNoti.Text = "Đang nạp dữ liệu";
+            this.lblNoti.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNoti.Visible = false;
             // 
             // lblCat
             // 
@@ -153,13 +176,10 @@
             this.pnlOption.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlOption.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlOption.Controls.Add(this.button2);
-            this.pnlOption.Controls.Add(this.button1);
-            this.pnlOption.Controls.Add(this.picInterface);
+            this.pnlOption.Controls.Add(this.btnReset);
             this.pnlOption.Controls.Add(this.nudOpacity);
             this.pnlOption.Controls.Add(this.nudSpeed);
             this.pnlOption.Controls.Add(this.nudSize);
-            this.pnlOption.Controls.Add(this.label4);
             this.pnlOption.Controls.Add(this.label3);
             this.pnlOption.Controls.Add(this.label2);
             this.pnlOption.Controls.Add(this.label1);
@@ -205,17 +225,6 @@
             this.nudSize.Size = new System.Drawing.Size(51, 22);
             this.nudSize.TabIndex = 11;
             // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(537, 6);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 17);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Giao diện";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -243,41 +252,6 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Cỡ chữ:";
             // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "notifyIcon1";
-            this.notifyIcon1.Visible = true;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // lblNoti
-            // 
-            this.lblNoti.BackColor = System.Drawing.Color.Blue;
-            this.lblNoti.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblNoti.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNoti.ForeColor = System.Drawing.Color.Yellow;
-            this.lblNoti.Location = new System.Drawing.Point(0, 0);
-            this.lblNoti.Name = "lblNoti";
-            this.lblNoti.Size = new System.Drawing.Size(195, 28);
-            this.lblNoti.TabIndex = 0;
-            this.lblNoti.Text = "Đang nạp dữ liệu";
-            this.lblNoti.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblNoti.Visible = false;
-            // 
-            // picInterface
-            // 
-            this.picInterface.Location = new System.Drawing.Point(612, 2);
-            this.picInterface.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picInterface.Name = "picInterface";
-            this.picInterface.Size = new System.Drawing.Size(69, 22);
-            this.picInterface.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picInterface.TabIndex = 14;
-            this.picInterface.TabStop = false;
-            // 
             // picOptClose
             // 
             this.picOptClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -292,42 +266,32 @@
             this.picOptClose.TabStop = false;
             this.picOptClose.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picOptClose_MouseClick);
             // 
-            // picOptOpen
+            // notifyIcon1
             // 
-            this.picOptOpen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.picOptOpen.Image = global::Quick_View_Newspaper.Properties.Resources.OptionOpen;
-            this.picOptOpen.Location = new System.Drawing.Point(1080, 0);
-            this.picOptOpen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picOptOpen.Name = "picOptOpen";
-            this.picOptOpen.Size = new System.Drawing.Size(58, 28);
-            this.picOptOpen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picOptOpen.TabIndex = 5;
-            this.picOptOpen.TabStop = false;
-            this.picOptOpen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picOptOpen_MouseClick);
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
             // 
-            // button1
+            // contextMenuStrip1
             // 
-            this.button1.Location = new System.Drawing.Point(711, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Help";
-            this.button1.UseVisualStyleBackColor = true;
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // button2
+            // btnReset
             // 
-            this.button2.Location = new System.Drawing.Point(820, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "About";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnReset.Location = new System.Drawing.Point(533, 0);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 29);
+            this.btnReset.TabIndex = 14;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1141, 78);
+            this.ClientSize = new System.Drawing.Size(1141, 31);
             this.Controls.Add(this.pnlOption);
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -338,15 +302,14 @@
             this.Text = "Form1";
             this.TopMost = true;
             this.pnlMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picOptOpen)).EndInit();
             this.pnlRun.ResumeLayout(false);
             this.pnlOption.ResumeLayout(false);
             this.pnlOption.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudOpacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picInterface)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOptClose)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picOptOpen)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -356,11 +319,9 @@
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.PictureBox picOptOpen;
         private System.Windows.Forms.Panel pnlOption;
-        private System.Windows.Forms.PictureBox picInterface;
         private System.Windows.Forms.NumericUpDown nudOpacity;
         private System.Windows.Forms.NumericUpDown nudSpeed;
         private System.Windows.Forms.NumericUpDown nudSize;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -374,8 +335,7 @@
         private System.Windows.Forms.ComboBox cbbNewsName;
         private System.Windows.Forms.ComboBox cbbCatName;
         private System.Windows.Forms.Label lblNoti;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnReset;
     }
 }
 
