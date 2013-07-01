@@ -10,7 +10,6 @@ namespace Quick_View_Newspaper
 {
     public partial class Form1 : Form
     {
-
         Sinh s = new Sinh();
         Tuan t = new Tuan();
         Kha k = new Kha();
@@ -19,12 +18,12 @@ namespace Quick_View_Newspaper
         //t.SpeedLabel là biến dùng để điều khiển tốc độ chạy tin. Mặc định: t.SpeedLabel=1
         //s.SetOptionPanel() là hàm dùng để set lại độ rộng và vị trí của panel Option theo kích thước và vị trí của panel Main
 
-        public Form1()
+        public Form1(string args = "")
         {
             InitializeComponent();
             k.OpacityMouse(this);
-            s.CALL(notifyIcon1, contextMenuStrip1, this,pnlOption,pnlMain);
-            t.RUN(pnlRun, lblTitle, lblCat, cbbNewsName, cbbCatName,lblNoti);
+            s.CALL(notifyIcon1, contextMenuStrip1, this, pnlOption, pnlMain);
+            t.RUN(pnlRun, lblTitle, lblCat, cbbNewsName, cbbCatName, lblNoti,args);
             this.KeyPreview = true;
         }
 

@@ -73,6 +73,10 @@ namespace Quick_View_Newspaper
         private Label catName;
         //Label dùng đê thông báo việc nạp dữ liệu
         private Label lblNoti;
+        //Chuỗi cho biết vị trí của chương trình lúc khởi chạy, dùng để chương trình khác gọi vào
+        private string path;
+        //Tên của Database
+        private string database = "QVN.s3db";
         #endregion
 
         #region setget
@@ -104,7 +108,7 @@ namespace Quick_View_Newspaper
         /// <param name="pnl"></param>
         /// <param name="newName"></param>
         /// <param name="catName"></param>
-        public void RUN(Panel pnl, Label newName, Label catName, ComboBox cbbNewsName, ComboBox cbbCatName, Label lblNoti)
+        public void RUN(Panel pnl, Label newName, Label catName, ComboBox cbbNewsName, ComboBox cbbCatName, Label lblNoti,string path)
         {
             //Xác định các biến
             this.pnl = pnl;
@@ -113,6 +117,7 @@ namespace Quick_View_Newspaper
             this.cbbNewsName = cbbNewsName;
             this.cbbCatName = cbbCatName;
             this.lblNoti = lblNoti;
+            this.path = path;
             //Set các giá trị mặc định cho tootip
             SetToolTip();
             //Thời gian di chuyển, số càng cao di chuyển càng chậm
@@ -289,7 +294,7 @@ namespace Quick_View_Newspaper
         public int GetIndexOfCatId(string RSSLink)
         {
             int IndexOfCatId = 0;
-            db = new SQLiteDatabase();
+            db = new SQLiteDatabase(path+database);
             DataTable recipe;
             //Chuỗi trả về một bảng có chứa dữ liệu tên các thể loại
             String query = "SELECT CatId  FROM tblRSS WHERE (RSSLink=\"" + RSSLink + "\")";
@@ -319,7 +324,7 @@ namespace Quick_View_Newspaper
         {
             try
             {
-                db = new SQLiteDatabase();
+                db = new SQLiteDatabase(path + database);
                 DataTable recipe;
                 //Chuỗi trả về một bảng chứa các thể loại mà loại báo (newsIndex+1) hiện hành đang có
                 string NewID = (newsIndex + 1).ToString();
@@ -348,7 +353,7 @@ namespace Quick_View_Newspaper
         {
             try
             {
-                db = new SQLiteDatabase();
+                db = new SQLiteDatabase(path + database);
                 DataTable recipe;
                 //Chuỗi trả về một bảng có chứa dữ liệu tên các thể loại
                 String query = "SELECT CatName FROM tblCategory";
@@ -377,7 +382,7 @@ namespace Quick_View_Newspaper
         {
             try
             {
-                db = new SQLiteDatabase();
+                db = new SQLiteDatabase(path + database);
                 DataTable recipe;
                 //Chuỗi trả về một bảng có chứa dữ liệu tên các báo
                 String query = "SELECT NewName FROM tblNewspaper";
@@ -408,7 +413,7 @@ namespace Quick_View_Newspaper
             listLinkRSS.Clear();
             try
             {
-                db = new SQLiteDatabase();
+                db = new SQLiteDatabase(path + database);
                 DataTable recipe;
                 //Chuỗi này phải trả về được một bảng link các RSS của bảng tblRSS. Phải làm sao nhận giá trị là tên báo
                 String query = "SELECT r.RSSLink FROM tblNewspaper n JOIN tblRSS r " +
