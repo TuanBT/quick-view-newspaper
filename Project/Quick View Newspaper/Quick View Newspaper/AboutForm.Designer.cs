@@ -56,8 +56,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(181, 13);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 17);
+            this.label3.Size = new System.Drawing.Size(538, 17);
             this.label3.TabIndex = 2;
+            this.label3.Text = "Là phần mềm đúng như tên gọi của nó, giúp bạn xem tin tức một cách nhanh chóng.";
             // 
             // AboutForm
             // 

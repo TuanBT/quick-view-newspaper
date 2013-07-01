@@ -8,7 +8,6 @@ namespace Quick_View_Newspaper
     class SQLiteDatabase
     {
         String dbConnection;
-
         /// <summary>
         /// Default Constructor for SQLiteDatabase Class.
         /// </summary>
