@@ -116,7 +116,7 @@ namespace Quick_View_Newspaper
             if (intMouseY < (intFormY - fm.Height/2))
             {
                 fm.Opacity = opacity;
-                fm.Activate();
+                //fm.Activate();
             }
             //Nếu chuột phía trên form + nữa chiều rộng của form  thì độ mờ bằng công thức tính
             if (intMouseY >= (intFormY - fm.Height/2) && intMouseY < fm.Location.Y)

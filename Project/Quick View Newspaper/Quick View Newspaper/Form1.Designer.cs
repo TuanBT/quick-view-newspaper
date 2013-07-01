@@ -33,13 +33,10 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.cbbNewsName = new System.Windows.Forms.ComboBox();
             this.cbbCatName = new System.Windows.Forms.ComboBox();
-            this.picOptOpen = new System.Windows.Forms.PictureBox();
             this.pnlRun = new System.Windows.Forms.Panel();
             this.lblCat = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlOption = new System.Windows.Forms.Panel();
-            this.picIntNext = new System.Windows.Forms.PictureBox();
-            this.picInterface = new System.Windows.Forms.PictureBox();
             this.nudOpacity = new System.Windows.Forms.NumericUpDown();
             this.nudSpeed = new System.Windows.Forms.NumericUpDown();
             this.nudSize = new System.Windows.Forms.NumericUpDown();
@@ -47,21 +44,24 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.picOptClose = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.lblNoti = new System.Windows.Forms.Label();
+            this.picInterface = new System.Windows.Forms.PictureBox();
+            this.picOptClose = new System.Windows.Forms.PictureBox();
+            this.picOptOpen = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.pnlMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picOptOpen)).BeginInit();
             this.pnlRun.SuspendLayout();
             this.pnlOption.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picIntNext)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picInterface)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudOpacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picInterface)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOptClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOptOpen)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -78,7 +78,7 @@
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(799, 30);
+            this.pnlMain.Size = new System.Drawing.Size(1140, 30);
             this.pnlMain.TabIndex = 0;
             // 
             // cbbNewsName
@@ -107,20 +107,6 @@
             this.cbbCatName.Visible = false;
             this.cbbCatName.SelectionChangeCommitted += new System.EventHandler(this.cbbCatName_SelectionChangeCommitted);
             // 
-            // picOptOpen
-            // 
-            this.picOptOpen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.picOptOpen.Image = global::Quick_View_Newspaper.Properties.Resources.OptionOpen;
-            this.picOptOpen.Location = new System.Drawing.Point(765, 0);
-            this.picOptOpen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picOptOpen.Name = "picOptOpen";
-            this.picOptOpen.Size = new System.Drawing.Size(20, 28);
-            this.picOptOpen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picOptOpen.TabIndex = 5;
-            this.picOptOpen.TabStop = false;
-            this.picOptOpen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picOptOpen_MouseClick);
-            // 
             // pnlRun
             // 
             this.pnlRun.Controls.Add(this.lblNoti);
@@ -128,7 +114,7 @@
             this.pnlRun.Location = new System.Drawing.Point(303, 0);
             this.pnlRun.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlRun.Name = "pnlRun";
-            this.pnlRun.Size = new System.Drawing.Size(494, 28);
+            this.pnlRun.Size = new System.Drawing.Size(835, 28);
             this.pnlRun.TabIndex = 3;
             // 
             // lblCat
@@ -167,7 +153,8 @@
             this.pnlOption.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlOption.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlOption.Controls.Add(this.picIntNext);
+            this.pnlOption.Controls.Add(this.button2);
+            this.pnlOption.Controls.Add(this.button1);
             this.pnlOption.Controls.Add(this.picInterface);
             this.pnlOption.Controls.Add(this.nudOpacity);
             this.pnlOption.Controls.Add(this.nudSpeed);
@@ -180,29 +167,8 @@
             this.pnlOption.Location = new System.Drawing.Point(0, 34);
             this.pnlOption.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlOption.Name = "pnlOption";
-            this.pnlOption.Size = new System.Drawing.Size(799, 30);
+            this.pnlOption.Size = new System.Drawing.Size(1140, 30);
             this.pnlOption.TabIndex = 1;
-            // 
-            // picIntNext
-            // 
-            this.picIntNext.Image = global::Quick_View_Newspaper.Properties.Resources.ButtonNext;
-            this.picIntNext.Location = new System.Drawing.Point(688, 4);
-            this.picIntNext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picIntNext.Name = "picIntNext";
-            this.picIntNext.Size = new System.Drawing.Size(21, 21);
-            this.picIntNext.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picIntNext.TabIndex = 16;
-            this.picIntNext.TabStop = false;
-            // 
-            // picInterface
-            // 
-            this.picInterface.Location = new System.Drawing.Point(612, 2);
-            this.picInterface.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picInterface.Name = "picInterface";
-            this.picInterface.Size = new System.Drawing.Size(69, 22);
-            this.picInterface.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picInterface.TabIndex = 14;
-            this.picInterface.TabStop = false;
             // 
             // nudOpacity
             // 
@@ -277,20 +243,6 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Cỡ chữ:";
             // 
-            // picOptClose
-            // 
-            this.picOptClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.picOptClose.Image = global::Quick_View_Newspaper.Properties.Resources.OptionClose;
-            this.picOptClose.Location = new System.Drawing.Point(0, 0);
-            this.picOptClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picOptClose.Name = "picOptClose";
-            this.picOptClose.Size = new System.Drawing.Size(20, 28);
-            this.picOptClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picOptClose.TabIndex = 6;
-            this.picOptClose.TabStop = false;
-            this.picOptClose.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picOptClose_MouseClick);
-            // 
             // notifyIcon1
             // 
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
@@ -316,30 +268,85 @@
             this.lblNoti.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblNoti.Visible = false;
             // 
+            // picInterface
+            // 
+            this.picInterface.Location = new System.Drawing.Point(612, 2);
+            this.picInterface.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picInterface.Name = "picInterface";
+            this.picInterface.Size = new System.Drawing.Size(69, 22);
+            this.picInterface.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picInterface.TabIndex = 14;
+            this.picInterface.TabStop = false;
+            // 
+            // picOptClose
+            // 
+            this.picOptClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.picOptClose.Image = global::Quick_View_Newspaper.Properties.Resources.OptionClose;
+            this.picOptClose.Location = new System.Drawing.Point(0, 0);
+            this.picOptClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picOptClose.Name = "picOptClose";
+            this.picOptClose.Size = new System.Drawing.Size(61, 28);
+            this.picOptClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picOptClose.TabIndex = 6;
+            this.picOptClose.TabStop = false;
+            this.picOptClose.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picOptClose_MouseClick);
+            // 
+            // picOptOpen
+            // 
+            this.picOptOpen.Dock = System.Windows.Forms.DockStyle.Right;
+            this.picOptOpen.Image = global::Quick_View_Newspaper.Properties.Resources.OptionOpen;
+            this.picOptOpen.Location = new System.Drawing.Point(1080, 0);
+            this.picOptOpen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picOptOpen.Name = "picOptOpen";
+            this.picOptOpen.Size = new System.Drawing.Size(58, 28);
+            this.picOptOpen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picOptOpen.TabIndex = 5;
+            this.picOptOpen.TabStop = false;
+            this.picOptOpen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picOptOpen_MouseClick);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(711, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Help";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(820, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "About";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 30);
+            this.ClientSize = new System.Drawing.Size(1141, 78);
             this.Controls.Add(this.pnlOption);
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.TopMost = true;
             this.pnlMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picOptOpen)).EndInit();
             this.pnlRun.ResumeLayout(false);
             this.pnlOption.ResumeLayout(false);
             this.pnlOption.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picIntNext)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picInterface)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudOpacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picInterface)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOptClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOptOpen)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -349,7 +356,6 @@
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.PictureBox picOptOpen;
         private System.Windows.Forms.Panel pnlOption;
-        private System.Windows.Forms.PictureBox picIntNext;
         private System.Windows.Forms.PictureBox picInterface;
         private System.Windows.Forms.NumericUpDown nudOpacity;
         private System.Windows.Forms.NumericUpDown nudSpeed;
@@ -368,6 +374,8 @@
         private System.Windows.Forms.ComboBox cbbNewsName;
         private System.Windows.Forms.ComboBox cbbCatName;
         private System.Windows.Forms.Label lblNoti;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }
 
