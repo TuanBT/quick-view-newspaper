@@ -17,10 +17,13 @@ namespace Quick_View_Newspaper
         //t.FontSize là biến để điều khiển font chữ chạy tin. Ví dụ: t.FontSize=15;
         //t.SpeedLabel là biến dùng để điều khiển tốc độ chạy tin. Mặc định: t.SpeedLabel=1
         //s.SetOptionPanel() là hàm dùng để set lại độ rộng và vị trí của panel Option theo kích thước và vị trí của panel Main
+        //setValueOptionToConfig(string fontSize, string speed, string opacity) dùng để ghi lại Option xuống file. Dấu - để thể hiện không sửa đổi
 
         public Form1(string args = "")
         {
             InitializeComponent();
+            //Lập các giá trị mặc định cho chương trình từ file config ini
+            t.setDeafault();
             k.OpacityMouse(this);
             s.CALL(notifyIcon1, contextMenuStrip1, this, pnlOption, pnlMain);
             t.RUN(pnlRun, lblTitle, lblCat, cbbNewsName, cbbCatName, lblNoti,args);
@@ -67,6 +70,10 @@ namespace Quick_View_Newspaper
             cbbCatName.Visible = false;
             lblCat.Visible = true;
         }
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            t.setDeafault();
+        }
         #endregion
 
         #region Sinh dùng
@@ -80,6 +87,8 @@ namespace Quick_View_Newspaper
             s.Close();
         }
         #endregion
+
+
 
 
 

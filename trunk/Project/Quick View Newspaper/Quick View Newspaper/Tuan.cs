@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -10,7 +12,7 @@ using System.Windows.Forms;
 namespace Quick_View_Newspaper
 {
     class Tuan
-    { 
+    {
         #region Khai báo biến
         //List chứa các label
         public List<Label> lblList = new List<Label>();
@@ -53,8 +55,6 @@ namespace Quick_View_Newspaper
         int PointX = 0;
         //Quyết định tốc độ nhảy của label run, càng cao thì mỗi bước nhảy càng xa (px)
         private int speedLabel;
-        //Giá trị mặc định của nhảy label, càng cao càng xa
-        private int defauljumpLabel = 1;
         //Tên báo
         public int newsIndex = 0;
         //Tên thể loại
@@ -62,7 +62,7 @@ namespace Quick_View_Newspaper
         //Nơi các label được đặt vào
         private Panel pnl;
         //Biến font size
-        private int fontSize = 10;
+        private int fontSize;
         //Biến tên font
         private string fontName = "Tahoma";
         //Biến dùng để xác định tên thể loại ứng với mỗi link RSS đang hiện hành. Thường phải dùng với listCat[indexCat - 1];
@@ -77,6 +77,10 @@ namespace Quick_View_Newspaper
         private string path;
         //Tên của Database
         private string database = "QVN.s3db";
+        //File config ini nhằm lưu trữ các thông số sau lần chạy đầu tiên
+        private string fileIniPath;
+        //Báo gọi lớp ini
+        private Config file;
         #endregion
 
         #region setget
@@ -108,7 +112,7 @@ namespace Quick_View_Newspaper
         /// <param name="pnl"></param>
         /// <param name="newName"></param>
         /// <param name="catName"></param>
-        public void RUN(Panel pnl, Label newName, Label catName, ComboBox cbbNewsName, ComboBox cbbCatName, Label lblNoti,string path)
+        public void RUN(Panel pnl, Label newName, Label catName, ComboBox cbbNewsName, ComboBox cbbCatName, Label lblNoti, string path)
         {
             //Xác định các biến
             this.pnl = pnl;
@@ -118,6 +122,10 @@ namespace Quick_View_Newspaper
             this.cbbCatName = cbbCatName;
             this.lblNoti = lblNoti;
             this.path = path;
+            //Đường dẫn tới ngay nơi file ini
+            fileIniPath = Application.StartupPath + "\\QVN_Config.ini";
+            //Gán giá trị cho lớp gọi ini
+            file = new Config(fileIniPath);
             //Set các giá trị mặc định cho tootip
             SetToolTip();
             //Thời gian di chuyển, số càng cao di chuyển càng chậm
@@ -167,7 +175,6 @@ namespace Quick_View_Newspaper
             lblNoti.Visible = true;
             try
             {
-                speedLabel = defauljumpLabel;
                 //Gọi tờ báo tiếp theo
                 rSSIndex++;
                 //Chạy hết các báo
@@ -233,11 +240,11 @@ namespace Quick_View_Newspaper
             //Làm sao đó từ NewsName này mà tìm ra được cái newsIndex. Sau đó thay đổi lại cái newsIdex và chạy lại run
             for (int i = 0; i < listNews.Count; i++)
             {
-                 if(listNews[i]==cbbNewsName.Text)
-                 {
-                     newsIndex = i;
-                     break;
-                 }
+                if (listNews[i] == cbbNewsName.Text)
+                {
+                    newsIndex = i;
+                    break;
+                }
             }
             RemoveLabel();
             //Nạp tên các thể loại mà tiêu đề báo này có được vào combobox cbbCatName
@@ -294,7 +301,7 @@ namespace Quick_View_Newspaper
         public int GetIndexOfCatId(string RSSLink)
         {
             int IndexOfCatId = 0;
-            db = new SQLiteDatabase(path+database);
+            db = new SQLiteDatabase(path + database);
             DataTable recipe;
             //Chuỗi trả về một bảng có chứa dữ liệu tên các thể loại
             String query = "SELECT CatId  FROM tblRSS WHERE (RSSLink=\"" + RSSLink + "\")";
@@ -650,6 +657,68 @@ namespace Quick_View_Newspaper
                 }
             }
             return result;
+        }
+
+        /// <summary>
+        /// Dựa vào các thông số trong file config mà set mặc định các giá trị Option
+        /// </summary>
+        public void setDeafault()
+        {
+            try
+            {
+                fontSize = Convert.ToInt32(file.ReadValue("Option", "Font size"));
+                speedLabel = Convert.ToInt32(file.ReadValue("Option", "Speed"));
+                //Tìm biến độ mờ của kha thả vào
+                //k.Opacity = Convert.ToInt32(file.ReadValue("Option", "Opacity"));
+            }
+            catch (Exception)
+            {
+                fontSize = 10;
+                speedLabel = 1;
+                //k.Opacity=????
+            }
+        }
+
+        /// <summary>
+        /// Từ giá trị sửa đổi của config, xây dựng lại Option cho những lần chạy sau
+        /// </summary>
+        public void GetOption()
+        {
+            try
+            {
+                fontSize = Convert.ToInt32(file.ReadValue("Option C", "Font size"));
+                speedLabel = Convert.ToInt32(file.ReadValue("Option C", "Speed"));
+                //Tìm biến độ mờ của kha thả vào
+                //k.Opacity = Convert.ToInt32(file.ReadValue("Option", "Opacity"));
+            }
+            catch (Exception)
+            {
+                fontSize = 10;
+                speedLabel = 1;
+                //k.Opacity=????
+            }
+        }
+
+        /// <summary>
+        /// Đặt giá trị vào lại config. Dấu "-" là không đổi
+        /// </summary>
+        /// <param name="fontSize"></param>
+        /// <param name="speed"></param>
+        /// <param name="opacity"></param>
+        public void setValueOptionToConfig(string fontSize, string speed, string opacity)
+        {
+            if (fontSize != "-")
+            {
+                file.WriteValue("Option", "Font Size", fontSize.ToString());
+            }
+            if (speed != "-")
+            {
+                file.WriteValue("Option C", "Speed", speed.ToString());
+            }
+            if (opacity != "-")
+            {
+                file.WriteValue("Option C", "Opacity", opacity.ToString());
+            }
         }
     }
 }
