@@ -51,6 +51,7 @@
     </Compile>
     <Compile Include="HtmlRemoval.cs" />
     <Compile Include="Kha.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RSSInfo.cs" />

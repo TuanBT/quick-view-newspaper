@@ -11,7 +11,7 @@ namespace Quick_View_Newspaper
     public partial class Form1 : Form
     {
 
-        Sinh s=new Sinh();
+        Sinh s = new Sinh();
         Tuan t = new Tuan();
         Kha k = new Kha();
 
@@ -24,11 +24,9 @@ namespace Quick_View_Newspaper
             k.OpacityMouse(this);
             s.LocationForm(this);
             s.SetLocationPanel(pnlOption, pnlMain);
-            s.CALL(notifyIcon1,contextMenuStrip1  ,this);
-            t.RUN(pnlRun,lblTitle,lblCat,cbbNewsName,cbbCatName);
+            s.CALL(notifyIcon1, contextMenuStrip1, this);
+            t.RUN(pnlRun, lblTitle, lblCat, cbbNewsName, cbbCatName,lblNoti);
             this.KeyPreview = true;
-           
-            
         }
 
         #region Kha sửa

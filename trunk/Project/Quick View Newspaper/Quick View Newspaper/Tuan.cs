@@ -6,10 +6,11 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
+
 namespace Quick_View_Newspaper
 {
     class Tuan
-    {
+    { 
         #region Khai báo biến
         //List chứa các label
         public List<Label> lblList = new List<Label>();
@@ -70,6 +71,8 @@ namespace Quick_View_Newspaper
         private Label newName;
         //Label catName của form
         private Label catName;
+        //Label dùng đê thông báo việc nạp dữ liệu
+        private Label lblNoti;
         #endregion
 
         #region setget
@@ -101,7 +104,7 @@ namespace Quick_View_Newspaper
         /// <param name="pnl"></param>
         /// <param name="newName"></param>
         /// <param name="catName"></param>
-        public void RUN(Panel pnl, Label newName, Label catName, ComboBox cbbNewsName, ComboBox cbbCatName)
+        public void RUN(Panel pnl, Label newName, Label catName, ComboBox cbbNewsName, ComboBox cbbCatName, Label lblNoti)
         {
             //Xác định các biến
             this.pnl = pnl;
@@ -109,6 +112,7 @@ namespace Quick_View_Newspaper
             this.newName = newName;
             this.cbbNewsName = cbbNewsName;
             this.cbbCatName = cbbCatName;
+            this.lblNoti = lblNoti;
             //Set các giá trị mặc định cho tootip
             SetToolTip();
             //Thời gian di chuyển, số càng cao di chuyển càng chậm
@@ -154,7 +158,8 @@ namespace Quick_View_Newspaper
         /// </summary>
         public void Run()
         {
-            //Đặt một lệnh thông báo là đang Load ở đây để báo hiệu là chương trình đang nạp dữ liệu
+            //Label thông báo việc chương trình đang nạp dữ liệu
+            lblNoti.Visible = true;
             try
             {
                 speedLabel = defauljumpLabel;
@@ -210,9 +215,11 @@ namespace Quick_View_Newspaper
             }
             catch (Exception e)
             {
+                Log.WriteLog("Có vấn đề trong quá trình nạo RSS");
                 MessageBox.Show(e.ToString());
             }
-            //Đặt một lệnh thông báo ở đây để biết quá trình nạp dữ liệu vào đã xong
+            //Label thông báo biến mất vì đã kết thúc nạp dữ liệu
+            lblNoti.Visible = false;
         }
 
         //Hàm sử lý sự kiện khi thay đổi cbbNewsName. Mỗi lần chọn thì ta có được NewsName
@@ -300,6 +307,7 @@ namespace Quick_View_Newspaper
                 String error = "The following error has occurred:\n\n";
                 error += fail.Message.ToString() + "\n\n";
                 MessageBox.Show(error);
+                Log.WriteLog(error);
                 return IndexOfCatId;
             }
         }
@@ -329,6 +337,7 @@ namespace Quick_View_Newspaper
                 String error = "The following error has occurred:\n\n";
                 error += fail.Message.ToString() + "\n\n";
                 MessageBox.Show(error);
+                Log.WriteLog(error);
             }
         }
 
@@ -356,6 +365,7 @@ namespace Quick_View_Newspaper
                 String error = "The following error has occurred:\n\n";
                 error += fail.Message.ToString() + "\n\n";
                 MessageBox.Show(error);
+                Log.WriteLog(error);
             }
         }
 
@@ -384,6 +394,7 @@ namespace Quick_View_Newspaper
                 String error = "The following error has occurred:\n\n";
                 error += fail.Message.ToString() + "\n\n";
                 MessageBox.Show(error);
+                Log.WriteLog(error);
             }
         }
 
@@ -414,6 +425,7 @@ namespace Quick_View_Newspaper
                 String error = "The following error has occurred:\n\n";
                 error += fail.Message.ToString() + "\n\n";
                 MessageBox.Show(error);
+                Log.WriteLog(error);
             }
         }
 
@@ -612,9 +624,6 @@ namespace Quick_View_Newspaper
         public bool GetLocationListLabel(int startX)
         {
             bool result = true;
-            //Xác định vị trí startY sao cho label nằm giữa được panel
-
-
             if (lblList.Count > 0)
             {
                 MakeLabel(lblList[0], startX);
