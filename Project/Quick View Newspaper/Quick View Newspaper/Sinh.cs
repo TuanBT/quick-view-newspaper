@@ -11,17 +11,23 @@ namespace Quick_View_Newspaper
     class Sinh
     {
         int padding = 1;
-        Timer Clock;
+        Timer tmr;
         public NotifyIcon notifyIcon;
         public ContextMenuStrip contextMenu;
         public Form frm;
+        private Panel pnlOption;
+        private Panel pnlMain;
 
-        public void CALL(NotifyIcon notifyIcon, ContextMenuStrip contextMenu, Form frm)
+        public void CALL(NotifyIcon notifyIcon, ContextMenuStrip contextMenu, Form frm,Panel pnlOption, Panel pnlMain)
         {
             this.frm = frm;
+            this.pnlMain = pnlMain;
+            this.pnlOption = pnlOption;
             this.notifyIcon = notifyIcon;
             this.contextMenu = contextMenu;
             InitializeContextMenu();
+            LocationForm();
+            SetOptionPanel();
             Notify();
         }
 
@@ -29,8 +35,7 @@ namespace Quick_View_Newspaper
         /// <summary>
         /// Set location form
         /// </summary>
-        /// <param name="frm"></param>S
-        public void LocationForm(Form frm)
+        public void LocationForm()
         {
 
             int nTaskBarHeight = Screen.PrimaryScreen.Bounds.Bottom -
@@ -39,36 +44,25 @@ namespace Quick_View_Newspaper
             Rectangle workingArea = Screen.GetWorkingArea(frm);
             frm.Location = new Point(0, workingArea.Bottom - frm.Size.Height + nTaskBarHeight);
             frm.TopMost = true;
-
-
             frm.FormBorderStyle = FormBorderStyle.None;
-            frm.StartPosition = FormStartPosition.Manual;
-            //Full man hinh, voi chieu cao 41
-            frm.Size = new System.Drawing.Size(Screen.PrimaryScreen.WorkingArea.Width, 41);
-
-
-            // frm.Location = new Point(0, 600);
-            //frm.Location = new Point(workingArea.Right-Size.Width,
-            //                        workingArea.Bottom - Size.Height);
-            //frm.DesktopLocation = new Point(0,600);s
+            //Kích thước của from ban đầu
+            frm.Size = new Size(Screen.PrimaryScreen.WorkingArea.Width, pnlMain.Height);
+            pnlMain.Width = frm.Width;
         }
 
         /// <summary>
-        /// Set location
+        /// Set vị trí panel option theo vị trí và độ lớn của panel main
         /// </summary>
-        /// <param name="pnlOption"></param>
-        /// <param name="pnlMain"></param>
-        public void SetLocationPanel(Panel pnlOption, Panel pnlMain)
+        public void SetOptionPanel()
         {
             pnlOption.Location = new Point(pnlMain.Location.X + pnlMain.Width, pnlMain.Location.Y);
+            pnlOption.Size= new Size(pnlMain.Width,pnlMain.Height);
         }
 
         /// <summary>
         /// Điều kiện mở panel
         /// </summary>
-        /// <param name="pnlOption"></param>
-        /// <param name="pnlMain"></param>
-        public void OpenTick(Panel pnlOption, Panel pnlMain)
+        public void OpenTick()
         {
             if (pnlOption.Location.X > pnlMain.Width * 0.11)
             {
@@ -87,9 +81,7 @@ namespace Quick_View_Newspaper
         /// <summary>
         /// Điều kiện đóng panel
         /// </summary>
-        /// <param name="pnlOption"></param>
-        /// <param name="pnlMain"></param>
-        public void CloseTick(Panel pnlOption, Panel pnlMain)
+        public void CloseTick()
         {
             if (pnlOption.Location.X < (pnlMain.Location.X + pnlMain.Width))
             {
@@ -101,14 +93,12 @@ namespace Quick_View_Newspaper
         /// <summary>
         /// Thời gian thực hiện mở panel
         /// </summary>
-        /// <param name="pnlOption"></param>
-        /// <param name="pnlMain"></param>
-        public void Open(Panel pnlOption, Panel pnlMain)
+        public void Open()
         {
-            Clock = new Timer();
-            Clock.Interval = 10;
-            Clock.Start();
-            Clock.Tick += new EventHandler((sender, e) => Open_Tick(sender, e, pnlOption, pnlMain));
+            tmr = new Timer();
+            tmr.Interval = 10;
+            tmr.Start();
+            tmr.Tick += new System.EventHandler(Open_Tick);
         }
         /// <summary>
         /// Event mở panel
@@ -117,28 +107,26 @@ namespace Quick_View_Newspaper
         /// <param name="eArgs"></param>
         /// <param name="pnlOption"></param>
         /// <param name="pnlMain"></param>
-        public void Open_Tick(object sender, EventArgs eArgs, Panel pnlOption, Panel pnlMain)
+        public void Open_Tick(object sender, EventArgs eArgs)
         {
             if (pnlOption.Location.X <= pnlMain.Location.X)
             {
-                Clock.Stop();
+                tmr.Stop();
                 padding = 1;
             }
-            OpenTick(pnlOption, pnlMain);
+            OpenTick();
         }
 
         /// <summary>
         /// Thời gian đóng panel
         /// </summary>
-        /// <param name="pnlOption"></param>
-        /// <param name="pnlMain"></param>
-        public void Close(Panel pnlOption, Panel pnlMain)
+        public void Close()
         {
-            Clock = new Timer();
-            Clock.Stop();
-            Clock.Interval = 10;
-            Clock.Start();
-            Clock.Tick += new EventHandler((sender, e) => Close_Tick(sender, e, pnlOption, pnlMain));
+            tmr = new Timer();
+            tmr.Stop();
+            tmr.Interval = 10;
+            tmr.Start();
+            tmr.Tick += new System.EventHandler(Close_Tick);
 
         }
 
@@ -147,17 +135,15 @@ namespace Quick_View_Newspaper
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="eArgs"></param>
-        /// <param name="pnlOption"></param>
-        /// <param name="pnlMain"></param>
-        public void Close_Tick(object sender, EventArgs eArgs, Panel pnlOption, Panel pnlMain)
+        public void Close_Tick(object sender, EventArgs eArgs)
         {
             if (pnlOption.Location.X > pnlMain.Location.X + pnlMain.Width)
             {
-                Clock.Stop();
+                tmr.Stop();
                 padding = 1;
-                SetLocationPanel(pnlOption, pnlMain);
+                SetOptionPanel();
             }
-            CloseTick(pnlOption, pnlMain);
+            CloseTick();
         }
 
         public void Notify()
@@ -179,7 +165,15 @@ namespace Quick_View_Newspaper
 
             // Associate the event-handling method with  
             // the NotifyIcon object's click event.
-            notifyIcon.Click += new System.EventHandler(NotifyIcon1_Click);
+            notifyIcon.MouseClick += new MouseEventHandler(notifyIcon_MouseClick);
+        }
+
+        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right)
+            {
+                notifyIcon.ContextMenuStrip.Show(Cursor.Position);
+            }
         }
 
 
@@ -187,18 +181,7 @@ namespace Quick_View_Newspaper
 
         // When user clicks the left mouse button display the shortcut menu.   
         // Use the SystemInformation.PrimaryMonitorMaximizedWindowSize property 
-        // to place the menu at the lower corner of the screen. 
-        private void NotifyIcon1_Click(object sender, System.EventArgs e)
-        {
-            System.Drawing.Size windowSize =
-                SystemInformation.PrimaryMonitorMaximizedWindowSize;
-            System.Drawing.Point menuPoint =
-                new System.Drawing.Point(windowSize.Width - 180,
-                windowSize.Height - 5);
-            menuPoint = frm.PointToClient(menuPoint);
-            notifyIcon.ContextMenuStrip.Show(frm, menuPoint);
-
-        }
+        // to place the menu at the lower corner of the screen.
 
         private void item_Click(object sender, System.EventArgs e)
         {
