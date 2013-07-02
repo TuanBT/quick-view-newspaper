@@ -139,8 +139,8 @@ namespace Quick_View_Newspaper
             //Nạp tên các thể loại mà tiêu đề báo này có được vào combobox cbbCatName
             GetCatOfNewsFormDatabase();
             //Khai báo sự kiện khi thay đổi combobox
-            cbbNewsName.SelectionChangeCommitted += new EventHandler(cbbNewsName_SelectedIndexChanged);
-            cbbCatName.SelectionChangeCommitted += new EventHandler(cbbCatName_SelectedIndexChanged);
+            cbbNewsName.SelectedIndexChanged += new EventHandler(cbbNewsName_SelectedIndexChanged);
+            cbbCatName.SelectedIndexChanged += new EventHandler(cbbCatName_SelectedIndexChanged);
             //Set tốc độ mặc định cho việc chạy label
             //speedLabel = 1;
             Run();
@@ -255,6 +255,7 @@ namespace Quick_View_Newspaper
             }
             RemoveLabel();
             //Nạp tên các thể loại mà tiêu đề báo này có được vào combobox cbbCatName
+            rSSIndex = 0;
             GetCatOfNewsFormDatabase();
             Run();
         }
@@ -265,9 +266,9 @@ namespace Quick_View_Newspaper
             //làm sao đó từ catName tìm ra được rSSIndex. Sau đó thay đổi lại cái rSSIndex và chạy lại run
             for (int i = 0; i < listCat.Count; i++)
             {
-                if (listNews[i] == cbbNewsName.Text)
+                if (listCat[i] == cbbCatName.Text)
                 {
-                    rSSIndex = i;
+                    rSSIndex = i-1;
                     break;
                 }
             }
