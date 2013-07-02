@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Xml;
 
 namespace Quick_View_Newspaper
@@ -16,9 +18,19 @@ namespace Quick_View_Newspaper
             List<RSSInfo> list = new List<RSSInfo>();
             try
             {
-                rssReader = new XmlTextReader(feed);
+                //Cách 1
+                //rssReader = new XmlTextReader(feed);
+                //rssDoc = new XmlDocument();
+                //rssDoc.Load(rssReader);
+
+                //Cách 2
+                HttpWebRequest request = HttpWebRequest.Create(feed) as HttpWebRequest;
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                Stream fileStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(fileStream);
+                string content = reader.ReadToEnd();
                 rssDoc = new XmlDocument();
-                rssDoc.Load(rssReader);
+                rssDoc.LoadXml(content);
             }
             catch
             {
