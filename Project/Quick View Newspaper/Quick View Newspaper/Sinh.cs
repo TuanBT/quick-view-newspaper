@@ -10,6 +10,7 @@ namespace Quick_View_Newspaper
 {
     public class Sinh : Form
     {
+        private int flag = 1;
         private int TogMove;
         private int MValX;
         private int MValY;
@@ -62,7 +63,7 @@ namespace Quick_View_Newspaper
         public void SetOptionPanel()
         {
             pnlOption.Location = new Point(pnlMain.Location.X + pnlMain.Width, pnlMain.Location.Y);
-            pnlOption.Size= new Size(pnlMain.Width,pnlMain.Height);
+            pnlOption.Size = new Size(pnlMain.Width, pnlMain.Height);
         }
 
         /// <summary>
@@ -178,7 +179,7 @@ namespace Quick_View_Newspaper
 
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right)
             {
                 notifyIcon.ContextMenuStrip.Show(Cursor.Position);
             }
@@ -204,9 +205,18 @@ namespace Quick_View_Newspaper
 
         public void MoveForm()
         {
+            frm.KeyDown += frm_KeyDown;
             picOptOpen.MouseDown += new MouseEventHandler(picOptOpen_MouseDown);
             picOptOpen.MouseUp += new MouseEventHandler(picOptOpen_MouseUp);
             picOptOpen.MouseMove += new MouseEventHandler(picOptOpen_MouseMove);
+        }
+
+        void frm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control)
+            {
+                flag = 0;
+            }
         }
 
         private void picOptOpen_MouseDown(object sender, MouseEventArgs e)
@@ -225,21 +235,22 @@ namespace Quick_View_Newspaper
             int nTaskBarHeight = Screen.PrimaryScreen.Bounds.Top -
                                             Screen.PrimaryScreen.WorkingArea.Top;
             Rectangle workingArea = Screen.GetWorkingArea(frm);
-           // frm.Location = new Point(0, workingArea.Bottom - frm.Size.Height + nTaskBarHeight);
-            if (TogMove == 1)
+            // frm.Location = new Point(0, workingArea.Bottom - frm.Size.Height + nTaskBarHeight);
+            if (flag == 0)
             {
-                if (MousePosition.Y - MValY < nTaskBarHeight)
+                if (TogMove == 1)
                 {
-                    frm.Location = new Point(0, workingArea.Bottom - frm.Size.Height + nTaskBarHeight);
+                    if (MousePosition.Y - MValY < nTaskBarHeight)
+                    {
+                        frm.Location = new Point(0, workingArea.Bottom - frm.Size.Height + nTaskBarHeight);
+                    }
+                    else
+                    {
+                        frm.SetDesktopLocation(0, MousePosition.Y - MValY);
+                    }
+
                 }
-                else
-                {
-                    frm.SetDesktopLocation(0, MousePosition.Y - MValY);
-                }
-                
             }
         }
-
-
     }
 }
