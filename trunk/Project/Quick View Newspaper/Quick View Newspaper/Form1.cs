@@ -27,8 +27,6 @@ namespace Quick_View_Newspaper
             k.OpacityMouse(this);
             s.CALL(notifyIcon1, contextMenuStrip1, this, pnlOption, pnlMain,picOptOpen, pnlRun, lblTitle, lblCat, cbbCatName,cbbNewsName);
             t.RUN(pnlRun, lblTitle, lblCat, cbbNewsName, cbbCatName, lblNoti,args);
-            Help h = new Help();
-            //h.Show();
             this.KeyPreview = true;
         }
 
@@ -53,41 +51,38 @@ namespace Quick_View_Newspaper
         #region các nút mà Tuân sử dụng
         private void lblTitle_MouseClick(object sender, MouseEventArgs e)
         {
-            t.NextNews_Click();
-            nudSpeed.Value = 1;
+            if (e.Button == MouseButtons.Left)
+            {
+                t.NextNews_Click();
+                nudSpeed.Value = 1;
+            }
+            
         }
 
         private void lblCat_MouseClick(object sender, MouseEventArgs e)
         {
-            t.NextRSS_Click();
-            nudSpeed.Value = 1;
+            if (e.Button == MouseButtons.Left)
+            {
+                t.NextRSS_Click();
+                nudSpeed.Value = 1;
+            }
         }
 
-        private void lblTitle_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void btnReset_Click(object sender, EventArgs e)
         {
-            lblTitle.Visible = false;
-            cbbNewsName.Visible = true;
+            t.setDeafault();
         }
 
-        private void lblCat_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            lblCat.Visible = false;
-            cbbCatName.Visible = true;
-        }
-        private void cbbNewsName_SelectionChangeCommitted(object sender, EventArgs e)
+        private void cbbNewsName_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbbNewsName.Visible = false;
             lblTitle.Visible = true;
         }
 
-        private void cbbCatName_SelectionChangeCommitted(object sender, EventArgs e)
+        private void cbbCatName_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbbCatName.Visible = false;
             lblCat.Visible = true;
-        }
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            t.setDeafault();
         }
         #endregion
 
@@ -102,6 +97,9 @@ namespace Quick_View_Newspaper
             s.Close();
         }
         #endregion
+
+
+
 
 
 
