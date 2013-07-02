@@ -24,7 +24,7 @@ namespace Quick_View_Newspaper
         private Panel pnlMain;
         private PictureBox picOptOpen;
 
-        public void CALL(NotifyIcon notifyIcon, ContextMenuStrip contextMenu, Form frm, Panel pnlOption, Panel pnlMain, PictureBox picOptOpen, Label lbl)
+        public void CALL(NotifyIcon notifyIcon, ContextMenuStrip contextMenu, Form frm, Panel pnlOption, Panel pnlMain, PictureBox picOptOpen)
         {
             this.frm = frm;
             this.pnlMain = pnlMain;
