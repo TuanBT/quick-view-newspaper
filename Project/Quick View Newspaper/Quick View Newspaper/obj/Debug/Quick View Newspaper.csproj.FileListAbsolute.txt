@@ -32,3 +32,15 @@ E:\Project\CSharp\Quick View Newspaper\Project\Quick View Newspaper\Quick View N
 E:\Project\CSharp\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick_View_Newspaper.Properties.Resources.resources
 E:\Project\CSharp\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick View Newspaper.csproj.GenerateResource.Cache
 E:\Project\CSharp\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick_View_Newspaper.WebBrowserForm.resources
+E:\Project\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick View Newspaper.exe
+E:\Project\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick View Newspaper.pdb
+E:\Project\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\bin\Debug\Quick View Newspaper.exe
+E:\Project\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\bin\Debug\Quick View Newspaper.pdb
+E:\Project\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\bin\Debug\System.Data.SQLite.dll
+E:\Project\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick View Newspaper.csprojResolveAssemblyReference.cache
+E:\Project\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick_View_Newspaper.AboutForm.resources
+E:\Project\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick_View_Newspaper.Form1.resources
+E:\Project\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick_View_Newspaper.Properties.Resources.resources
+E:\Project\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick_View_Newspaper.WebBrowserForm.resources
+E:\Project\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick View Newspaper.csproj.GenerateResource.Cache
+E:\Project\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick_View_Newspaper.Help.resources
