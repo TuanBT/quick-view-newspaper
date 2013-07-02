@@ -106,7 +106,7 @@
             // picOptOpen
             // 
             this.picOptOpen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.picOptOpen.Image = global::Quick_View_Newspaper.Properties.Resources.OptionOpen;
+            this.picOptOpen.Image = ((System.Drawing.Image)(resources.GetObject("picOptOpen.Image")));
             this.picOptOpen.Location = new System.Drawing.Point(1080, 0);
             this.picOptOpen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picOptOpen.Name = "picOptOpen";
@@ -267,7 +267,7 @@
             // 
             this.picOptClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.picOptClose.Image = global::Quick_View_Newspaper.Properties.Resources.OptionClose;
+            this.picOptClose.Image = ((System.Drawing.Image)(resources.GetObject("picOptClose.Image")));
             this.picOptClose.Location = new System.Drawing.Point(0, 0);
             this.picOptClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picOptClose.Name = "picOptClose";
