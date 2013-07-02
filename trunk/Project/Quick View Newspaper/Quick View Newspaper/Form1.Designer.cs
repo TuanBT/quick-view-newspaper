@@ -72,7 +72,7 @@
             this.pnlMain.Controls.Add(this.lblCat);
             this.pnlMain.Controls.Add(this.lblTitle);
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
-            this.pnlMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(2);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(856, 25);
             this.pnlMain.TabIndex = 0;
@@ -83,7 +83,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.cbbNewsName.FormattingEnabled = true;
             this.cbbNewsName.Location = new System.Drawing.Point(0, 0);
-            this.cbbNewsName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbbNewsName.Margin = new System.Windows.Forms.Padding(2);
             this.cbbNewsName.Name = "cbbNewsName";
             this.cbbNewsName.Size = new System.Drawing.Size(135, 21);
             this.cbbNewsName.TabIndex = 2;
@@ -96,7 +96,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.cbbCatName.FormattingEnabled = true;
             this.cbbCatName.Location = new System.Drawing.Point(134, 0);
-            this.cbbCatName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbbCatName.Margin = new System.Windows.Forms.Padding(2);
             this.cbbCatName.Name = "cbbCatName";
             this.cbbCatName.Size = new System.Drawing.Size(95, 21);
             this.cbbCatName.TabIndex = 3;
@@ -108,7 +108,7 @@
             this.picOptOpen.Dock = System.Windows.Forms.DockStyle.Right;
             this.picOptOpen.Image = ((System.Drawing.Image)(resources.GetObject("picOptOpen.Image")));
             this.picOptOpen.Location = new System.Drawing.Point(810, 0);
-            this.picOptOpen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picOptOpen.Margin = new System.Windows.Forms.Padding(2);
             this.picOptOpen.Name = "picOptOpen";
             this.picOptOpen.Size = new System.Drawing.Size(44, 23);
             this.picOptOpen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -121,7 +121,7 @@
             this.pnlRun.Controls.Add(this.lblNoti);
             this.pnlRun.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlRun.Location = new System.Drawing.Point(228, 0);
-            this.pnlRun.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlRun.Margin = new System.Windows.Forms.Padding(2);
             this.pnlRun.Name = "pnlRun";
             this.pnlRun.Size = new System.Drawing.Size(626, 23);
             this.pnlRun.TabIndex = 3;
@@ -188,7 +188,7 @@
             this.pnlOption.Controls.Add(this.label1);
             this.pnlOption.Controls.Add(this.picOptClose);
             this.pnlOption.Location = new System.Drawing.Point(0, 28);
-            this.pnlOption.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlOption.Margin = new System.Windows.Forms.Padding(2);
             this.pnlOption.Name = "pnlOption";
             this.pnlOption.Size = new System.Drawing.Size(856, 25);
             this.pnlOption.TabIndex = 1;
@@ -196,7 +196,7 @@
             // btnReset
             // 
             this.btnReset.Location = new System.Drawing.Point(400, 0);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(2);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(56, 24);
             this.btnReset.TabIndex = 14;
@@ -207,7 +207,7 @@
             // nudOpacity
             // 
             this.nudOpacity.Location = new System.Drawing.Point(342, 4);
-            this.nudOpacity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nudOpacity.Margin = new System.Windows.Forms.Padding(2);
             this.nudOpacity.Maximum = new decimal(new int[] {
             2,
             0,
@@ -226,18 +226,55 @@
             // nudSpeed
             // 
             this.nudSpeed.Location = new System.Drawing.Point(212, 2);
-            this.nudSpeed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nudSpeed.Margin = new System.Windows.Forms.Padding(2);
+            this.nudSpeed.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.nudSpeed.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudSpeed.Name = "nudSpeed";
             this.nudSpeed.Size = new System.Drawing.Size(38, 20);
             this.nudSpeed.TabIndex = 12;
+            this.nudSpeed.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudSpeed.ValueChanged += new System.EventHandler(this.nudSpeed_ValueChanged);
             // 
             // nudSize
             // 
+            this.nudSize.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.nudSize.Location = new System.Drawing.Point(110, 3);
-            this.nudSize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nudSize.Margin = new System.Windows.Forms.Padding(2);
+            this.nudSize.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.nudSize.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.nudSize.Name = "nudSize";
             this.nudSize.Size = new System.Drawing.Size(38, 20);
             this.nudSize.TabIndex = 11;
+            this.nudSize.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudSize.ValueChanged += new System.EventHandler(this.nudSize_ValueChanged);
             // 
             // label3
             // 
@@ -275,7 +312,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.picOptClose.Image = ((System.Drawing.Image)(resources.GetObject("picOptClose.Image")));
             this.picOptClose.Location = new System.Drawing.Point(0, 0);
-            this.picOptClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picOptClose.Margin = new System.Windows.Forms.Padding(2);
             this.picOptClose.Name = "picOptClose";
             this.picOptClose.Size = new System.Drawing.Size(46, 23);
             this.picOptClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -303,7 +340,7 @@
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
