@@ -7,7 +7,7 @@ namespace Quick_View_Newspaper
     class Kha
     {
         int flag = 1;
-        double opacity = 0.6;
+        double opacity = 0.8;
         Timer tmr;
         /// <summary>
         /// Thay đổi độ mờ của FORM theo 5 cấp
@@ -157,24 +157,25 @@ namespace Quick_View_Newspaper
             //Kiểm tra giá trị của NumeircUpDown 
             switch (Size)
             {
-                case 5:
-                    pnlMain.Size = new Size((fm.Width - 54), 32);
-                    Size = 7;
-                    break;
                 case 10:
-                    pnlMain.Size = new Size((fm.Width - 54), 35);
+                    pnlMain.Size = new Size((fm.Width), 15);
+                    fm.Size = new Size((fm.Width), 15);
                     break;
                 case 15:
-                    pnlMain.Size = new Size((fm.Width - 54), 40);
+                    pnlMain.Size = new Size((fm.Width), 20);
+                    fm.Size = new Size((fm.Width), 20);
                     break;
                 case 20:
-                    pnlMain.Size = new Size((fm.Width - 54), 45);
+                    pnlMain.Size = new Size((fm.Width), 25);
+                    fm.Size = new Size((fm.Width), 25);
                     break;
                 case 25:
-                    pnlMain.Size = new Size((fm.Width - 54), 50);
+                    pnlMain.Size = new Size((fm.Width), 30);
+                    fm.Size = new Size((fm.Width), 30);
                     break;
                 case 30:
-                    pnlMain.Size = new Size((fm.Width - 54), 55);
+                    pnlMain.Size = new Size((fm.Width), 35);
+                    fm.Size = new Size((fm.Width), 35);
                     break;
             }
             return Size;
