@@ -84,12 +84,13 @@ namespace RunQickViewNewspaper.Properties {
         ///   Looks up a localized string similar to [Option]
         ///Font size=10
         ///Speed = 1
-        ///Opacity=60
+        ///Opacity=5
         ///
         ///[Option C]
         ///Font size=10
         ///Speed=1
-        ///Opacity=60.
+        ///Opacity=5
+        ///.
         /// </summary>
         internal static string QVN_Config {
             get {
