@@ -15,6 +15,10 @@ namespace Quick_View_Newspaper
         private int TogMove = 0;
         private int MValX;
         private int MValY;
+        private Label lblTitle;
+        private Label lblCat;
+        private ComboBox cbbCatName;
+        private ComboBox cbbNewsName;
         int padding = 1;
         Timer tmr;
         public NotifyIcon notifyIcon;
@@ -34,7 +38,8 @@ namespace Quick_View_Newspaper
         /// <param name="pnlOption"></param>
         /// <param name="pnlMain"></param>
         /// <param name="picOptOpen"></param>
-        public void CALL(NotifyIcon notifyIcon, ContextMenuStrip contextMenu, Form frm, Panel pnlOption, Panel pnlMain, PictureBox picOptOpen, Panel pnlRun)
+        public void CALL(NotifyIcon notifyIcon, ContextMenuStrip contextMenu, Form frm, Panel pnlOption, Panel pnlMain, PictureBox picOptOpen,
+            Panel pnlRun, Label lblTitle, Label lblCat, ComboBox cbbCatName, ComboBox cbbNewsName)
         {
             this.frm = frm;
             this.pnlMain = pnlMain;
@@ -43,6 +48,10 @@ namespace Quick_View_Newspaper
             this.contextMenu = contextMenu;
             this.picOptOpen = picOptOpen;
             this.pnlRun = pnlRun;
+            this.lblTitle = lblTitle;
+            this.lblCat = lblCat;
+            this.cbbCatName = cbbCatName;
+            this.cbbNewsName = cbbNewsName;
             InitializeContextMenu();
             LocationForm();
             SetOptionPanel();
@@ -260,6 +269,8 @@ namespace Quick_View_Newspaper
             pnlRun.MouseDown += new MouseEventHandler(pnlRun_MouseDown);
             pnlRun.MouseUp += new MouseEventHandler(pnlRun_MouseUp);
             pnlRun.MouseMove += new MouseEventHandler(pnlRun_MouseMove);
+            lblTitle.MouseClick += new MouseEventHandler(lblTitle_MouseClick);
+            lblCat.MouseClick += new MouseEventHandler(lblCat_MouseClick);
         }
 
         //Sự kiện ấn phím Ctrl
@@ -348,5 +359,41 @@ namespace Quick_View_Newspaper
                 }
             }
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // Sinh
+            // 
+            this.ClientSize = new System.Drawing.Size(404, 261);
+            this.Name = "Sinh";
+            this.ResumeLayout(false);
+
+        }
+
+        private void lblTitle_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(flag == 0)
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    cbbNewsName.Visible = true;
+                }
+            }
+        }
+
+        private void lblCat_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (flag == 0)
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    cbbCatName.Visible = true;
+                }
+            }
+        }
+
+
     }
 }
