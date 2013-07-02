@@ -177,7 +177,7 @@ namespace Quick_View_Newspaper
             lblNoti.Visible = true;
             try
             {
-                //Gọi tờ báo tiếp theo
+                //Gọi catogory tiếp theo, tức là RSS tiếp theo trong list
                 rSSIndex++;
                 //Set lại giá trị tốc độ khi đã chạy xong báo
                 speedLabel = Convert.ToInt32(file.ReadValue("Option C", "Speed"));
@@ -191,6 +191,10 @@ namespace Quick_View_Newspaper
                     {
                         //Nạp dữ liệu vào các list theo thể loại (1 link RSS)
                         GetDataFormRSS(listLinkRSS[rSSIndex]);
+                        if(listTitle.Count==1 && listTitle[0]=="")
+                        {
+                            Run();
+                        }
                         //Nạp title vào cho các label
                         GetListToLabel(listTitle);
                         //Xác định tọa độ X của panel đang được set
@@ -199,15 +203,12 @@ namespace Quick_View_Newspaper
                         PointX = EndLayoutX;
                         //Khởi động lại timer chạy label
                         tmrRunLabelOnPanel.Enabled = true;
-                        //Trả tên lên label để test
+                        //Trả tên lên label
                         newName.Text = listNews[newsIndex];
                         //Trả tên thể loại bằng việc sử dụng hàm lấy index từ chuỗi link RSS, qua đó tìm ra chỉ số
                         indexCat = GetIndexOfCatId(listLinkRSS[rSSIndex]);
                         //Vì list lưu từ 0 nên -1 để khớp index so với database
                         catName.Text = listCat[indexCat - 1];
-                        //Nạp dữ liệu hiện thời từ các label vào combobox
-                        cbbNewsName.Text = newName.Text;
-                        cbbCatName.Text = catName.Text;
                     }
                     //Nếu duyệt RSS hết list thì set lại ban đầu, để tiếp tục chuyển RSS khác, hoặc chuyển báo khác thì nó set lại 0
                     else
@@ -562,7 +563,7 @@ namespace Quick_View_Newspaper
             //Với mỗi label được gọi, ta có thể làm gì tùy thích
             int id = (int)((Label)sender).Tag;
             lblList[id].BackColor = SystemColors.Control;
-            lblList[id].ForeColor = Color.Gray;
+            lblList[id].ForeColor = Color.DarkSlateGray;
             tmrRunLabelOnPanel.Enabled = true;
         }
 
@@ -717,15 +718,15 @@ namespace Quick_View_Newspaper
         {
             if (fontSize != "-")
             {
-                file.WriteValue("Option", "Font Size", fontSize.ToString());
+                file.WriteValue("Option C", "Font Size", fontSize);
             }
             if (speed != "-")
             {
-                file.WriteValue("Option C", "Speed", speed.ToString());
+                file.WriteValue("Option C", "Speed", speed);
             }
             if (opacity != "-")
             {
-                file.WriteValue("Option C", "Opacity", opacity.ToString());
+                file.WriteValue("Option C", "Opacity", opacity);
             }
         }
     }

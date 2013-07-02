@@ -34,17 +34,20 @@ namespace Quick_View_Newspaper
         private void nudOpacity_ValueChanged(object sender, EventArgs e)
         {
             k.ReOpacity(this, Convert.ToInt32(nudOpacity.Value.ToString()));
+            //t.setValueOptionToConfig("-", "-", Convert.ToInt32(nudOpacity.Value.ToString()).ToString());
         }
 
         private void nudSize_ValueChanged(object sender, EventArgs e)
         {
             t.FontSize = k.ReSize(pnlMain, Convert.ToInt32(nudSize.Value.ToString()), this);
             s.SetOptionPanel();
+            t.setValueOptionToConfig(t.FontSize.ToString(), "-", "-");
         }
 
         private void nudSpeed_ValueChanged(object sender, EventArgs e)
         {
             t.SpeedLabel = Convert.ToInt32(nudSpeed.Value.ToString());
+            t.setValueOptionToConfig("-", t.SpeedLabel.ToString(),"-");
         }
         #endregion
 

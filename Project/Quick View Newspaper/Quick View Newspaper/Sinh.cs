@@ -368,6 +368,8 @@ namespace Quick_View_Newspaper
             // 
             this.ClientSize = new System.Drawing.Size(404, 261);
             this.Name = "Sinh";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
 
         }
