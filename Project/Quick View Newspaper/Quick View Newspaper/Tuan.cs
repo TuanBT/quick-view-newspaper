@@ -141,6 +141,8 @@ namespace Quick_View_Newspaper
             //Khai báo sự kiện khi thay đổi combobox
             cbbNewsName.SelectionChangeCommitted += new EventHandler(cbbNewsName_SelectedIndexChanged);
             cbbCatName.SelectionChangeCommitted += new EventHandler(cbbCatName_SelectedIndexChanged);
+            //Set tốc độ mặc định cho việc chạy label
+            //speedLabel = 1;
             Run();
         }
 
@@ -177,6 +179,8 @@ namespace Quick_View_Newspaper
             {
                 //Gọi tờ báo tiếp theo
                 rSSIndex++;
+                //Set lại giá trị tốc độ khi đã chạy xong báo
+                speedLabel = Convert.ToInt32(file.ReadValue("Option C", "Speed"));
                 //Chạy hết các báo
                 if (newsIndex <= listNews.Count - 1)
                 {
@@ -227,11 +231,14 @@ namespace Quick_View_Newspaper
             }
             catch (Exception e)
             {
-                Log.WriteLog("Có vấn đề trong quá trình nạo RSS");
+                Log.WriteLog("Có vấn đề trong quá trình nạp RSS");
                 MessageBox.Show(e.ToString());
             }
-            //Label thông báo biến mất vì đã kết thúc nạp dữ liệu
-            lblNoti.Visible = false;
+            finally
+            {
+                //Label thông báo biến mất vì đã kết thúc nạp dữ liệu
+                lblNoti.Visible = false;
+            }
         }
 
         //Hàm sử lý sự kiện khi thay đổi cbbNewsName. Mỗi lần chọn thì ta có được NewsName
