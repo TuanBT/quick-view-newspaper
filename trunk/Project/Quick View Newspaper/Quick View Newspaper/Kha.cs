@@ -128,20 +128,20 @@ namespace Quick_View_Newspaper
                     fm.Size = new Size((fm.Width), 25);
                     break;
                 case 15:
-                    pnlMain.Size = new Size((fm.Width), 30);
-                    fm.Size = new Size((fm.Width), 30);
-                    break;
-                case 20:
-                    pnlMain.Size = new Size((fm.Width), 35);
-                    fm.Size = new Size((fm.Width), 35);
-                    break;
-                case 25:
                     pnlMain.Size = new Size((fm.Width), 40);
                     fm.Size = new Size((fm.Width), 40);
                     break;
+                case 20:
+                    pnlMain.Size = new Size((fm.Width), 50);
+                    fm.Size = new Size((fm.Width), 50);
+                    break;
+                case 25:
+                    pnlMain.Size = new Size((fm.Width), 60);
+                    fm.Size = new Size((fm.Width), 60);
+                    break;
                 case 30:
-                    pnlMain.Size = new Size((fm.Width), 45);
-                    fm.Size = new Size((fm.Width), 45);
+                    pnlMain.Size = new Size((fm.Width), 70);
+                    fm.Size = new Size((fm.Width), 70);
                     break;
             }
             return Size;
