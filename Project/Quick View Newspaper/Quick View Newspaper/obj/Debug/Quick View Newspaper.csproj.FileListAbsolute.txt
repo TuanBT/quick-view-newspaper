@@ -48,3 +48,6 @@ D:\Project\CSharp\Quick View Newspaper\Project\Quick View Newspaper\Quick View N
 D:\Project\CSharp\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick_View_Newspaper.Help.resources
 D:\Project\CSharp\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick_View_Newspaper.WebBrowserForm.resources
 D:\Project\CSharp\Quick View Newspaper\Project\Quick View Newspaper\Quick View Newspaper\bin\Debug\System.Data.SQLite.dll
+G:\Project\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick_View_Newspaper.AboutForm.resources
+G:\Project\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick_View_Newspaper.Help.resources
+G:\Project\Project\Quick View Newspaper\Quick View Newspaper\obj\Debug\Quick_View_Newspaper.WebBrowserForm.resources
