@@ -118,13 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Quick_View_Newspaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Quick View Newspaper.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="QVN" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\QVN.s3db;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="System_Data_SQLite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\System.Data.SQLite.dll;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="QVN_Config" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\QVN_Config.ini;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Quick_View_Newspaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Quick View Newspaper.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

@@ -81,6 +81,23 @@ namespace RunQickViewNewspaper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [Option]
+        ///Font size=10
+        ///Speed = 1
+        ///Opacity=60
+        ///
+        ///[Option C]
+        ///Font size=10
+        ///Speed=1
+        ///Opacity=60.
+        /// </summary>
+        internal static string QVN_Config {
+            get {
+                return ResourceManager.GetString("QVN_Config", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] System_Data_SQLite {
