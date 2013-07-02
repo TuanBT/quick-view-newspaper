@@ -47,7 +47,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.picOptClose = new System.Windows.Forms.PictureBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pnlMain.SuspendLayout();
@@ -330,10 +329,11 @@
             this.ClientSize = new System.Drawing.Size(1141, 31);
             this.Controls.Add(this.pnlOption);
             this.Controls.Add(this.pnlMain);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.TopMost = true;
@@ -362,7 +362,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox picOptClose;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblCat;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel pnlRun;

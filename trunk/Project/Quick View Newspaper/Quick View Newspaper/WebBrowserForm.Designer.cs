@@ -124,7 +124,7 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(948, 21);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(860, 21);
             this.toolStripStatusLabel1.Spring = true;
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -143,6 +143,7 @@
             this.Controls.Add(this.wbs);
             this.Controls.Add(this.adrBar);
             this.Controls.Add(this.statusStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WebBrowserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.adrBar.ResumeLayout(false);

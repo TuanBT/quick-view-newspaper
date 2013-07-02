@@ -18,22 +18,25 @@ namespace Quick_View_Newspaper
             List<RSSInfo> list = new List<RSSInfo>();
             try
             {
+                //System.Windows.Forms.MessageBox.Show(feed + " được gọi");
                 //Cách 1
-                //rssReader = new XmlTextReader(feed);
-                //rssDoc = new XmlDocument();
-                //rssDoc.Load(rssReader);
+                rssReader = new XmlTextReader(feed);
+                rssDoc = new XmlDocument();
+                rssDoc.Load(rssReader);
 
                 //Cách 2
-                HttpWebRequest request = HttpWebRequest.Create(feed) as HttpWebRequest;
-                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
-                Stream fileStream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(fileStream);
-                string content = reader.ReadToEnd();
-                rssDoc = new XmlDocument();
-                rssDoc.LoadXml(content);
+                //HttpWebRequest request = HttpWebRequest.Create(feed) as HttpWebRequest;
+                //request.Timeout = 3000;
+                //HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                //Stream fileStream = response.GetResponseStream();
+                //StreamReader reader = new StreamReader(fileStream);
+                //string content = reader.ReadToEnd();
+                //rssDoc = new XmlDocument();
+                //rssDoc.LoadXml(content);
             }
             catch
             {
+                //System.Windows.Forms.MessageBox.Show(feed + " có vấn đề!");
                 Log.WriteLog(feed + " có vấn đề!");
                 return null;
             }
