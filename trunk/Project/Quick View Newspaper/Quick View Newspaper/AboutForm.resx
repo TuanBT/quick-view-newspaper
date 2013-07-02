@@ -117,4 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label3.Text" xml:space="preserve">
+    <value>    Đúng như tên gọi của nó, Quick view newspaper là phần mềm 
+giúp bạn xem tin túc một cách nhanh chóng.
+    Phần mềm cung cấp nhiều đầu báo nổi tiếng như Zing news, Vietnamnet, DânTrí, 2Sao ...
+    Điều đặc biệt phần mềm này cực kì nhỏ gọn và nếu bạn là người mới sử dụng lần đầu. Yên tâm đi phần mềm này cực kì dễ sử dụng.
+    Hãy thử nha bạn.
+    Cảm ơn bạn vì đã sử dụng phần mềm của chúng tôi.
+ 
+ </value>
+  </data>
 </root>

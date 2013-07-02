@@ -8,8 +8,11 @@ using System.Windows.Forms;
 
 namespace Quick_View_Newspaper
 {
-    class Sinh
+    public class Sinh : Form
     {
+        private int TogMove;
+        private int MValX;
+        private int MValY;
         int padding = 1;
         Timer tmr;
         public NotifyIcon notifyIcon;
@@ -17,18 +20,21 @@ namespace Quick_View_Newspaper
         public Form frm;
         private Panel pnlOption;
         private Panel pnlMain;
+        private PictureBox picOptOpen;
 
-        public void CALL(NotifyIcon notifyIcon, ContextMenuStrip contextMenu, Form frm,Panel pnlOption, Panel pnlMain)
+        public void CALL(NotifyIcon notifyIcon, ContextMenuStrip contextMenu, Form frm, Panel pnlOption, Panel pnlMain, PictureBox picOptOpen)
         {
             this.frm = frm;
             this.pnlMain = pnlMain;
             this.pnlOption = pnlOption;
             this.notifyIcon = notifyIcon;
             this.contextMenu = contextMenu;
+            this.picOptOpen = picOptOpen;
             InitializeContextMenu();
             LocationForm();
             SetOptionPanel();
             Notify();
+            MoveForm();
         }
 
 
@@ -157,10 +163,12 @@ namespace Quick_View_Newspaper
             //    new MenuItem("Sign In"),
             //    new MenuItem("Get Help"), 
             //    new MenuItem("Open")};
+            ToolStripItem item2 = contextMenu.Items.Add("About ");
             ToolStripItem item = contextMenu.Items.Add("Exit ");
             notifyIcon.ContextMenuStrip = contextMenu;
             //ContextMenu clickMenu = new ContextMenu(menuList);
             //notifyIcon.ContextMenu = clickMenu;
+            item2.Click += new EventHandler(item2_Click);
             item.Click += new EventHandler(item_Click);
 
             // Associate the event-handling method with  
@@ -186,6 +194,50 @@ namespace Quick_View_Newspaper
         private void item_Click(object sender, System.EventArgs e)
         {
             frm.Close();
+        }
+
+        private void item2_Click(object sender, System.EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.Show();
+        }
+
+        public void MoveForm()
+        {
+            picOptOpen.MouseDown += new MouseEventHandler(picOptOpen_MouseDown);
+            picOptOpen.MouseUp += new MouseEventHandler(picOptOpen_MouseUp);
+            picOptOpen.MouseMove += new MouseEventHandler(picOptOpen_MouseMove);
+        }
+
+        private void picOptOpen_MouseDown(object sender, MouseEventArgs e)
+        {
+            TogMove = 1;
+            MValX = 0;
+            MValY = e.Y;
+        }
+
+        private void picOptOpen_MouseUp(object sender, MouseEventArgs e)
+        {
+            TogMove = 0;
+        }
+        private void picOptOpen_MouseMove(object sender, MouseEventArgs e)
+        {
+            int nTaskBarHeight = Screen.PrimaryScreen.Bounds.Top -
+                                            Screen.PrimaryScreen.WorkingArea.Top;
+            Rectangle workingArea = Screen.GetWorkingArea(frm);
+           // frm.Location = new Point(0, workingArea.Bottom - frm.Size.Height + nTaskBarHeight);
+            if (TogMove == 1)
+            {
+                if (MousePosition.Y - MValY < nTaskBarHeight)
+                {
+                    frm.Location = new Point(0, workingArea.Bottom - frm.Size.Height + nTaskBarHeight);
+                }
+                else
+                {
+                    frm.SetDesktopLocation(0, MousePosition.Y - MValY);
+                }
+                
+            }
         }
 
 
