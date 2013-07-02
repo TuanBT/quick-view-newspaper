@@ -26,7 +26,9 @@ namespace Quick_View_Newspaper
             t.setDeafault();
             k.OpacityMouse(this);
             s.CALL(notifyIcon1, contextMenuStrip1, this, pnlOption, pnlMain,picOptOpen);
-            t.RUN(pnlRun, lblTitle, lblCat, cbbNewsName, cbbCatName, lblNoti,args);
+            //t.RUN(pnlRun, lblTitle, lblCat, cbbNewsName, cbbCatName, lblNoti,args);
+            Help h = new Help();
+            h.Show();
             this.KeyPreview = true;
         }
 
