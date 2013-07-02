@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>QVN_Icon.ico</ApplicationIcon>
+    <ApplicationIcon>QVN.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -135,7 +135,7 @@
     <None Include="Resources\OptionOpen.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="QVN_Icon.ico" />
+    <Content Include="QVN.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
