@@ -30,22 +30,23 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnPre = new System.Windows.Forms.Button();
+            this.txtHelp = new System.Windows.Forms.TextBox();
             this.btnNext = new System.Windows.Forms.Button();
             this.picHelp = new System.Windows.Forms.PictureBox();
-            this.txtHelp = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtContent = new System.Windows.Forms.TextBox();
+            this.btnPre = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnSend = new System.Windows.Forms.Button();
+            this.txtContent = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picHelp)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -60,6 +61,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnCancel);
             this.tabPage1.Controls.Add(this.txtHelp);
             this.tabPage1.Controls.Add(this.btnNext);
             this.tabPage1.Controls.Add(this.picHelp);
@@ -74,46 +76,20 @@
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // tabPage2
+            // txtHelp
             // 
-            this.tabPage2.Controls.Add(this.btnSend);
-            this.tabPage2.Controls.Add(this.txtContent);
-            this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Controls.Add(this.txtName);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(585, 726);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Contact and Report Error";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(155, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(295, 36);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Hướng dẫn sử dụng";
-            // 
-            // btnPre
-            // 
-            this.btnPre.Enabled = false;
-            this.btnPre.Location = new System.Drawing.Point(6, 306);
-            this.btnPre.Name = "btnPre";
-            this.btnPre.Size = new System.Drawing.Size(75, 23);
-            this.btnPre.TabIndex = 9;
-            this.btnPre.Text = "Quay lại";
-            this.btnPre.UseVisualStyleBackColor = true;
-            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
+            this.txtHelp.Enabled = false;
+            this.txtHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHelp.Location = new System.Drawing.Point(10, 252);
+            this.txtHelp.Multiline = true;
+            this.txtHelp.Name = "txtHelp";
+            this.txtHelp.Size = new System.Drawing.Size(564, 48);
+            this.txtHelp.TabIndex = 12;
+            this.txtHelp.Text = "Bước 1: Khởi động chương trình và chờ nạp dữ liệu";
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(499, 306);
+            this.btnNext.Location = new System.Drawing.Point(273, 306);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
             this.btnNext.TabIndex = 11;
@@ -131,16 +107,85 @@
             this.picHelp.TabIndex = 10;
             this.picHelp.TabStop = false;
             // 
-            // txtHelp
+            // btnPre
             // 
-            this.txtHelp.Enabled = false;
-            this.txtHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHelp.Location = new System.Drawing.Point(10, 252);
-            this.txtHelp.Multiline = true;
-            this.txtHelp.Name = "txtHelp";
-            this.txtHelp.Size = new System.Drawing.Size(564, 48);
-            this.txtHelp.TabIndex = 12;
-            this.txtHelp.Text = "Bước 1: Khởi động chương trình và chờ nạp dữ liệu";
+            this.btnPre.Enabled = false;
+            this.btnPre.Location = new System.Drawing.Point(192, 306);
+            this.btnPre.Name = "btnPre";
+            this.btnPre.Size = new System.Drawing.Size(75, 23);
+            this.btnPre.TabIndex = 9;
+            this.btnPre.Text = "Quay lại";
+            this.btnPre.UseVisualStyleBackColor = true;
+            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(155, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(295, 36);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Hướng dẫn sử dụng";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.btnSend);
+            this.tabPage2.Controls.Add(this.txtContent);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Controls.Add(this.txtName);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(585, 726);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Contact and Report Error";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnSend
+            // 
+            this.btnSend.Location = new System.Drawing.Point(498, 277);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(75, 23);
+            this.btnSend.TabIndex = 5;
+            this.btnSend.Text = "Gửi";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            // 
+            // txtContent
+            // 
+            this.txtContent.Location = new System.Drawing.Point(13, 130);
+            this.txtContent.Multiline = true;
+            this.txtContent.Name = "txtContent";
+            this.txtContent.Size = new System.Drawing.Size(561, 140);
+            this.txtContent.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 114);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Nội dung:";
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(45, 74);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(213, 20);
+            this.txtName.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 77);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Tên:";
             // 
             // label2
             // 
@@ -152,48 +197,15 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Thông báo lỗi và liên lạc";
             // 
-            // label3
+            // btnCancel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 77);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Tên:";
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(45, 74);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(213, 20);
-            this.txtName.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 114);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Nội dung:";
-            // 
-            // txtContent
-            // 
-            this.txtContent.Location = new System.Drawing.Point(13, 130);
-            this.txtContent.Multiline = true;
-            this.txtContent.Name = "txtContent";
-            this.txtContent.Size = new System.Drawing.Size(561, 140);
-            this.txtContent.TabIndex = 4;
-            // 
-            // btnSend
-            // 
-            this.btnSend.Location = new System.Drawing.Point(498, 277);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(75, 23);
-            this.btnSend.TabIndex = 5;
-            this.btnSend.Text = "Gửi";
-            this.btnSend.UseVisualStyleBackColor = true;
-            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            this.btnCancel.Location = new System.Drawing.Point(499, 306);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 13;
+            this.btnCancel.Text = "Thoát";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // Help
             // 
@@ -206,9 +218,9 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picHelp)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picHelp)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -229,5 +241,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
