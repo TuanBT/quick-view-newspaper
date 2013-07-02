@@ -25,9 +25,9 @@ namespace Quick_View_Newspaper
             //Lập các giá trị mặc định cho chương trình từ file config ini
             t.setDeafault();
             k.OpacityMouse(this);
-            s.CALL(notifyIcon1, contextMenuStrip1, this, pnlOption, pnlMain,picOptOpen);
-            t.RUN(pnlRun, lblTitle, lblCat, cbbNewsName, cbbCatName, lblNoti,args);
-            //Help h = new Help();
+            s.CALL(notifyIcon1, contextMenuStrip1, this, pnlOption, pnlMain,picOptOpen, label4);
+            //t.RUN(pnlRun, lblTitle, lblCat, cbbNewsName, cbbCatName, lblNoti,args);
+            Help h = new Help();
             //h.Show();
             this.KeyPreview = true;
         }
@@ -43,13 +43,11 @@ namespace Quick_View_Newspaper
         private void lblTitle_MouseClick(object sender, MouseEventArgs e)
         {
             t.NextNews_Click();
-            nudSpeed.Value = 1;
         }
 
         private void lblCat_MouseClick(object sender, MouseEventArgs e)
         {
             t.NextRSS_Click();
-            nudSpeed.Value = 1;
         }
 
         private void lblTitle_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -91,22 +89,6 @@ namespace Quick_View_Newspaper
             s.Close();
         }
         #endregion
-
-        private void nudSize_ValueChanged(object sender, EventArgs e)
-        {
-            t.FontSize = k.ReSize(pnlMain, Convert.ToInt32(nudSize.Value.ToString()), this);
-            s.SetOptionPanel();
-        }
-
-        private void nudSpeed_ValueChanged(object sender, EventArgs e)
-        {
-            t.SpeedLabel = Convert.ToInt32(nudSpeed.Value.ToString());
-        }
-
-        private void cbbNewsName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
 
 

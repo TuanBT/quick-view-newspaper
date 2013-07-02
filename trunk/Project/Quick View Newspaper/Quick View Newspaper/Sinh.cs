@@ -10,8 +10,9 @@ namespace Quick_View_Newspaper
 {
     public class Sinh : Form
     {
+        private Label lbl;
         private int flag = 1;
-        private int TogMove;
+        private int TogMove = 0;
         private int MValX;
         private int MValY;
         int padding = 1;
@@ -23,7 +24,7 @@ namespace Quick_View_Newspaper
         private Panel pnlMain;
         private PictureBox picOptOpen;
 
-        public void CALL(NotifyIcon notifyIcon, ContextMenuStrip contextMenu, Form frm, Panel pnlOption, Panel pnlMain, PictureBox picOptOpen)
+        public void CALL(NotifyIcon notifyIcon, ContextMenuStrip contextMenu, Form frm, Panel pnlOption, Panel pnlMain, PictureBox picOptOpen, Label lbl)
         {
             this.frm = frm;
             this.pnlMain = pnlMain;
@@ -31,6 +32,7 @@ namespace Quick_View_Newspaper
             this.notifyIcon = notifyIcon;
             this.contextMenu = contextMenu;
             this.picOptOpen = picOptOpen;
+            this.lbl = lbl;
             InitializeContextMenu();
             LocationForm();
             SetOptionPanel();
@@ -160,20 +162,15 @@ namespace Quick_View_Newspaper
 
         private void InitializeContextMenu()
         {
-            //MenuItem[] menuList = new MenuItem[]{
-            //    new MenuItem("Sign In"),
-            //    new MenuItem("Get Help"), 
-            //    new MenuItem("Open")};
+            ToolStripItem item3 = contextMenu.Items.Add("Help ");
             ToolStripItem item2 = contextMenu.Items.Add("About ");
             ToolStripItem item = contextMenu.Items.Add("Exit ");
             notifyIcon.ContextMenuStrip = contextMenu;
-            //ContextMenu clickMenu = new ContextMenu(menuList);
-            //notifyIcon.ContextMenu = clickMenu;
+            item3.Click += new EventHandler(item3_Click);
             item2.Click += new EventHandler(item2_Click);
             item.Click += new EventHandler(item_Click);
 
-            // Associate the event-handling method with  
-            // the NotifyIcon object's click event.
+
             notifyIcon.MouseClick += new MouseEventHandler(notifyIcon_MouseClick);
         }
 
@@ -201,6 +198,12 @@ namespace Quick_View_Newspaper
         {
             AboutForm aboutForm = new AboutForm();
             aboutForm.Show();
+        }
+
+        private void item3_Click(object sender, System.EventArgs e)
+        {
+            Help help = new Help();
+            help.Show();
         }
 
         public void MoveForm()
@@ -232,23 +235,20 @@ namespace Quick_View_Newspaper
         }
         private void picOptOpen_MouseMove(object sender, MouseEventArgs e)
         {
-            int nTaskBarHeight = Screen.PrimaryScreen.Bounds.Top -
-                                            Screen.PrimaryScreen.WorkingArea.Top;
-            Rectangle workingArea = Screen.GetWorkingArea(frm);
-            // frm.Location = new Point(0, workingArea.Bottom - frm.Size.Height + nTaskBarHeight);
+            if (frm.Location.Y < 0)
+            {
+                frm.Location = new Point(0, 0);
+            }
+            //duoi taskbar
+            if (frm.Location.Y + frm.Size.Height > Screen.PrimaryScreen.WorkingArea.Height)
+            {
+                frm.Location = new Point(0, Screen.PrimaryScreen.WorkingArea.Height - frm.Size.Height);
+            }
             if (flag == 0)
             {
                 if (TogMove == 1)
                 {
-                    if (MousePosition.Y - MValY < nTaskBarHeight)
-                    {
-                        frm.Location = new Point(0, workingArea.Bottom - frm.Size.Height + nTaskBarHeight);
-                    }
-                    else
-                    {
-                        frm.SetDesktopLocation(0, MousePosition.Y - MValY);
-                    }
-
+                   frm.SetDesktopLocation(0, MousePosition.Y - MValY);
                 }
             }
         }
