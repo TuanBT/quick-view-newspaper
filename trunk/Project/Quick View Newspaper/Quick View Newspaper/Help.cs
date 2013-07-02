@@ -80,5 +80,10 @@ namespace Quick_View_Newspaper
             txtContent.Text = "";
             SmtpServer.Send(mail);
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }
