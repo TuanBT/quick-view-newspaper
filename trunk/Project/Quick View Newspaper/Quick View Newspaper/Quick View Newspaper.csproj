@@ -103,6 +103,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sinh.resx">
+      <DependentUpon>Sinh.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WebBrowserForm.resx">
       <DependentUpon>WebBrowserForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -25,7 +25,7 @@ namespace Quick_View_Newspaper
             //Lập các giá trị mặc định cho chương trình từ file config ini
             t.setDeafault();
             k.OpacityMouse(this);
-            s.CALL(notifyIcon1, contextMenuStrip1, this, pnlOption, pnlMain,picOptOpen, pnlRun);
+            s.CALL(notifyIcon1, contextMenuStrip1, this, pnlOption, pnlMain,picOptOpen, pnlRun, lblTitle, lblCat, cbbCatName,cbbNewsName);
             t.RUN(pnlRun, lblTitle, lblCat, cbbNewsName, cbbCatName, lblNoti,args);
             Help h = new Help();
             //h.Show();
