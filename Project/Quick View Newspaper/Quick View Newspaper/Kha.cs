@@ -77,34 +77,34 @@ namespace Quick_View_Newspaper
         }
 
 
-        /// <summary>
-        /// Lấy khoảng cách giữa chuột và form /200 = độ mờ của form
-        /// </summary>
-        /// <param name="MouseX"></param>
-        /// <param name="pnlMainY"></param>
-        /// <returns></returns>
-        public double Distance(int MouseX, int pnlMainY)
-        {
-            int intDistance = Math.Abs(MouseX - pnlMainY);
-            Double dbDistance = Convert.ToDouble(intDistance);
-            double temp = dbDistance / 200;
-            //Nếu độ mờ < 0.2 thì lấy 0.2
-            if (temp < 0.2)
-            {
-                return 0.2;
-            }
-            //Nếu độ mờ lớn hơn giá trị opacity thì lấy opacity
-            else if (temp > opacity)
-            {
-                return opacity;
-            }
-            //Các trường hợp còn lại thì lấy bằng đúng độ mờ tính ra
-            else
-            {
-                return temp;
-            }
+        ///// <summary>
+        ///// Lấy khoảng cách giữa chuột và form /200 = độ mờ của form
+        ///// </summary>
+        ///// <param name="MouseX"></param>
+        ///// <param name="pnlMainY"></param>
+        ///// <returns></returns>
+        //public double Distance(int MouseX, int pnlMainY)
+        //{
+        //    int intDistance = Math.Abs(MouseX - pnlMainY);
+        //    Double dbDistance = Convert.ToDouble(intDistance);
+        //    double temp = dbDistance / 200;
+        //    //Nếu độ mờ < 0.2 thì lấy 0.2
+        //    if (temp < 0.2)
+        //    {
+        //        return 0.2;
+        //    }
+        //    //Nếu độ mờ lớn hơn giá trị opacity thì lấy opacity
+        //    else if (temp > opacity)
+        //    {
+        //        return opacity;
+        //    }
+        //    //Các trường hợp còn lại thì lấy bằng đúng độ mờ tính ra
+        //    else
+        //    {
+        //        return temp;
+        //    }
 
-        }
+        //}
         /// <summary>
         /// Xử lý sự kiện của timmer
         /// </summary>
@@ -122,10 +122,10 @@ namespace Quick_View_Newspaper
                 //fm.Activate();
             }
             //Nếu chuột phía trên form + nữa chiều rộng của form  thì độ mờ bằng công thức tính
-            if (intMouseY >= (intFormY - fm.Height/2) && intMouseY < fm.Location.Y)
-            {
-                fm.Opacity = Distance(intMouseY, intFormY);
-            }
+            //if (intMouseY >= (intFormY - fm.Height/2) && intMouseY < fm.Location.Y)
+            //{
+            //    fm.Opacity = Distance(intMouseY, intFormY);
+            //}
             //Nếu chuột nằm trong form thì ẩn đi
             else if ((intMouseY <= (fm.Location.Y + fm.Height) && (intMouseY >= fm.Location.Y)))
             {
