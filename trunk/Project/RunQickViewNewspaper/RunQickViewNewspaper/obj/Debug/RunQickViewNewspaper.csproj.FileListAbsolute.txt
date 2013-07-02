@@ -1,6 +1,16 @@
-C:\Users\Tuân\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\bin\Debug\RunQickViewNewspaper.exe
-C:\Users\Tuân\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\bin\Debug\RunQickViewNewspaper.pdb
-C:\Users\Tuân\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.Properties.Resources.resources
-C:\Users\Tuân\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.csproj.GenerateResource.Cache
-C:\Users\Tuân\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.exe
-C:\Users\Tuân\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.pdb
+D:\Project\CSharp\Quick View Newspaper\Project\RunQickViewNewspaper\RunQickViewNewspaper\bin\Debug\RunQickViewNewspaper.exe
+D:\Project\CSharp\Quick View Newspaper\Project\RunQickViewNewspaper\RunQickViewNewspaper\bin\Debug\RunQickViewNewspaper.pdb
+D:\Project\CSharp\Quick View Newspaper\Project\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.Properties.Resources.resources
+D:\Project\CSharp\Quick View Newspaper\Project\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.csproj.GenerateResource.Cache
+D:\Project\CSharp\Quick View Newspaper\Project\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.exe
+D:\Project\CSharp\Quick View Newspaper\Project\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.pdb
+D:\Project\CSharp\Quick View Newspaper\Project\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.csprojResolveAssemblyReference.cache
+D:\Project\CSharp\Quick View Newspaper\Project\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.RunForm.resources
+C:\Users\Bui Tien Tuan\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.exe
+C:\Users\Bui Tien Tuan\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.pdb
+C:\Users\Bui Tien Tuan\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\bin\Debug\RunQickViewNewspaper.exe
+C:\Users\Bui Tien Tuan\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\bin\Debug\RunQickViewNewspaper.pdb
+C:\Users\Bui Tien Tuan\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.csprojResolveAssemblyReference.cache
+C:\Users\Bui Tien Tuan\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.Properties.Resources.resources
+C:\Users\Bui Tien Tuan\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.RunForm.resources
+C:\Users\Bui Tien Tuan\Desktop\RunQickViewNewspaper\RunQickViewNewspaper\obj\Debug\RunQickViewNewspaper.csproj.GenerateResource.Cache
