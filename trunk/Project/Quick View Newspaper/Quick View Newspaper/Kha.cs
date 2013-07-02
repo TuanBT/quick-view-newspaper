@@ -6,7 +6,7 @@ namespace Quick_View_Newspaper
 {
     class Kha
     {
-        int flag = 0;
+        int flag = 1;
         double opacity = 0.6;
         Timer tmr;
         /// <summary>
@@ -49,18 +49,6 @@ namespace Quick_View_Newspaper
             fm.KeyUp += fm_KeyUp;
         }
 
-        /// <summary>
-        /// Bắt sự kiện thả phím Ctrl
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void fm_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.ControlKey)
-            {
-                flag = 0;
-            }
-        }
 
         /// <summary>
         /// Bắt sự kiện ấn phím Ctrl
@@ -69,11 +57,26 @@ namespace Quick_View_Newspaper
         /// <param name="e"></param>
         void fm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.ControlKey)
+            if (e.Alt)
+            {
+                flag = 0;
+            }
+        }
+
+        /// <summary>
+        /// Bắt sự kiện thả phím Ctrl
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void fm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (!e.Alt)
             {
                 flag = 1;
             }
         }
+
+
         /// <summary>
         /// Lấy khoảng cách giữa chuột và form /200 = độ mờ của form
         /// </summary>
