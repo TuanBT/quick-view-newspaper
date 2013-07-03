@@ -146,5 +146,15 @@ namespace Quick_View_Newspaper
             }
             return Size;
         }
+        public void Setlocation(Panel pnlOption, Label lblSize, Label lblSpeed, Label lblOpacity, NumericUpDown nudSize, NumericUpDown nudSpeed, NumericUpDown nudOpacity, Button btnReset)
+        {
+            lblSize.Location = new Point(lblSize.Location.X, (pnlOption.Height - lblSize.Height)/2);
+            nudSize.Location = new Point((lblSize.Location.X + lblSize.Width + 10), (pnlOption.Height - nudSize.Height)/2);
+            lblSpeed.Location = new Point((nudSize.Location.X + nudSize.Width + 10),(pnlOption.Height - lblSpeed.Height)/2);
+            nudSpeed.Location = new Point((lblSpeed.Location.X + lblSpeed.Width + 10),(pnlOption.Height - nudSpeed.Height)/2);
+            lblOpacity.Location = new Point((nudSpeed.Location.X + nudSize.Width + 10), (pnlOption.Height - lblOpacity.Height) / 2);
+            nudOpacity.Location = new Point((lblOpacity.Location.X + lblOpacity.Width + 10),(pnlOption.Height - nudOpacity.Height)/2);
+            btnReset.Location = new Point((nudOpacity.Location.X + nudOpacity.Width + 10), (pnlOption.Height - btnReset.Height)/2);
+        }
     }
 }

@@ -28,6 +28,8 @@ namespace Quick_View_Newspaper
             s.CALL(notifyIcon1, contextMenuStrip1, this, pnlOption, pnlMain,picOptOpen, pnlRun, lblTitle, lblCat, cbbCatName,cbbNewsName);
             t.RUN(pnlRun, lblTitle, lblCat, cbbNewsName, cbbCatName, lblNoti,args);
             this.KeyPreview = true;
+            k.Setlocation(pnlOption, lblSize, lblSpeed, lblOpacity, nudSize, nudSpeed, nudOpacity, btnReset);
+            t.SpeedLabel = 1;
         }
 
         #region Kha sửa
@@ -42,6 +44,7 @@ namespace Quick_View_Newspaper
             t.FontSize = k.ReSize(pnlMain, Convert.ToInt32(nudSize.Value.ToString()), this);
             s.SetOptionPanel();
             t.setValueOptionToConfig(t.FontSize.ToString(), "-", "-");
+            k.Setlocation(pnlOption, lblSize, lblSpeed, lblOpacity, nudSize, nudSpeed, nudOpacity, btnReset);
         }
 
         private void nudSpeed_ValueChanged(object sender, EventArgs e)
