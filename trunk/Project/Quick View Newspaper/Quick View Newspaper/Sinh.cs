@@ -201,10 +201,12 @@ namespace Quick_View_Newspaper
         /// </summary>
         private void InitializeContextMenu()
         {
+            //ToolStripItem focus= contextMenu.Items.Add("QVN ");
             ToolStripItem item3 = contextMenu.Items.Add("Help ");
             ToolStripItem item2 = contextMenu.Items.Add("About ");
             ToolStripItem item = contextMenu.Items.Add("Exit ");
             notifyIcon.ContextMenuStrip = contextMenu;
+            //focus.Click += new EventHandler(focus_Click);
             item3.Click += new EventHandler(item3_Click);
             item2.Click += new EventHandler(item2_Click);
             item.Click += new EventHandler(item_Click);
@@ -233,6 +235,16 @@ namespace Quick_View_Newspaper
         private void item_Click(object sender, System.EventArgs e)
         {
             frm.Close();
+        }
+
+        /// <summary>
+        /// Thỉnh thoảng ấn Alt nên mất focus. Thêm lệnh này lấy lại focus
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void focus_Click(object sender, System.EventArgs e)
+        {
+            //Làm gì đó mà khi đã Click chuột +Alt mà vẫn không mất sự kiện nhả phím Alt
         }
 
         /// <summary>
@@ -366,8 +378,9 @@ namespace Quick_View_Newspaper
             // 
             // Sinh
             // 
-            this.ClientSize = new System.Drawing.Size(404, 261);
+            this.ClientSize = new System.Drawing.Size(160, 0);
             this.Name = "Sinh";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);

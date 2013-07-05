@@ -51,7 +51,7 @@ namespace Quick_View_Newspaper
 
 
         /// <summary>
-        /// Bắt sự kiện ấn phím Ctrl
+        /// Bắt sự kiện ấn phím Alt
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -64,16 +64,16 @@ namespace Quick_View_Newspaper
         }
 
         /// <summary>
-        /// Bắt sự kiện thả phím Ctrl
+        /// Bắt sự kiện thả phím Alt
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         void fm_KeyUp(object sender, KeyEventArgs e)
         {
-            if (!e.Alt)
-            {
+           // if (!e.Alt)
+            //{
                 flag = 1;
-            }
+            //}
         }
 
         /// <summary>

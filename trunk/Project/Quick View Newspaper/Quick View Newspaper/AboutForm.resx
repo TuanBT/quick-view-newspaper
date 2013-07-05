@@ -118,17 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label3.Text" xml:space="preserve">
-    <value>Đúng như tên gọi của nó, Quick view newspaper là phần mềm giúp bạn xem tin túc một cách nhanh chóng.
+    <value>Quick view newspaper là phần mềm giúp bạn xem tin túc một cách nhanh chóng. Bằng cách sử dụng RSS để lấy tin tức một cách trực tuyến.
 
-Phần mềm cung cấp nhiều đầu báo nổi tiếng như Zing news, Vietnamnet, DânTrí, 2Sao ...
+Phần mềm cung cấp nhiều đầu báo nổi tiếng như Zing news, 24h, vnexpress.... với hàng chục thể loại và hàng trăm tin tức.
 
-Điều đặc biệt phần mềm này cực kì nhỏ gọn và nếu bạn là người mới sử dụng lần đầu. Yên tâm đi phần mềm này cực kì dễ sử dụng.
+Phần mềm được cung cấp miễn phí vì nguồn báo lấy từ nguồn miễn phí và mong muốn được sẻ chia những phần mềm tiện ích cho cộng đồng của các tác giả.
 
-Hãy thử nha bạn.
+Được xây dựng trên nền .Net 2.0, vậy nên chương trình chạy tốt trên các máy cài Windows. Yêu cầu về cấu hình: Mạng là chính.
 
-Cảm ơn bạn vì đã sử dụng phần mềm của chúng tôi.
- 
- </value>
+Hồ Chí Minh, Ngày 06/07/2013</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

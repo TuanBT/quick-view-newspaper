@@ -126,7 +126,14 @@
     <None Include="Resources\OptionOpen.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Help0.png" />
+    <Content Include="Resources\Help3.png" />
+    <Content Include="Resources\Help4.png" />
+    <Content Include="Resources\Help5.png" />
     <None Include="bin\Debug\images\Help0.png" />
+    <None Include="bin\Debug\images\Help3.png" />
+    <None Include="bin\Debug\images\Help4.png" />
+    <None Include="bin\Debug\images\Help5.png" />
     <Content Include="QVN.ico" />
     <None Include="Resources\Help2.png" />
     <None Include="Resources\Help1.png" />
