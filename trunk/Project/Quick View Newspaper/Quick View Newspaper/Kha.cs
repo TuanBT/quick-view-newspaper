@@ -4,10 +4,10 @@ using System.Drawing;
 
 namespace Quick_View_Newspaper
 {
-    class Kha
+    public class Kha
     {
         int flag = 1;
-        double opacity = 0.8;
+        public double opacity = 0.8;
         Timer tmr;
         /// <summary>
         /// Thay đổi độ mờ của FORM theo 5 cấp
