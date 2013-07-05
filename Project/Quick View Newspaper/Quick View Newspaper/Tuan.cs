@@ -13,6 +13,9 @@ namespace Quick_View_Newspaper
 {
     class Tuan
     {
+        //Gọi hàm từ Kha
+        Kha k = new Kha();
+
         #region Khai báo biến
         //List chứa các label
         public List<Label> lblList = new List<Label>();
@@ -151,6 +154,7 @@ namespace Quick_View_Newspaper
         /// </summary>
         public void NextNews_Click()
         {
+            //tmrRunLabelOnPanel.Enabled = false;
             RemoveLabel();
             newsIndex++;
             //Nạp tên các thể loại mà tiêu đề báo này có được vào combobox cbbCatName
@@ -191,7 +195,7 @@ namespace Quick_View_Newspaper
                     {
                         //Nạp dữ liệu vào các list theo thể loại (1 link RSS)
                         GetDataFormRSS(listLinkRSS[rSSIndex]);
-                        if(listTitle.Count==1 && listTitle[0]=="")
+                        if (listTitle.Count == 1 && listTitle[0] == "")
                         {
                             Run();
                         }
@@ -245,6 +249,7 @@ namespace Quick_View_Newspaper
         //Hàm sử lý sự kiện khi thay đổi cbbNewsName. Mỗi lần chọn thì ta có được NewsName
         public void cbbNewsName_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //tmrRunLabelOnPanel.Enabled = false;
             //Làm sao đó từ NewsName này mà tìm ra được cái newsIndex. Sau đó thay đổi lại cái newsIdex và chạy lại run
             for (int i = 0; i < listNews.Count; i++)
             {
@@ -264,12 +269,13 @@ namespace Quick_View_Newspaper
         //Hàm sử lý sự kiện khi thay đổi cbbCatName. Mỗi lần chọn thì ta có được catName
         public void cbbCatName_SelectedIndexChanged(object sender, EventArgs e)
         {
+            tmrRunLabelOnPanel.Enabled = false;
             //làm sao đó từ catName tìm ra được rSSIndex. Sau đó thay đổi lại cái rSSIndex và chạy lại run
             for (int i = 0; i < listCat.Count; i++)
             {
                 if (listCat[i] == cbbCatName.Text)
                 {
-                    rSSIndex = i-1;
+                    rSSIndex = i - 1;
                     break;
                 }
             }
@@ -671,20 +677,38 @@ namespace Quick_View_Newspaper
         /// <summary>
         /// Dựa vào các thông số trong file config mà set mặc định các giá trị Option
         /// </summary>
-        public void setDeafault()
+        public void setDeafault(NumericUpDown nudSize, NumericUpDown nudSpeed, NumericUpDown nudOpacity)
         {
             try
             {
                 fontSize = Convert.ToInt32(file.ReadValue("Option", "Font size"));
+                nudSize.Value = fontSize;
                 speedLabel = Convert.ToInt32(file.ReadValue("Option", "Speed"));
+                nudSpeed.Value = speedLabel;
                 //Tìm biến độ mờ của kha thả vào
-                //k.Opacity = Convert.ToInt32(file.ReadValue("Option", "Opacity"));
+                k.opacity = Convert.ToDouble(file.ReadValue("Option", "Opacity"));
+                int opatityTemp = Convert.ToInt32(k.opacity);
+                switch (opatityTemp)
+                {
+                    case 20: nudOpacity.Value = -2;
+                        break;
+                    case 40: nudOpacity.Value = -1;
+                        break;
+                    case 60: nudOpacity.Value = 0;
+                        break;
+                    case 80: nudOpacity.Value = 1;
+                        break;
+                    case 100: nudOpacity.Value = 2;
+                        break;
+                }
+                //nudOpacity.Value = k.opacity;
+
             }
             catch (Exception)
             {
                 fontSize = 10;
                 speedLabel = 1;
-                //k.Opacity=????
+                k.opacity = 0.8;
             }
         }
 
@@ -698,13 +722,13 @@ namespace Quick_View_Newspaper
                 fontSize = Convert.ToInt32(file.ReadValue("Option C", "Font size"));
                 speedLabel = Convert.ToInt32(file.ReadValue("Option C", "Speed"));
                 //Tìm biến độ mờ của kha thả vào
-                //k.Opacity = Convert.ToInt32(file.ReadValue("Option", "Opacity"));
+                k.opacity = Convert.ToDouble(file.ReadValue("Option C", "Opacity"));
             }
             catch (Exception)
             {
                 fontSize = 10;
                 speedLabel = 1;
-                //k.Opacity=????
+                k.opacity = 0.8;
             }
         }
 

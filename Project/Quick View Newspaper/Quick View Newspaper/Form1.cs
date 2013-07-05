@@ -23,7 +23,7 @@ namespace Quick_View_Newspaper
         {
             InitializeComponent();
             //Lập các giá trị mặc định cho chương trình từ file config ini
-            t.setDeafault();
+            t.setDeafault(nudSize,nudSpeed,nudOpacity);
             k.OpacityMouse(this);
             s.CALL(notifyIcon1, contextMenuStrip1, this, pnlOption, pnlMain,picOptOpen, pnlRun, lblTitle, lblCat, cbbCatName,cbbNewsName);
             t.RUN(pnlRun, lblTitle, lblCat, cbbNewsName, cbbCatName, lblNoti,args);
@@ -36,7 +36,7 @@ namespace Quick_View_Newspaper
         private void nudOpacity_ValueChanged(object sender, EventArgs e)
         {
             k.ReOpacity(this, Convert.ToInt32(nudOpacity.Value.ToString()));
-            //t.setValueOptionToConfig("-", "-", Convert.ToInt32(nudOpacity.Value.ToString()).ToString());
+            t.setValueOptionToConfig("-", "-",k.opacity.ToString());
         }
 
         private void nudSize_ValueChanged(object sender, EventArgs e)
@@ -76,7 +76,7 @@ namespace Quick_View_Newspaper
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            t.setDeafault();
+            t.setDeafault(nudSize,nudSpeed,nudOpacity);
         }
 
         private void cbbNewsName_SelectedIndexChanged(object sender, EventArgs e)

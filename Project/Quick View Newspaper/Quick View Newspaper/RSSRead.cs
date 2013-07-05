@@ -18,11 +18,12 @@ namespace Quick_View_Newspaper
             List<RSSInfo> list = new List<RSSInfo>();
             try
             {
-                //System.Windows.Forms.MessageBox.Show(feed + " được gọi");
+                
                 //Cách 1
                 rssReader = new XmlTextReader(feed);
                 rssDoc = new XmlDocument();
                 rssDoc.Load(rssReader);
+                //System.Windows.Forms.MessageBox.Show(feed + " được gọi");
 
                 //Cách 2
                 //HttpWebRequest request = HttpWebRequest.Create(feed) as HttpWebRequest;
