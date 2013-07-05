@@ -38,18 +38,18 @@ namespace RunQickViewNewspaper
                 Directory.CreateDirectory(path);
             }
 
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phiên làm việc cũ hay không?", "Test xác nhận", MessageBoxButtons.YesNo);
+            //DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phiên làm việc cũ hay không?", "Test xác nhận", MessageBoxButtons.YesNo);
             //Xóa cũ đè mới
-            if (dialogResult == DialogResult.Yes)
-            {
+            //if (dialogResult == DialogResult.Yes)
+            //{
                 File.WriteAllBytes(path + databaseFile, Resources.QVN);
                 File.WriteAllBytes(path + SQLiteLibaryFile, Resources.System_Data_SQLite);
                 File.WriteAllBytes(path + mainFile, Resources.Quick_View_Newspaper);
                 File.WriteAllText(path + configFile, Resources.QVN_Config);
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-            }
+            //}
+            //else if (dialogResult == DialogResult.No)
+            //{
+            //}
 
             //if (!File.Exists(path + databaseFile))
             //{

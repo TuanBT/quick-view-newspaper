@@ -16,11 +16,11 @@ namespace Quick_View_Newspaper
         Image[] strListImage = { Properties.Resources.Help0, Properties.Resources.Help1, Properties.Resources.Help2, Properties.Resources.Help3, Properties.Resources.Help4, Properties.Resources.Help5};
         //Khai báo list hướng dẫn
         string[] stringHelp = { "Bước 1: Khởi động chương trình và chờ nạp dữ liệu", 
-                                "Bước 2: Sau khi nạp dữ liệu chương trình sẽ có giao diện như bên dưới", 
+                                "Bước 2: Sau khi nạp dữ liệu chương trình sẽ có giao diện như bên dưới. Ấn Alt để ẩn", 
                                 "Bước 3: Khi rê chuột vào tiêu đề bài báo sẽ hiện ra thông tin chi tiết của bài báo",
-                                "Bước 4: Khi click chuột vào tiêu đề bài báo sẽ dẫn tới trang nguồn bài báo",
-                                "Bước 5: Click vào mũi tên bên góc phải sẽ mở ra thanh tùy chỉnh tại đây bạn có thể tùy chỉnh theo ý muốn, mọi thay đổi sẽ được lưu lại cho đến khi nhấn nút reset",
-                                "Bước 6: Khi muốn thay đổi đầu báo hoặc thể loại thì bạn click vào tiêu đề hoặc thể loại"};
+                                "Bước 4: Click chuột tiêu đề sẽ hiện một cửa sổ chi tiết, mỗi lần chỉ mở được một cửa sổ",
+                                "Bước 5: Mở Tùy chọn bên góc phải. Ấn giữ Ctrl để di chuyển lên xuống.",
+                                "Bước 6: Click chuột phải để đổi. Ấn Ctrl+chuột phải để chọn trong list."};
         int i = 0;
         public Help()
         {

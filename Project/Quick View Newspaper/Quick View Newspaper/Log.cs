@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Quick_View_Newspaper
 {
     public class Log
     {
-        private static string pathFileLog = "QVNLog.txt";
+        private static string pathFileLog = Application.StartupPath + "\\QVNLog.txt";
+        
 
         public static void WriteLog(string content)
         {
