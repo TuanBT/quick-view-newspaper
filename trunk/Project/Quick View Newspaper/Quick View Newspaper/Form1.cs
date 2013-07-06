@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +23,15 @@ namespace Quick_View_Newspaper
         public Form1(string args = "")
         {
             InitializeComponent();
+            //Chạy cùng windows
+            RegistryKey registry = Registry.CurrentUser;
+            RegistryKey registrySoftware = registry.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+            if (registrySoftware.GetValue("Quick View Newspaper") == null)
+            {
+                registrySoftware.CreateSubKey("Quick View Newspaper");
+                registrySoftware.SetValue("Quick View Newspaper", "\"" + System.IO.Path.GetFullPath("Quick View Newspaper.exe") + "\"");
+            }  
+            //-----------------
             //Lập các giá trị mặc định cho chương trình từ file config ini
             t.setDeafault(nudSize,nudSpeed,nudOpacity);
             k.OpacityMouse(this);
