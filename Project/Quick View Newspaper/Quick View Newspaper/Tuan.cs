@@ -84,6 +84,8 @@ namespace Quick_View_Newspaper
         private string fileIniPath;
         //Báo gọi lớp ini
         private Config file;
+        //Biến dùng để kiểm tra việc chuyển catname là do Click hay tự chuyển
+        //public bool LabelCatNameClik=false;
         #endregion
 
         #region setget
@@ -159,6 +161,7 @@ namespace Quick_View_Newspaper
             newsIndex++;
             //Nạp tên các thể loại mà tiêu đề báo này có được vào combobox cbbCatName
             GetCatOfNewsFormDatabase();
+            rSSIndex = -1;
             Run();
         }
 
@@ -260,27 +263,32 @@ namespace Quick_View_Newspaper
                 }
             }
             RemoveLabel();
-            //Nạp tên các thể loại mà tiêu đề báo này có được vào combobox cbbCatName
-            rSSIndex = 0;
-            GetCatOfNewsFormDatabase();
+            rSSIndex = -1;
             Run();
         }
 
         //Hàm sử lý sự kiện khi thay đổi cbbCatName. Mỗi lần chọn thì ta có được catName
+        //Chức năng này tạm thời bỏ qua vì khi bắt sự kiện chuyển tiêu đề báo thì đống nghĩa với việc cái selection cũng bị chọn
         public void cbbCatName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tmrRunLabelOnPanel.Enabled = false;
-            //làm sao đó từ catName tìm ra được rSSIndex. Sau đó thay đổi lại cái rSSIndex và chạy lại run
-            for (int i = 0; i < listCat.Count; i++)
-            {
-                if (listCat[i] == cbbCatName.Text)
-                {
-                    rSSIndex = i - 1;
-                    break;
-                }
-            }
-            RemoveLabel();
-            Run();
+            ////Nếu như bị clik thì mới gọi việc tìm kiếm này
+            //if (LabelCatNameClik)
+            //{
+            //    LabelCatNameClik = false;
+            //    tmrRunLabelOnPanel.Enabled = false;
+            //    //làm sao đó từ catName tìm ra được RSSLink từ database. Sau đó nhờ link này mà tìm được rSSIndex trong ListLinkRSS
+            //    string linkRSS = GetLinkRSSFromCatName(cbbCatName.Text);
+            //    for (int i = 0; i < listLinkRSS.Count; i++)
+            //    {
+            //        if (listLinkRSS[i] == linkRSS)
+            //        {
+            //            rSSIndex = i - 1;
+            //            break;
+            //        }
+            //    }
+            //    RemoveLabel();
+            //    Run();
+            //}
         }
 
         private int i = 0;
@@ -306,6 +314,43 @@ namespace Quick_View_Newspaper
                 Run();
             }
             //Trong quá trình chạy thì do chưa đạt yêu cầu label chạy tới cuối Panel pnl nên finishFlag vẫn mang giá trị false
+        }
+
+        /// <summary>
+        /// Lấy link RSS từ tên thể loại
+        /// </summary>
+        /// <param name="varCatName"></param>
+        /// <returns></returns>
+        public string GetLinkRSSFromCatName(string varCatName)
+        {
+            //MessageBox.Show("Chay data");
+            string RSSLink = "";
+            db = new SQLiteDatabase(path + database);
+            DataTable recipe;
+            //Chuỗi trả về một ô chứa link RSS dựa vào catName và NewID=newsIndex+1
+            String query = "SELECT t.RSSLink " +
+                           "FROM(" +
+                           "SELECT * FROM tblCategory c " +
+                           "JOIN tblRSS r ON c.CatId = r.CatId  " +
+                           "WHERE r.RSSId) t " +
+                           "WHERE (t.NewId=" + newsIndex + 1 + ") AND (t.CatName=\"" + varCatName + "\");";
+            try
+            {
+                recipe = db.GetDataTable(query);
+                foreach (DataRow r in recipe.Rows)
+                {
+                    RSSLink = r[0].ToString();
+                }
+                return RSSLink;
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n\n";
+                MessageBox.Show(error);
+                Log.WriteLog(error);
+                return RSSLink;
+            }
         }
 
         /// <summary>
@@ -344,6 +389,8 @@ namespace Quick_View_Newspaper
         /// </summary>
         public void GetCatOfNewsFormDatabase()
         {
+            //Thể hiện việc 
+            //LabelCatNameClik = false;
             try
             {
                 db = new SQLiteDatabase(path + database);

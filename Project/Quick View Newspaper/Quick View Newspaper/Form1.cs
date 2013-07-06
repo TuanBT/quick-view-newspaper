@@ -87,6 +87,7 @@ namespace Quick_View_Newspaper
         {
             cbbCatName.Visible = false;
             lblCat.Visible = true;
+            //t.LabelCatNameClik = true;
         }
         #endregion
 

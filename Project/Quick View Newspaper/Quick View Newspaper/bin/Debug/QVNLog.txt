@@ -126,3 +126,36 @@ Unable to open the database file
 
 
 7/6/2013 10:15:23 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
+7/6/2013 1:54:57 PM: Có vấn đề trong quá trình nạp RSS
+7/6/2013 2:53:48 PM: The following error has occurred:
+
+Column 'RSSId' does not belong to table tblRSS.
+
+
+7/6/2013 2:54:40 PM: The following error has occurred:
+
+Column 't.RSSLink' does not belong to table tblRSS.
+
+
+7/6/2013 2:55:17 PM: The following error has occurred:
+
+Column 'RSSLink' does not belong to table tblRSS.
+
+
+7/6/2013 2:57:19 PM: SELECT t.RSSId FROM(SELECT * FROM tblCategory c JOIN tblRSS r ON c.CatId = r.CatId  WHERE r.RSSId) t WHERE (t.NewId=01) AND (t.CatName=N"Đẹp");, kết nối này có vấn đề
+7/6/2013 2:57:23 PM: The following error has occurred:
+
+SQLite error
+near ""Đẹp"": syntax error
+
+
+7/6/2013 3:05:43 PM: The following error has occurred:
+
+Cannot find column 1.
+
+
+7/6/2013 3:39:12 PM: http://vnexpress.net/rss/tin-moi-nhat.rss có vấn đề!
+7/6/2013 3:42:34 PM: http://vnexpress.net/rss/tin-moi-nhat.rss có vấn đề!
+7/6/2013 3:53:52 PM: http://vnexpress.net/rss/tin-moi-nhat.rss có vấn đề!
+7/6/2013 4:05:47 PM: http://vnexpress.net/rss/tin-moi-nhat.rss có vấn đề!
+7/6/2013 4:09:14 PM: http://vnexpress.net/rss/tin-moi-nhat.rss có vấn đề!
