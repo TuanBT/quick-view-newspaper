@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 
 namespace Quick_View_Newspaper
@@ -201,12 +202,12 @@ namespace Quick_View_Newspaper
         /// </summary>
         private void InitializeContextMenu()
         {
-            //ToolStripItem focus= contextMenu.Items.Add("QVN ");
+            ToolStripItem runWin= contextMenu.Items.Add("Tắt chạy khi khởi động ");
             ToolStripItem item3 = contextMenu.Items.Add("Help ");
             ToolStripItem item2 = contextMenu.Items.Add("About ");
             ToolStripItem item = contextMenu.Items.Add("Exit ");
             notifyIcon.ContextMenuStrip = contextMenu;
-            //focus.Click += new EventHandler(focus_Click);
+            runWin.Click += new EventHandler(runWin_Click);
             item3.Click += new EventHandler(item3_Click);
             item2.Click += new EventHandler(item2_Click);
             item.Click += new EventHandler(item_Click);
@@ -242,9 +243,22 @@ namespace Quick_View_Newspaper
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void focus_Click(object sender, System.EventArgs e)
+        private void runWin_Click(object sender, System.EventArgs e)
         {
-            //Làm gì đó mà khi đã Click chuột +Alt mà vẫn không mất sự kiện nhả phím Alt
+            //Bỏ khởi động cùng màn hình
+            string keyName = @"Software\Microsoft\Windows\CurrentVersion\Run";
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(keyName, true))
+            {
+                if (key == null)
+                {
+                    //Nếu Key không tồn tại thì bỏ qua cho nó
+                }
+                else
+                {
+                    key.DeleteValue("Quick View Newspaper");
+                    MessageBox.Show("Đã tắt khởi động cùng Windows.","Thông báo");
+                }
+            }
         }
 
         /// <summary>

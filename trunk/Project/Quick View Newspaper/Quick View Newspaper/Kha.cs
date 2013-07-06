@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
+using Microsoft.Win32;
 
 namespace Quick_View_Newspaper
 {
@@ -9,6 +10,24 @@ namespace Quick_View_Newspaper
         int flag = 1;
         public double opacity = 0.8;
         Timer tmr;
+
+        /// <summary>
+        /// Hàm có chức năng ghi vào registry đường dẫn của file nhằm mục đích khởi động với windows
+        /// </summary>
+        /// <param name="path"></param>
+        public void RunOpen(string path)
+        {
+            //Chạy cùng windows
+            RegistryKey registry = Registry.CurrentUser;
+            RegistryKey registrySoftware = registry.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+            if (registrySoftware.GetValue("Quick View Newspaper") == null)
+            {
+                registrySoftware.CreateSubKey("Quick View Newspaper");
+                registrySoftware.SetValue("Quick View Newspaper", path + "Quick View Newspaper.exe");
+            }  
+        }
+
+
         /// <summary>
         /// Thay đổi độ mờ của FORM theo 5 cấp
         /// </summary>
