@@ -19,7 +19,7 @@ namespace Quick_View_Newspaper
             }
             else
             {
-                Application.Run(new Form1());
+                Application.Run(new Form1(Application.StartupPath+"\\"));
             }
         }
     }

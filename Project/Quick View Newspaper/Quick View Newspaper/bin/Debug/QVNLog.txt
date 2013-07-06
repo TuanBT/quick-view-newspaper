@@ -11,3 +11,118 @@
 7/6/2013 3:12:50 AM: http://www.dantri.com.vn/nhipsongtre.rss có vấn đề!
 7/6/2013 3:12:50 AM: http://www.dantri.com.vn/suckhoe.rss có vấn đề!
 7/6/2013 3:12:51 AM: http://www.dantri.com.vn/Thegioi.rss có vấn đề!
+7/6/2013 10:14:51 AM: SELECT NewName FROM tblNewspaper, kết nối này có vấn đề
+7/6/2013 10:15:11 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:11 AM: SELECT CatName FROM tblCategory, kết nối này có vấn đề
+7/6/2013 10:15:12 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:12 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
+7/6/2013 10:15:13 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:13 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
+7/6/2013 10:15:13 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:13 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
+7/6/2013 10:15:13 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:13 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
+7/6/2013 10:15:13 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:13 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
+7/6/2013 10:15:14 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:14 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
+7/6/2013 10:15:14 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:14 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
+7/6/2013 10:15:14 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:14 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
+7/6/2013 10:15:14 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:14 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
+7/6/2013 10:15:14 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:14 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
+7/6/2013 10:15:14 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:14 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
+7/6/2013 10:15:15 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:15 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
+7/6/2013 10:15:15 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:15 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
+7/6/2013 10:15:15 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:15 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
+7/6/2013 10:15:15 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:15 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
+7/6/2013 10:15:15 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:15 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
+7/6/2013 10:15:15 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:15 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
+7/6/2013 10:15:23 AM: The following error has occurred:
+
+Unable to open the database file
+
+
+7/6/2013 10:15:23 AM: SELECT c.CatName FROM tblCategory c, tblNewspaper n,tblRSS r WHERE (n.NewId="1")AND(n.NewId=r.NewId)AND(r.CatId=c.CatId), kết nối này có vấn đề
